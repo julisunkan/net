@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type='text/xsl' href='C:\ProgramData\Windows App Certification Kit\results.xsl'?>
+<REPORT xml:lang="en-US" OVERALL_RESULT="PASS" VERSION="10.0.22621.3233" LATEST_VERSION="TRUE" UPDATE_DOWNLOAD_URL="" TOOLSET_ARCHITECTURE="x64" SecureBoot="FALSE" APP_TYPE="UapApp" PUBLISHER_DISPLAY_NAME="CN=A4DCFB6C-1F4F-4155-B778-30BFBED27656" APP_NAME="" APP_VERSION="" OSVERSION="10.0.22631.0" OS="Microsoft Windows 11 Home Single Language" PER_USER_APPLICATION="" PARTIAL_RUN="FALSE" LCID="1033" X64_ONLY="FALSE" VALIDATION_TYPE="UI" ReportGenerationTime="11/2/2024 2:39:17 PM" ID="04d345898f9e67b39eb41194bcf31609">
+  <REQUIREMENTS>
+    <REQUIREMENT NUMBER="10" TITLE="Deployment and launch tests" RATIONALE="Application failures such as crashes and hangs are a major disruption to users and cause frustration. Eliminating such failures improves application stability and reliability, and overall, provides users with a better application experience.">
+      <TEST INDEX="50" NAME="Bytecode generation" DESCRIPTION="Byte code generation should be able to complete successfully for packages containing an HTML5 Windows Store app." EXECUTIONTIME="00h:00m:01s.52ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="81" NAME="Platform version launch" DESCRIPTION="App should not mis-use OSVersionInfo API to provide users functionality that is specific to the OS." EXECUTIONTIME="00h:00m:22s.64ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="47" NAME="App launch" DESCRIPTION="App launch tests." EXECUTIONTIME="00h:00m:19s.46ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="21" NAME="Crashes and hangs" DESCRIPTION="Do not crash or hang during the testing process." EXECUTIONTIME="00h:00m:03s.66ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="12" TITLE="Package compliance test" RATIONALE="The package does not satisfy Store compliance rules.">
+      <TEST INDEX="77" NAME="Application count" DESCRIPTION="One package should not define more than one app in the manifest." EXECUTIONTIME="00h:00m:01s.31ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="31" NAME="App manifest" DESCRIPTION="App manifest must include valid entries for all required fields." EXECUTIONTIME="00h:00m:02s.19ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="91" NAME="Enterprise Features" DESCRIPTION="Check if any enterprise-only features are in the package." EXECUTIONTIME="00h:00m:01s.30ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="90" NAME="Resource Packages" DESCRIPTION="Check if any resource packages contain PE files." EXECUTIONTIME="00h:00m:01s.41ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="83" NAME="Restricted namespace" DESCRIPTION="Check if any restricted namespace is referenced in the app package manifest." EXECUTIONTIME="00h:00m:01s.31ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="14" TITLE="Windows security features test" RATIONALE="Applications must opt-into Windows security features.">
+      <TEST INDEX="33" NAME="Binary analyzer" DESCRIPTION="Analysis of security features enabled on binaries" EXECUTIONTIME="00h:00m:01s.62ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="70" NAME="Banned file analyzer" DESCRIPTION="Analysis of application to detect known insecure files" EXECUTIONTIME="00h:00m:01s.76ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="62" NAME="Private code signing" DESCRIPTION="App should not package private code signing key files." EXECUTIONTIME="00h:00m:01s.68ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="15" TITLE="Supported API test" RATIONALE="The application should only refer to the APIs allowed by the Windows SDK for Windows Store Apps.">
+      <TEST INDEX="38" NAME="Supported APIs" DESCRIPTION="Windows Store App must only use supported platform APIs." EXECUTIONTIME="00h:00m:02s.02ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="19" TITLE="App manifest resources tests" RATIONALE="The App Package Manifest should have valid resources defined in the resources.pri file, as per the App Packaging Specification and App Manifest Schema.">
+      <TEST INDEX="45" NAME="App resources" DESCRIPTION="The package should have valid resources defined in the resources.pri file." EXECUTIONTIME="00h:00m:00s.99ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="61" NAME="Branding" DESCRIPTION="App should not use the default images packed by windows SDK samples or Visual Studio." EXECUTIONTIME="00h:00m:02s.53ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="20" TITLE="Debug configuration test" RATIONALE="The App should not install any debug binaries.">
+      <TEST INDEX="46" NAME="Debug configuration" DESCRIPTION="The App should not install any debug binaries." EXECUTIONTIME="00h:00m:01s.79ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="21" TITLE="File encoding test" RATIONALE="Packages containing an HTML5 Windows Store app must have correct file encoding.">
+      <TEST INDEX="49" NAME="UTF-8 file encoding" DESCRIPTION="Packages containing an HTML5 Windows Store app must have correct file encoding." EXECUTIONTIME="00h:00m:01s.66ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="23" TITLE="App Capabilities test" RATIONALE="Packages declaring special-use capabilities will have to provide justifications during the onboarding process.">
+      <TEST INDEX="52" NAME="Special use capabilities" DESCRIPTION="Packages declaring special-use capabilities will have to provide justifications during the onboarding process." EXECUTIONTIME="00h:00m:01s.33ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="24" TITLE="Windows Runtime metadata validation" RATIONALE="Metadata needs to be conformant and consistent across all generation sources.">
+      <TEST INDEX="56" NAME="ExclusiveTo attribute" DESCRIPTION="A class must not implement an interface that is marked ExclusiveTo another class." EXECUTIONTIME="00h:00m:12s.24ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="57" NAME="Type location" DESCRIPTION="Types must be defined in the metadata file with the longest matching namespace." EXECUTIONTIME="00h:00m:00s.92ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="55" NAME="Type name case-sensitivity" DESCRIPTION="Namespace and type names must not vary only by casing." EXECUTIONTIME="00h:00m:00s.82ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="54" NAME="Type name correctness" DESCRIPTION="Only system types can be in the Windows namespace and no types can be in the global namespace." EXECUTIONTIME="00h:00m:00s.84ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="58" NAME="General metadata correctness" DESCRIPTION="Metadata files must meet various requirements in order to be valid and correct." EXECUTIONTIME="00h:00m:11s.86ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="53" NAME="Properties" DESCRIPTION="Write-only and indexer properties may not be used. Corresponding getter and setter methods must match in type." EXECUTIONTIME="00h:00m:00s.91ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="25" TITLE="Package sanity test" RATIONALE="Validation of the app package contents to ensure correctness.">
+      <TEST INDEX="63" NAME="Platform appropriate files" DESCRIPTION="App should not install files that do not match the target processor architecture." EXECUTIONTIME="00h:00m:01s.71ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+      <TEST INDEX="66" NAME="Supported directory structure check" DESCRIPTION="Validate each file in the package for that the file name length should be less than MAX_PATH." EXECUTIONTIME="00h:00m:01s.26ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+    <REQUIREMENT NUMBER="27" TITLE="Resource Usage Test" RATIONALE="WinJS background tasks need to call close() to free resource.">
+      <TEST INDEX="68" NAME="WinJS background task" DESCRIPTION="WinJS background tasks need to call close() to free resource." EXECUTIONTIME="00h:00m:01s.93ms" OPTIONAL="FALSE">
+        <MESSAGES />
+        <RESULT><![CDATA[PASS]]></RESULT>
+      </TEST>
+    </REQUIREMENT>
+  </REQUIREMENTS>
+  <APPLICATIONS>
+    <Installed_Programs>
+      <Program Name="10038julisunkan.NetworkServersPenetrationGuidesand" Type="Application" Source="AppxPackage" Publisher="CN=A4DCFB6C-1F4F-4155-B778-30BFBED27656" Version="1.0.0.0" Language="1033" InstallDate="" RootDirPath="C:\Program Files\WindowsApps\10038julisunkan.NetworkServersPenetrationGuidesand_1.0.0.0_x64__h4nasatd0p1py" Id="000001b29bc88216a3349e41cf7c0a39e86500000904" HiddenArp="false">
+        <Indicators>
+          <WindowsStoreAppManifestIndicators>
+            <PackageManifest PackageFullName="10038julisunkan.NetworkServersPenetrationGuidesand_1.0.0.0_x64__h4nasatd0p1py">
+              <Package>
+                <Identity Name="10038julisunkan.NetworkServersPenetrationGuidesand" Version="1.0.0.0" Publisher="CN=A4DCFB6C-1F4F-4155-B778-30BFBED27656" ProcessorArchitecture="x64"></Identity>
+                <PhoneIdentity PhoneProductId="2f52bc03-8aa8-4cfa-ad6b-42fe0c503ec8" PhonePublisherId="00000000-0000-0000-0000-000000000000"></PhoneIdentity>
+                <Properties>
+                  <DisplayName>Network Servers Penetration Guides and Tools</DisplayName>
+                  <PublisherDisplayName>julisunkan</PublisherDisplayName>
+                  <Logo>images\storelogo.png</Logo>
+                </Properties>
+                <Dependencies>
+                  <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
+                </Dependencies>
+                <Resources>
+                  <Resource Language="EN-US"></Resource>
+                  <Resource Scale="200"></Resource>
+                </Resources>
+                <Applications>
+                  <Application Id="App" StartPage="index.html">
+                    <VisualElements DisplayName="Network Servers Penetration Guides and Tools" Description="Network Servers Penetration Guides and Tools" BackgroundColor="transparent" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png" ForegroundText="light">
+                      <DefaultTile Wide310x150Logo="images\Wide310x150Logo.png" Square310x310Logo="images\LargeTile.png" Square71x71Logo="images\SmallTile.png"></DefaultTile>
+                      <SplashScreen Image="images\splashscreen.png"></SplashScreen>
+                    </VisualElements>
+                  </Application>
+                </Applications>
+                <Capabilities>
+                  <Capability Name="internetClient"></Capability>
+                </Capabilities>
+              </Package>
+            </PackageManifest>
+            <BundleManifest PackageFamilyName="10038julisunkan.NetworkServersPenetrationGuidesand_h4nasatd0p1py">
+              <Bundle SchemaVersion="5.0" IgnorableNamespaces="b4 b5">
+                <Identity Name="10038julisunkan.NetworkServersPenetrationGuidesand" Publisher="CN=A4DCFB6C-1F4F-4155-B778-30BFBED27656" Version="1.0.0.0"></Identity>
+                <Packages>
+                  <Package Type="application" Version="1.0.0.0" Architecture="x64" FileName="Data_1.0.0.0_x64.msix" Offset="836745" Size="499741">
+                    <Resources>
+                      <Resource Language="EN-US"></Resource>
+                      <Resource Scale="200"></Resource>
+                    </Resources>
+                    <Dependencies>
+                      <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
+                    </Dependencies>
+                  </Package>
+                  <Package Type="resource" Version="1.0.0.0" ResourceId="split.scale-100" FileName="Data_1.0.0.0_scale-100.msix" Offset="57" Size="61121">
+                    <Resources>
+                      <Resource Scale="100"></Resource>
+                    </Resources>
+                    <Dependencies>
+                      <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
+                    </Dependencies>
+                  </Package>
+                  <Package Type="resource" Version="1.0.0.0" ResourceId="split.scale-125" FileName="Data_1.0.0.0_scale-125.msix" Offset="61259" Size="89753">
+                    <Resources>
+                      <Resource Scale="125"></Resource>
+                    </Resources>
+                    <Dependencies>
+                      <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
+                    </Dependencies>
+                  </Package>
+                  <Package Type="resource" Version="1.0.0.0" ResourceId="split.scale-150" FileName="Data_1.0.0.0_scale-150.msix" Offset="151093" Size="124615">
+                    <Resources>
+                      <Resource Scale="150"></Resource>
+                    </Resources>
+                    <Dependencies>
+                      <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
+                    </Dependencies>
+                  </Package>
+                  <Package Type="resource" Version="1.0.0.0" ResourceId="split.scale-400" FileName="Data_1.0.0.0_scale-400.msix" Offset="275789" Size="560881">
+                    <Resources>
+                      <Resource Scale="400"></Resource>
+                    </Resources>
+                    <Dependencies>
+                      <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.17763.0" MaxVersionTested="10.0.22621.0"></TargetDeviceFamily>
+                    </Dependencies>
+                  </Package>
+                </Packages>
+              </Bundle>
+            </BundleManifest>
+          </WindowsStoreAppManifestIndicators>
+        </Indicators>
+        <StaticProperties>
+          <Files Id="0000da39a3ee5e6b4b0d3255bfef95601890afd80709">
+            <File Id="0000dd90fa505227212e5e5c18b49b029f4095f4c779" Name="1.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="39655" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="2241789332" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\1.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="908339a40bf626caca3c94c67c7557e203e97f114a321d6c849ac62cd11557d1" />
+            <File Id="000047183f806cc2124b99e89b8c6a4a07bd921c0e9e" Name="10.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="28649" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="3614797032" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\10.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="868276b17c165fd70ecf788638eee6ccbdc84c52f2ace07a7380c16a93aa3165" />
+            <File Id="000069c130c308727284e37cd95eb140b71039d9013d" Name="2.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="33279" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="2647558370" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\2.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="4282862cadc09355ac963c2e88dde3ea3351168430b1dac9277075e1693aad68" />
+            <File Id="0000544e79931adfea2472a0728a46d867bc0faa0e1e" Name="3.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="20599" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="4167527905" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\3.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="77ceae3ce50bd7378a5570b3eb48144e7fc5c24d3874b214c6d9b057f81cff12" />
+            <File Id="000055c37b0ebd935749d2ed7611ccfdc860f6503d1f" Name="4.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="18061" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="3094197670" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\4.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="2beb62044e7fc6ce0f4b2975f585ba3472406a9c465ee734e6f7b05a0e9035ae" />
+            <File Id="0000e5a7b6a40d08e147b16c3f7b9665ee7c77031c4b" Name="5.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="43074" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="569379694" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\5.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="8a7fdba16b9760da9236affdaa2f161f4bbea4bab308229b477374e4efc489d9" />
+            <File Id="0000a696a7273685c8a93f8850b8b70757887a24417d" Name="6.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="30207" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="1251332219" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\6.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="ae7c8a9dc3133241a8c13e6d909692b48148b62711d3d56bdd7d108c9a5943be" />
+            <File Id="0000e909e1648aa915dfb2a3cac8a205fbc5d9d4de77" Name="7.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="48277" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="2882186118" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\7.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="8423f1f52444725532eb2769f149b29c6ed3c65546347ce568d42c671d0d3b9a" />
+            <File Id="0000970075dc65ff0098674daa3204f740bfd0ebc935" Name="8.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="31343" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="445146404" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\8.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="61169c0212786afceb999bbaa251b3ab1fa210c9db37b18c12001becca0d5b94" />
+            <File Id="00002c104d2b28a27ca78c0883439ad951aba9d6c143" Name="9.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="26163" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="2021708835" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\9.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="cbe5a7a23072e047ff59a8fc16fa2ebd9454a79e5c784ab5790503d9698d8973" />
+            <File Id="00001c5d2f893a82fff1bdc1fc65e30116b677afac49" Name="index.html" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="26705" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="1756377954" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\index.html" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="30a9f8a6da56410df31766cf4c9d2b75d8a28cb661b8016b4c69117edc5d58e6" />
+            <File Id="00005cbd20751ce00b8df921d61f8fb76b2f47beefb6" Name="main.js" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="23" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="530027668" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\js\main.js" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="43306439c81cc4082ee5a06af2ec605882ec6c3d37d8cac22e6b33d7cf3830fa" />
+            <File Id="000086fffae9c9744863a63e04a1d6318956fdad7e89" Name="resources.94116c6b.pri" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="3960" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="1910225702" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\microsoft.system.package.metadata\resources.94116c6b.pri" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="4a3e82dd90fc420aee2647ebca8d8821814447b54ccca5a604cfc66519b8fced" />
+            <File Id="00005f7803bfb9075e34cc32bfa22db4fd8be97ca88c" Name="resources.pri" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="4296" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="4262822726" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\resources.pri" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="f22e9b3aacc4a4d9e74f60376b8dbc7b7e9b50a66c0df64e0d9c3a676e831894" />
+            <File Id="000086fffae9c9744863a63e04a1d6318956fdad7e89" Name="S-1-5-21-1675068591-2317307706-2542161929-1001-MergedResources-0.pri" ProductName="" CompanyName="" ProductVersion="" VerLanguage="0" SwitchBackContext="0" FileVersion="" OriginalFileName="" InternalName="" Size="3960" SizeOfImage="0" PeHeaderHash="" PeChecksum="0" CrcChecksum="1910225702" BinProductVersion="" BinFileVersion="" FileDescription="" LegalCopyright="" LinkDate="" BinaryType="data_only" LowerCaseLongPath="c:\program files\windowsapps\10038julisunkan.networkserverspenetrationguidesand_1.0.0.0_x64__h4nasatd0p1py\microsoft.system.package.metadata\s-1-5-21-1675068591-2317307706-2542161929-1001-mergedresources-0.pri" SigPublisherName="" PeSubsystem="0" PeCharacteristics="0" Sha256="4a3e82dd90fc420aee2647ebca8d8821814447b54ccca5a604cfc66519b8fced" />
+          </Files>
+        </StaticProperties>
+      </Program>
+    </Installed_Programs>
+  </APPLICATIONS>
+  <DEPENDENCY_INFORMATION>
+    <AitStaticAnalysis ProgramId="000001b29bc88216a3349e41cf7c0a39e86500000904" AnalysisVersion="1.80" DictionaryVersion="3.7" Type="Package" Id="10038julisunkan.NetworkServersPenetrationGuidesand_1.0.0.0_x64__h4nasatd0p1py">
+      <AitFile ErrorCode="0" Name="index.html" Id="00001c5d2f893a82fff1bdc1fc65e30116b677afac49" />
+      <AitFile ErrorCode="0" Name="9.html" Id="00002c104d2b28a27ca78c0883439ad951aba9d6c143" />
+      <AitFile ErrorCode="0" Name="10.html" Id="000047183f806cc2124b99e89b8c6a4a07bd921c0e9e" />
+      <AitFile ErrorCode="0" Name="3.html" Id="0000544e79931adfea2472a0728a46d867bc0faa0e1e" />
+      <AitFile ErrorCode="0" Name="4.html" Id="000055c37b0ebd935749d2ed7611ccfdc860f6503d1f" />
+      <AitFile ErrorCode="0" Name="main.js" Id="00005cbd20751ce00b8df921d61f8fb76b2f47beefb6" />
+      <AitFile ErrorCode="0" Name="2.html" Id="000069c130c308727284e37cd95eb140b71039d9013d" />
+      <AitFile ErrorCode="0" Name="8.html" Id="0000970075dc65ff0098674daa3204f740bfd0ebc935" />
+      <AitFile ErrorCode="0" Name="6.html" Id="0000a696a7273685c8a93f8850b8b70757887a24417d" />
+      <AitFile ErrorCode="0" Name="1.html" Id="0000dd90fa505227212e5e5c18b49b029f4095f4c779" />
+      <AitFile ErrorCode="0" Name="5.html" Id="0000e5a7b6a40d08e147b16c3f7b9665ee7c77031c4b" />
+      <AitFile ErrorCode="0" Name="7.html" Id="0000e909e1648aa915dfb2a3cac8a205fbc5d9d4de77" />
+    </AitStaticAnalysis>
+  </DEPENDENCY_INFORMATION>
+</REPORT>

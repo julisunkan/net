@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 230px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.main {
+        height: 100%;
+        width: 1020px;
+        position: scroll;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        padding-top: 0px;
+    }
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: red;
+}
+
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+<div class="sidenav">
+<a href="1.html">【🖳Port Forwarding & Tunnelling🛠️👨🏽‍💻】</a>
+  <a href="2.html">【🖳Comprehensive Guide on HTML Smuggling🛠️👨🏽‍💻】</a>
+  <a href="3.html">【🖳Credential Dumping: Domain Cache Credential🛠️👨🏽‍💻】</a>
+  <a href="4.html">【🖳Comprehensive Guide on Password Spraying Attack🛠️👨🏽‍💻】</a>
+ <a href="5.html">【🖳A Detailed Guide on Hydra Tool🛠️👨🏽‍💻】</a>
+  <a href="6.html">【🖳A Detailed Guide on Medusa Tool🛠️👨🏽‍💻】</a>
+  <a href="7.html">【🖳Comprehensive Guide on Local & Remote File Inclusion🛠️👨🏽‍💻】</a>
+<a href="8.html">【🖳Netcat for Pentesting🛠️👨🏽‍💻】</a>
+  <a href="9.html">【🖳Comprehensive Guide on Dirbuster & BurpSuite Spider Tools🛠️👨🏽‍💻】</a>
+  <a href="10.html">【🖳Comprehensive Encoding Guide🛠️👨🏽‍💻】</a>
+ <p align="center"><img src="https://i.ibb.co/yyQbWbC/net.png" height="90" width="200"></p> 
+</div>
+<div class="main">
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><p align="left">🖳Comprehensive Guide on Password Spraying Attack🛠️</p></h3>
+<p>Now we deal with the technique that at first sounds very much similar to Bruteforcing but trust me, it is not brute-force. It is Password Spraying. We will understand the difference between the two and shine some light on real-life scenarios as well. Then we will discover multiple tools through which we can perform Password Spraying.</p>
+<h3><strong>Contents</strong></h3>
+<ul>
+<li><strong>Introduction to Password Spraying</strong></li>
+<li><strong>Brute-force vs Spraying</strong></li>
+<li><strong>Real Life Password Spraying</strong></li>
+<li><strong>Configurations Used in Practical</strong></li>
+<li><strong>Password Spraying Attacks</strong>
+<ul>
+<li>rdppassspray.py</li>
+<li>domainpasswordspray.ps1</li>
+<li>BurpSuite</li>
+<li>spray.sh</li>
+<li>Crackmapexec</li>
+<li>Hydra</li>
+<li>Medusa</li>
+<li>Metasploit: SMB Login</li>
+<li>Patator</li>
+</ul>
+</li>
+<li><strong>Detection</strong></li>
+<li><strong>Mitigation</strong></li>
+</ul>
+<h3><strong>Introduction to Password Spraying</strong></h3>
+<p>It is an attack on the authentication channels where the attacker in question take a huge number of usernames and takes a single password and then try each one of those usernames until one is accepted. In real life, however, this is done using tools, some of which we will take a look at in this guide. This is a great technique most of the account lockout policies are only applicable to the incorrect passwords and not for an incorrect username.</p>
+<p><strong>Brute-force vs Spraying</strong></p>
+<p>Brute-forcing is of many types, but mostly it is attempting a large number of passwords on the smallest number of accounts, or even on a single account.</p>
+<p>On the other hand, Password spraying is almost the opposite. It is attempting the smallest number of passwords on the biggest number of accounts possible.</p>
+<p><strong>Real Life Password Spraying</strong></p>
+<p>FBI investigations tell us that there is a very high rise in the use of password spraying against organizations all around the globe. In February of 2018, the DOJ of New York&nbsp;indicted 9 Middle Eastern nationals who were associated with the Mabna Institute for computer intrusion-related offences.</p>
+<p>They performed many instances of the password spraying attack. This speaks volumes about the real-life risks of this attack. Hackers are using it to gain access to confidential information linked to the employees&rsquo; personal as well as business details.</p>
+<p>Another such incident was the Citrix, for those who don&rsquo;t know it is a software company that provides server, application and desktop virtualization as well as SAAS services. They become the victim of password spraying and they were so blind that they had no idea that was attacked until the FBI informed them.</p>
+<p>Now also there are many hospitals are being hit by this attack as attackers think that these hospitals are so busy handling the COVID-19 cases that most of their security will either be remote or might just not be there.</p>
+<p><strong>Configurations Used in Practical</strong></p>
+<ul>
+<li><strong>Attacker Machine</strong>
+<ul>
+<li>OS: Kali Linux 2020.1</li>
+<li><strong>IP Address:</strong>168.1.112</li>
+</ul>
+</li>
+<li><strong>Target Machine</strong>
+<ul>
+<li><strong>Server</strong>
+<ul>
+<li><strong>OS:</strong>&nbsp;Windows Server 2016</li>
+<li><strong>IP Address:</strong>168.1.105</li>
+<li><strong>OS:</strong>&nbsp;Ubuntu 18 (BWAPP)</li>
+<li><strong>IP Address</strong>: 192.168.1.109</li>
+</ul>
+</li>
+<li><strong>Client</strong>
+<ul>
+<li><strong>OS:</strong>&nbsp;Windows 10</li>
+<li><strong>IP Address:</strong>168.1.106</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3><strong>Password Spraying Attacks</strong></h3>
+<p>We are going to look at the string of attacks each using different tools and some using different protocols. We will look at python scripts, PowerShell scripts, BurpSuite, Shell script, Metasploit Modules, and much more.</p>
+<pre class="lang:default decode:true">RDPassSpray.py</pre>
+<p>It is a python script that I discovered while researching for something else. It is a python script that sprays the password. Well technically it is spraying usernames but let&rsquo;s not get into the nomenclature. We created a dictionary with a bunch of usernames as shown in the image given below.</p>
+<pre class="lang:default decode:true">cat /root/Desktop/user.txt</pre>
+<p><img src="https://1.bp.blogspot.com/-EHWzI6ReA88/XsYm-Oy0x6I/AAAAAAAAkJI/x0AgltGPCQgGIBd0cUTPaF_dps8SaX6dgCLcBGAsYHQ/s1600/1.png" alt="" /></p>
+<p>Now we decided to use the password as 123 the world&rsquo;s most common password. We can see that we have the users raj, aarti, Yashika, and pavan with the same password and we can also see that those users have the Administrator Privileges as well.</p>
+<p><strong>Download RDPassSpray.py</strong>&nbsp; -&nbsp;https://github.com/xFreed0m/RDPassSpray</p>
+<pre class="lang:default decode:true">python3 RDPassSpray.py -U /root/Desktop/user.txt -p 123 -t 192.168.1.106</pre>
+<p><img src="https://1.bp.blogspot.com/-4whs215tzGY/XsYnA9sIA7I/AAAAAAAAkJo/y3Crhld9c5A7vUtRbiSgwC0W_v9PY2yEwCLcBGAsYHQ/s1600/2.png" alt="" /></p>
+<p>Usually, I keep the logs for the Detection section of my article but this particular log was very specific for this tool. Hence, I wanted to show it. It is for the Event ID 1158. We ran the RDPassSpray and found that it created a log for this event. Here we can see that we have the IP Address of the attacker.</p>
+<p><img src="https://1.bp.blogspot.com/-MSU_I7fHjOA/XsYnA5Ktf4I/AAAAAAAAkJs/iO8PY9pnt2woRSFiEuf8DtmU00wOkDhoACLcBGAsYHQ/s1600/3.png" alt="" /></p>
+<h3><strong>DomainPasswordSpray.ps1</strong></h3>
+<p>Next, we tweaked around PowerShell. It was a script we downloaded. This attacks the authentication of Domain Passwords. Be sure to be in a Domain Controlled Environment to perform this attack. We have a bunch of users in the test environment. We have some of those names in the dictionary. We try the password &ldquo;Password@1&rdquo;.</p>
+<p><strong>Download DomainPasswordSpray.ps1</strong>&nbsp; -&nbsp;&nbsp;https://github.com/dafthack/DomainPasswordSpray/blob/master/DomainPasswordSpray.ps1</p>
+<pre class="lang:default decode:true">Import-Module C:\Users\kavish\Desktop\DomainPasswordSpray.ps1
+type .\user.txt
+Invoke-DomainPasswordSpray -Userlist .\user.txt -Domain ignite.local -Password Password@1</pre>
+<p><img src="https://1.bp.blogspot.com/-r-hsPEEGyiE/XsYnBznhiFI/AAAAAAAAkJw/rPGoiH--GRM6HSDj-MwhLfElz-MOahxvwCLcBGAsYHQ/s1600/4.png" alt="" /></p>
+<p>We can see that we have a bunch of users with the same password as &ldquo;Password@1&rdquo;.</p>
+<h3><strong>BurpSuite</strong></h3>
+<p>Password Spraying can be applied on the Web Applications as well. To show this I decide to use the BWAPP. It allows us to create the users as we need multiple users for this practical. Now, after creating users, we move to the login page of the BWAPP and enter the credentials and capture the request on BurpSuite. Then right-click on the captured request and send it to Intruder.</p>
+<p><img src="https://1.bp.blogspot.com/-FmC72wzIRJs/XsYnC61RIsI/AAAAAAAAkJ4/inuAm7Q9GNwsBJn5D-65Pr4M1OmffaLtwCLcBGAsYHQ/s1600/5.png" alt="" /></p>
+<p>In the Positions tab, we will have to add anchors on the username as shown in the image given below. We are doing this so that BurpSuite can target the usernames for the iteration attacks that it will perform through the intruder.</p>
+<p><img src="https://1.bp.blogspot.com/-Az5rfBURa_o/XsYnBxqQnzI/AAAAAAAAkJ0/5wdUfWTt_PoE_GhdDEXiImHEvgpF1bftACLcBGAsYHQ/s1600/6.png" alt="" /></p>
+<p>Now onto the Payload tab. Here we will be providing the payload options or the usernames that we are putting in the dictionary in the previous attacks. We can directly paste it from the dictionary or add the usernames one by one by typing them in the dialog box and clicking on the Add button.</p>
+<p><img src="https://1.bp.blogspot.com/-myd4rQO7lw0/XsYnDJKPS8I/AAAAAAAAkJ8/CLN_M2PoZBsP2qfUTkH1O14fVGQ1R2jgACLcBGAsYHQ/s1600/7.png" alt="" /></p>
+<p>After adding sufficient usernames click on Start Attack. This will pop up a new window as shown in the image below. Here we can see the difference between the lengths of the request which tells us that the password &ldquo;bug&rdquo; was accepted by some of the users. This is how we perform password spraying on a web application using BurpSuite.</p>
+<p><img src="https://1.bp.blogspot.com/-uF5iZqqOr6k/XsYnDc5pz1I/AAAAAAAAkKA/SKyu3g3hSqseltoxnpV71VpKVfdWHEO2QCLcBGAsYHQ/s1600/8.png" alt="" /></p>
+<h3><strong>Spray.sh</strong></h3>
+<p>Spray.sh is a pretty famous shell script that is used to spray passwords. Before we go on spraying, let&rsquo;s create yet another dictionary with usernames as shown in the image below. We will be brute-forcing the SMB users. We will create a similar dictionary with probable passwords. But we will keep the passwords to a maximum of 2 so that it won&rsquo;t trigger any lockout policies.</p>
+<pre class="lang:default decode:true">cat users.txt</pre>
+<p><img src="https://1.bp.blogspot.com/-bUP8jbSRPuM/XsYnDx6sovI/AAAAAAAAkKE/IZJI__WLL2As3nNlx_KhZTK14Tx96FyHQCLcBGAsYHQ/s1600/9.png" alt="" /></p>
+<p>Now we draft the command that we will use to spray the passwords. First, we will supply the protocol that is SMB as a parameter. Then we will provide the IP Address of the Domain Controller. Followed by the dictionary of users as well as passwords.</p>
+<p><strong>Download Spray.sh</strong>&nbsp;-&nbsp;https://github.com/Greenwolf/Spray</p>
+<pre class="lang:default decode:true">./spray.sh -smb '192.168.1.105' users.txt passwords.txt 10 1 IGNITE skipuu</pre>
+<p><img src="https://1.bp.blogspot.com/-4b-92bKvtfw/XsYm-kPWeWI/AAAAAAAAkJQ/aPVQlzSfA587vW_BoiaBWiYzvS_9MHFLgCLcBGAsYHQ/s1600/10.png" alt="" /></p>
+<p>Here we can see that we have the confirmations of different user accounts and their credentials in the network.</p>
+<h3><strong>Crackmapexec</strong></h3>
+<p>Crackmapexec, one tool that never ceases to amaze me. I mean what exactly this tool doesn&rsquo;t do? Password spraying is also one of the things that this tool does. The working is quite simple with this tool. All we have to do is provide the protocol to use, the range of IP Address that we want to attack, a bunch of usernames, and a singular password and it will do the rest. In no time it told us that the Administrator is the account with the password Ignite@987.</p>
+<p><strong>Download Crackmapexec</strong>&nbsp;-&nbsp;https://github.com/byt3bl33d3r/CrackMapExec</p>
+<pre class="lang:default decode:true">crackmapexec smb 192.168.1.0/24 -u "Kavish" "Administrator" -p "Ignite@987"</pre>
+<p><img src="https://1.bp.blogspot.com/-p8rqSuJJzDk/XsYm-UmfCMI/AAAAAAAAkJM/5ZNa5bUrzzUkYumDDFwjDBFZY_cgsBJzwCLcBGAsYHQ/s1600/11.png" alt="" /></p>
+<p>Suppose we have more usernames than just a couple then we can put them in the dictionary and perform a password spraying. All we had to do is replace usernames with the dictionary containing the username as shown in the image given below.</p>
+<pre class="lang:default decode:true">cat /root/Desktop/user.txt
+crackmapexec smb 192.168.1.106 -u /root/Desktop/user.txt -p 'Password@1' --continue-on-success</pre>
+<p><img src="https://1.bp.blogspot.com/-DHaNxCKoy5Q/XsYm_NQKsTI/AAAAAAAAkJU/xzEdMYgT2VMH61VkRqBoLZuMKUrnt6gxgCLcBGAsYHQ/s1600/12.png" alt="" /></p>
+<p><strong>&nbsp;</strong></p>
+<h3><strong>Hydra</strong></h3>
+<p>Hydra is one of the most famous brute-forcing tools. It has been in the community for a very long time. But there are very few people who know that it can be used for password spraying as well. Fundamentally we provide multiple usernames and a single password in password spraying. That&rsquo;s exactly what we are going to do with Hydra. We will be targeting the SMB protocol here but it can be done with almost any other protocol.</p>
+<pre class="lang:default decode:true">hydra -L /root/Desktop/user.txt -p Password@1 192.168.1.105 smb</pre>
+<p><img src="https://1.bp.blogspot.com/-BCNcHDBrguE/XsYm_f_Tj6I/AAAAAAAAkJY/7u4z0WZcoIIc-lN5X5QUES20HArTgLErwCLcBGAsYHQ/s1600/13.png" alt="" /></p>
+<p><strong>&nbsp;</strong></p>
+<h3><strong>Medusa</strong></h3>
+<p>While working with Hydra, It hit me that there was a tool that was quite similar to hydra but has a not so common Greek-like name. Running through my notes I got it. It was Medusa. I don&rsquo;t remember why it was not so popular maybe it doesn&rsquo;t support that many protocols as a hydra. Whatever the reason, I tried to perform the Password Spraying with Medusa by providing the username dictionary in place of usernames and it worked without any issues. So, it is a good alternative to consider.</p>
+<pre class="lang:default decode:true">medusa -h 192.168.1.105 -U /root/Desktop/user.txt -p Password@1 -M smbnt</pre>
+<p><img src="https://1.bp.blogspot.com/-qneAGOaceTI/XsYm_zpfKVI/AAAAAAAAkJc/SN6ca1OQOZU8rz3VYVrLst99BZEbPElpQCLcBGAsYHQ/s1600/14.png" alt="" /></p>
+<p><strong>&nbsp;</strong></p>
+<h3><strong>Metasploit: SMB Login</strong></h3>
+<p>Working so much with SMB, got me thinking that can we use the Metasploit for Spraying? It is not so far fetched as Metasploit does contain a module that brute-force SMB Login. So, after loading this module, I checked for options and found that we can provide the usernames in a dictionary but after trying few times it was clear to me to use usernames in the dictionary, I will have to provide the password in the dictionary as well. So, I added a singular password in the password dictionary and ran the module as shown in the image.</p>
+<pre class="lang:default decode:true">use auxiliary/scanner/smb/smb_login
+set rhosts 192.168.1.105
+set user_file /root/Desktop/user.txt
+set pass_file /root/Desktop/pass.txt
+exploit</pre>
+<p><img src="https://1.bp.blogspot.com/-jAinx9RJDhs/XsYnAEXZDKI/AAAAAAAAkJg/wuwoKybz-BQcBSm3NtYdP7zwMlzFGIsOQCLcBGAsYHQ/s1600/15.png" alt="" /></p>
+<h3><strong>Patator</strong></h3>
+<p>After going through so many ways in which we can perform the password spraying attack we come to a tool that many of you might be hearing first time about. It is one of hydra&rsquo;s less known brother. Having a vegetable name, we have it the Patator. I forgot about it when I suddenly realized that it can be used for password spraying as well. It is a very simple tool that allows us to provide a singular password with a dictionary for usernames.</p>
+<p><strong>Download Patator</strong>&nbsp;-&nbsp;https://github.com/lanjelot/patator</p>
+<pre class="lang:default decode:true">patator smb_login host=192.168.1.105 user=FILE0 0=/root/Desktop/user.txt password=Password@1</pre>
+<p><img src="https://1.bp.blogspot.com/-lee1cFPQ2VI/XsYnAkQW97I/AAAAAAAAkJk/PPsY_rWWcf4xOQArjhN0IhDp2sC0ZCYWQCLcBGAsYHQ/s1600/16.png" alt="" /></p>
+<p><strong>Detection</strong></p>
+<ul>
+<li>A large number of attempted logins against the enterprise SSO portal or web-based application</li>
+<li>Using automated tools, malicious actors attempt thousands of logons, in a short duration of time, against multiple user accounts at a victim user accounts, originating from a single IP address or computer.</li>
+<li>Employee logins from IP addresses resolving to locations that are different from their normal locations.</li>
+</ul>
+<p><strong>Mitigation</strong></p>
+<ul>
+<li>Enable Multi-Factor Authentication and review those settings to ensure the coverage on active internet facing protocols.</li>
+<li>Review the password policies to ensure that they align with the latest&nbsp;<strong>NIST&nbsp;postlines and</strong>&nbsp;restrict the use of easy-to-guess passwords.</li>
+<li>Enforce a password policy that prohibits easy-to-guess passwords.</li>
+<li>Implement a banned password list</li>
+<li>Monitor your admin and user accounts for unusual activity</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,203 @@
+﻿/* skel-baseline v2.0.3 | (c) n33 | getskel.com | MIT licensed */
+/* Basic */
+
+/*!
+ *  Font Awesome 4.3.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.3.0');
+  src: url('../fonts/fontawesome-webfontd41d.eot?#iefix&v=4.3.0') format('embedded-opentype'),
+       url('../fonts/fontawesome-webfont.woff2?v=4.3.0') format('woff2'),
+       url('../fonts/fontawesome-webfont.woff?v=4.3.0') format('woff'),
+       url('../fonts/fontawesome-webfont.ttf?v=4.3.0') format('truetype'),
+       url('../fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+
+#header nav { 
+	display: none;
+}
+
+#sidebar {
+	margin-left: 2px;
+}
+
+#sidebar h3 {
+	font-size: 1.8em;
+	line-height: 1.8em;
+}
+
+#sidebar li ul {
+	padding-bottom: 13px;
+}
+
+#sidebar li li {
+	font-size: 16px;
+	line-height: 38px;
+}
+
+#sidebar li li a,
+#sidebar li li.current_page_item a {
+	background-position: 0px 17px;
+}
+
+#sidebar p {
+	font-size: 15px;
+	margin-bottom: 6px !important;
+}
+
+.invtab {
+	display: none;
+}
+
+.vistab {
+	display: inline;
+}
+
+.vismob {
+	display: none;
+}
+
+#search {
+    position: relative;
+	padding-top: 0px;
+	margin-top: -20px;
+	margin-bottom: 3px;
+	margin-left: -30px;
+}
+
+#search .field {
+    padding-left: 7px;
+	padding-top: 4px;
+    width: calc(100% - 100px);
+    height: 40px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+	position: absolute;
+    top: 0;
+}
+
+#search .button {
+    height: 40px;
+	width: 60px;
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#logo { width: 228px; }
+#logo p { font-size: 15px; }
+#logo h1 { font-size: 1.85em; }
+#logo h2 { font-size: 1.85em; }
+.easy { font-size: 1.85em; }
+
+/* Layers */
+#navButton .toggle {
+  text-decoration: none;
+  height: 100%;
+  right: 0.75em;
+  position: absolute;
+  top: .5em;
+  width: 100%; }
+  #navButton .toggle:before {
+    content: "\f0c9";
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important; }
+  #navButton .toggle:before {
+    background: rgba(84, 140, 209, 0.65);
+    border-radius: 0px;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    height: 2.25em;
+    left: 0.5em;
+    line-height: 2.25em;
+    position: absolute;
+    text-align: center;
+    top: 0.5em;
+    width: 3.4em; }
+
+#navPanel {
+  background: #548CD1;
+  font-size: 15px;
+  color: #fff; }
+  #navPanel nav {
+    padding: 0.5em 1.25em; }
+    #navPanel nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0; }
+      #navPanel nav ul li {
+        padding: 0; }
+        #navPanel nav ul li:first-child a:not(.button), #navPanel nav ul li:first-child span:not(.button) {
+          border-top: 0; }
+        #navPanel nav ul li a:not(.button), #navPanel nav ul li span:not(.button) {
+          border-top: dotted 1px rgba(255, 255, 255, 0.2);
+          color: #fff;
+          display: block;
+          padding: 0.75em 0;
+          text-decoration: none; }
+    #navPanel nav .button {
+      width: 100%; }
+
+
+/* Bigger Font on Landscape Mobile */
+
+@media (max-height:450px) {
+
+.post .entry p { font-size: 16px; }
+.post .entryshort p { font-size: 16px; }
+.post .entryreview p { font-size: 16px; }
+#sidebar li li { font-size: 17px; line-height: 39px; }
+#sidebar p { font-size: 17px; }
+table.fraction { font-size: 16px; }
+table.matrix { font-size: 16px; }
+table.gridtable { font-size: 16px; }
+
+#sidebar li li a,
+#sidebar li li.current_page_item a {
+	background-position: 0px 17px;
+}
+
+.post .title {
+        font-size: 2.3em;
+}
+
+#logo { width: 258px; }
+#logo p { font-size: 16px; padding-top: 3px; font-style: normal; }
+#logo h1 { font-size: 1.95em; }
+#logo h2 { font-size: 1.95em; }
+.easy { font-size: 1.95em; }
+
+.code { font-size: 13.5px; line-height: 24px; word-break: break-all; }
+
+.post h3 { font-size: 1.8em; padding-bottom: 6px; }
+
+#sidebar h3 { font-size: 1.85em; height: 43px; }
+
+#footer p { font-size: 17px; }
+
+#navPanel nav ul li a:not(.button), #navPanel nav ul li span:not(.button) { padding: 0.6em 0; }
+
+}

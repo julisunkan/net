@@ -1,0 +1,91 @@
+﻿/* skel-baseline v2.0.3 | (c) n33 | getskel.com | MIT licensed */
+/* Basic */
+
+html, body {
+  	min-width: 320px;
+	overflow-y: visible;
+  	overflow-x: hidden;
+}
+
+body img {
+  	max-width: 100%;
+	height: auto;
+}
+
+.post .title {
+	font-size: 2.3em;
+}
+
+#logo p {
+	font-style: normal;
+}
+
+/* Font-size fix */
+.post .entry p {
+	font-size: 30px;
+}
+
+.post .entryshort p {
+	font-size: 15px;
+}
+
+.post .entryreview p {
+	font-size: 15px;
+}
+
+.post .entrylearn p {
+	font-size: 15px;
+}
+
+table.fraction {
+	font-size: 15px;
+}
+
+table.matrix {
+	font-size: 15px;
+}
+
+table.gridtable {
+	font-size: 15px;
+}
+
+.post h3 {
+	padding-bottom:3px;
+}
+
+.invmob {
+	display: none;
+}
+
+.vismob {
+	display: inline;
+}
+
+.breakmob {
+	word-break: break-all;
+}
+
+.code {
+	word-break: break-all;
+	font-size: 13px;
+}
+
+.post .entry .adsections {
+	padding-bottom:10px;
+}
+
+table.gridtable {
+	word-break: break-all;
+}
+
+table.fraction {
+	word-break: break-all;
+}
+
+#search .field { width: calc(100% - 95px); }
+
+#header {
+        margin-bottom: 13px;
+}
+
+@media screen and (max-width: 460px) { .clear-both { clear: both; } }

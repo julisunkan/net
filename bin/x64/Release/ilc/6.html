@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 230px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.main {
+        height: 100%;
+        width: 1020px;
+        position: scroll;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        padding-top: 0px;
+    }
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: red;
+}
+
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+<div class="sidenav">
+<a href="1.html">【🖳Port Forwarding & Tunnelling🛠️👨🏽‍💻】</a>
+  <a href="2.html">【🖳Comprehensive Guide on HTML Smuggling🛠️👨🏽‍💻】</a>
+  <a href="3.html">【🖳Credential Dumping: Domain Cache Credential🛠️👨🏽‍💻】</a>
+  <a href="4.html">【🖳Comprehensive Guide on Password Spraying Attack🛠️👨🏽‍💻】</a>
+ <a href="5.html">【🖳A Detailed Guide on Hydra Tool🛠️👨🏽‍💻】</a>
+  <a href="6.html">【🖳A Detailed Guide on Medusa Tool🛠️👨🏽‍💻】</a>
+  <a href="7.html">【🖳Comprehensive Guide on Local & Remote File Inclusion🛠️👨🏽‍💻】</a>
+<a href="8.html">【🖳Netcat for Pentesting🛠️👨🏽‍💻】</a>
+  <a href="9.html">【🖳Comprehensive Guide on Dirbuster & BurpSuite Spider Tools🛠️👨🏽‍💻】</a>
+  <a href="10.html">【🖳Comprehensive Encoding Guide🛠️👨🏽‍💻】</a>
+ <p align="center"><img src="https://i.ibb.co/yyQbWbC/net.png" height="90" width="200"></p> 
+</div>
+<div class="main">
+<div class="-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1"><p align="left">🖳A Comprehensive Guide on Medusa Tool🛠️</p></h2>
+<p>Hi Pentesters! Let&rsquo;s learn about a different tool Medusa, which is intended to be a speedy, parallel and modular, login brute forcer. The goal of the tool is to support as many services which allow remote authentication as possible. We can consider the following items to be some of the key features of the application.</p>
+<ol>
+<li><strong>Thread-based parallel testing.&nbsp;</strong>Brute-force testing can be performed against multiple hosts, users or passwords concurrently.</li>
+<li><strong>Flexible user input</strong>. Target information (host/user/password) can be specified in a variety of ways. For example, each item can be either a single entry or a file containing multiple entries. Additionally, a combination file format allows the user to refine their target listing.</li>
+<li><strong>Modular design</strong>. Each service module exists as an independent .mod file. This means that no modifications are necessary to the core application in order to extend the supported list of services for brute-forcing.</li>
+</ol>
+<p>In this guide, we will discuss the following options available with Medusa.</p>
+<h3>Contents</h3>
+<ol>
+<li>Features of Medusa</li>
+<li>Password Cracking for specific Username</li>
+<li>Username Cracking for specific Password</li>
+<li>To crack login credentials</li>
+<li>Brute Force on Multiple Host</li>
+<li>To attack a specific port rather than the default</li>
+<li>Additional password checks (Null/Same)</li>
+<li>To Save Logs in a File</li>
+<li>Stop on Success.</li>
+<li>To suppress start-up Banner</li>
+<li>Verbose Mode</li>
+<li>Error Debug level</li>
+<li>Using Combo Entries</li>
+<li>Concurrent testing on multiple logins</li>
+<li>Display Module Usage Information</li>
+</ol>
+<h3>Features of Medusa</h3>
+<p>To get to know a detailed description of the options available in the Medusa tool just type in &ldquo;medusa&rdquo; in the kali terminal without any options, it will respectively dump all the available options with their description.</p>
+<p>Syntax: Medusa [-h host|-H file] [-u username|-U file] [-p password|-P file] [-C file] &ndash; 0063M module [OPT]</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_46Prg76BLUKSMVDBKGlwdmKk0yU1JfjmxtaY2YKAT3P_WS_jRGdRV6HYb7P7Mn4F8kD-5X_8AH8cEW53ncHkY0BVwt14WVDocxLITaMc8MdxSmgcqyERoO2OUwCOORNEcEt-d_2v7tXMDN2NmZDXreedqwOhl5BNoT_KuyR5MhaT3EFEn70mVTBi3w/s16000/1.png" alt="" /></p>
+<p>You can use -d option to dump all the available modules.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2NT7tzDOo1UNGO3ZIihPJzwAoonn_DtMPz0EMbgykQDUDn88Kk4hIxb6d-eGaz73Z3NSoazbeICN_UaslV0L-C9AQKxq252xKjANylS4IHP_Zwt70dsgTYwLVrR0S7J02ZR5IpOh_C6BBGx9TNiR7IY-X3M0imsca0JGZazUHlm1uwpmSvQIEaimTyQ/s16000/2_1.png" alt="" /></p>
+<h3>Password Cracking for Specific Username</h3>
+<p>Being a brute forcer, we can use medusa to crack passwords if the username is known on any protocol. For this to work you should have a valid username and a file containing passwords to test.</p>
+<p>So, for this following command can be used:</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -u ignite -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Here, -h option is for mentioning target ip address, -u option for username and -P for file containing password lists. So this will crack the password for FTP protocol.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhWZsGOdDxHt63_w-NvBscs3nXUS6r4euegnpCr_Td43V0Zqxzm749LHgnBd9TcF-Ca5_IAO0peuHNRYPj8f_0njfQDPDiAhbKBCY_pBlncutEiywoatBA4ZVXQnqGM6qT639YmiSxY6dTrMQ37zaqMHuyZKroOxaT-_Qjeoxa7ZS948kD6YrkOCs8Tug/s16000/3.png" alt="" /></p>
+<p>So, from the list of passwords, password 123 showed success for username ignite and for ftp login.</p>
+<h3>Username Cracking for Specific Password</h3>
+<p>Again, for this you should have a correct password so that you can use brute force to crack the username for ftp by using a file containing list of usernames.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -p </span><span class="enlighter-n1">123</span><span class="enlighter-text"> -M ftp</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Here -h option is used for host, -U option for username file and -p is for the password. So basically, you can perform brute force on the username field and can crack the correct username for the password.</p>
+<p><strong><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkUHhaLF92IeeSJACVAK1ZhZjfICjNSYQs_WOOzVzwBoaG2yz6VFsJ_zR5J3HbEjJgtpZxMhHnem0BIez4h7OU-VZbjji89s5Ii-1P6KU25fIb6z34bEKoLP2804CqiGCrvKHSKD8mwRV9ePXUg4ZKMzaLk2tLipjTt0k2SoN8u0n7HgafiFRYbN9uUg/s16000/4.png" alt="" /></strong></p>
+<h3>To crack Login credentials</h3>
+<p><strong>&nbsp;</strong>Now let&rsquo;s consider a situation where we want to target our host whose username and password both are not known. For this we will brute force both the fields username as well as password by using appropriate options present in medusa.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Here we have used -U option for username file, -P option for password file and -h for host name. We have attached a screenshot for your better understanding.</p>
+<p><strong><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifZcM84zu-u9f1kKkycVxXNP7JBZuQGRNOJGKV-yS47PVsWAJuq9KA_6d2zIb7xxCBJbNQBk8A48HJ-TqIjZs9u8oGLtxrUaBdSotcrYwwJEqFK9UaYbqxm2_ovW6ap0VmNseIOqtxCtohTa5wQh777T2HcyXMrIgb9Kb6_L8gX97unxKbmXvUIEXs2g/s16000/5.png" alt="" /></strong></p>
+<h3>Brute Force on Multiple Host</h3>
+<p>Now let&rsquo;s consider a different situation, where we have multiple hosts, and we need to crack login credentials for the respective hosts. So, we have created three text files for host, username and password.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -H hosts.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -U user.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Here, -H option will mention file for host name, -U will mention file for username and -P will mention file for passwords.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhrwJZWHI4RnK4jmn9GFexbryXFMnqIYcwYFITcjDtsXK5qCOiMV5jUqVGvwNSJyl8HgbkO7dSUeg029COSkeDyyHdo2Eq1G-lESZDAHL8ju7U2kXUZ8Cr1JNN7jvGmVQ50iL5N0n6SHqbDyxLo-cPGBCSSElHqFrdRlVxxdkI2rZHlBr_pkv7lqHbjng/s16000/6.png" alt="" /></p>
+<p>If in case you have multiple hosts and you want to attack on some of the ports concurrently, for that you can use -T option which will brute force on some ports only.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -H hosts.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -T </span><span class="enlighter-n1">1</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">medusa -H hosts.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -T </span><span class="enlighter-n1">2</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>The first command will brute force on first host only, but the second will attack on 2 hosts concurrently.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiY794fFjSYrLa11YBY93-TZnrFlqFFSjaQtkAajICC2YrtaYurRgJK7Sos3aAja5v6hw-l-b3Dx90A-vgmhKROk2PZQNFBC2U7gfkYqgDYGI3K_9e81YEzW795HSzsP9tfJuBvoP2_5JIkZ3BMOU-PJVPRAvciItHlgyDpljQEQ3xF8fsbZl2-dIvz1Q/s16000/7.png" alt="" /></p>
+<h3>To attack a specific port than default</h3>
+<p>Sometimes, the network admin may change the port number of service to another port due to security reasons. So, when performing a brute force attack using normal command so it will attack on default port. But we can use -n option so that attack will start on a mentioned port rather than the default port.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ssh</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ssh -n </span><span class="enlighter-n1">2222</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Here, in the first command, we are using -h, -U and -M option and ssh service whose default port is 22. But due to security reasons, its port number is changed to 2222 as detected using the nmap scan and first command did not work. So, to launch the attack we used -n option which will specify the specific port number.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAzv_rl6on66z9_205-MvQXpnY-x6KucXLnY7NAC2gkn54xbU82LlBq8sHNt07-gNmvZXE_nXi1uFnDNr5ESg-3Of-N_TqciUJfqFug9ZuejG8WsqlQq4Fsi5UD-J3q0TNngnkE6KZSb1v3W15y8A65ZSsqSS4rKPESRK3NDmBQG0XZEm_NHo91Uy2aA/s16000/8.png" alt="" /></p>
+<h3>Additional password checks (Null/Same)</h3>
+<p>Medusa has a great option -e along with ns which will check [n] null password, [s] the same password as username while brute forcing on the password field.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -u ignite -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -e ns</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Here, as you can observe, -e option is used in the command so with every username It is trying to match the following combination of password with a username.</p>
+<p>User: Ignite &nbsp;&nbsp;&nbsp; Password: &ldquo; &ldquo; as null password.</p>
+<p>User: Ignite &nbsp;&nbsp;&nbsp; Password: &ldquo;Ignite&rdquo; same as username</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQnSUpAz8c4nijYS9VVvMnACTGm6h-CI4lErcUjd8JSCmb5SqviD_DOkruT-wMYsdqbEmRh9is7nWD0nH6hMpHrVVOkpzSa4S2KS4H-M52fIwdz5yut8wqCeOVDlu7nU5cdKhjHyKjDGw9Kzo8Y6WskgSnjJ31UW4MuI-rCGGbiGxh_5949mjhAMDZ5g/s16000/9.png" alt="" /></p>
+<h3>To Save Logs in a File</h3>
+<p>For better readability, record maintenance and future references we can save the output of the brute force attack of the medusa tool in a different text file. For this, we will use parameter -O to save output in text file.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -u ignite -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -O log.</span><span class="enlighter-m3">txt</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Here, again the command is the same we have just added a new parameter -O to store the logs in text file log.txt. Then to ensure whether the output is stored in file, we have opened it using cat command. And the result shows the desired output.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh3GlyWtvkUoUzE2CYBgsv3RroyPxXDW6NGDAkRatK5wJBsHjL-ZALh6NmbTFg8Yklylb7qhZrO-i4uqrtZfjxg4oSgOftDsC_ZMN5Cql6UMDIbcXCI7AdWMgDC_bBDWR5aBGV0xFlUeB9G1MT76HvKKFrNqvofv4AYRRhSIC6N5xDN6xo-TsACA5yIhQ/s16000/10.png" alt="" /></p>
+<h3>Stop on Success</h3>
+<p>While using the above command, the attack will go on though we get the correct username and password, this may become tedious when the list of usernames and password is long.</p>
+<p>So, to save from this medusa provides some options.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text"> medusa -H hosts.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -f</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text"> medusa -H hosts.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -F</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Above in the first command as you can observe -f option is used so that will stop scanning host after first valid username/password found.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBnA1dkIHkeWpSURIO8PGwRnOa535SPfX7eocfrEWF0dWHbjcCBHK2vpEkkIYaSUo_--EeAZc9bLawsfyPq0DyaDgYm8DnXidNvkadLjfuo1c2xv3UqWUCnNWW6brasGicSfB7hY0Wch1Lzi-9dUERuK4UcKeBPa6oTP-KVG_dOMpCdKP1pf6HAjQULg/s16000/11.png" alt="" /></p>
+<p>And in the second command, -F option is used that will stop audit after first valid username/password found on any host.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhihbTdZkdC9Q6qScufTvXMdO2FWlhnHo5hHjn3zCH-eTifUFw-aFMQZPDVEBOE_MrhgkdbibllD10fJjVne8g4RgjnZR_qK-xPTuZhkMUPHLkMmkI18kONibXblYEe46g_MAul53O39a5eMByvc2MgSWu_pJnenUTEfcniNnHZxfBqEptg5XfQO3-ljw/s16000/12.png" alt="" /></p>
+<h3>&nbsp;To suppress start-up Banner</h3>
+<p>Whenever you run medusa, always a start up banner is displayed. But this tool provides an option to remove the banner by using -b option.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -b</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>As in the screenshot displays, after applying -b option, the banner is suppressed.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhjeaNJnIbhXE_F-FeDwG4ma3-Gz8f54uJEKjG1wRea2BDCXZDV3R6eKxPwCY2LthboCydg-Jeum55lGjsMdpQNE7GuxPzihDvj_cKRGhJxApSmMlO8gu_AeKfLBchBa6tr5yECIap38Zm49tbRjR81UMCl-yNv7qeBed3R9IVszUZnBqQQLt5Jdue76w/s16000/13.png" alt="" /></p>
+<h3>Verbose Mode</h3>
+<p>This tool provides an option for verbose mode. There are in all six verbose level. All messages at or below the specified level will be displayed. The default level is 5. The following is the breakdown of the verbose levels:</p>
+<p>0.EXIT APPLICATION</p>
+<p>1.MESSAGE WITHOUT TAG</p>
+<p>2.LOG MESSAGE WITHOUT TAG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>3.IMPORTANT MESSAGE</p>
+<p>4.ACCOUNT FOUND</p>
+<p>5.ACCOUNT CHECK</p>
+<p>6.GENERAL MESSAGE</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -H hosts.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -v</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">medusa -H hosts.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -v </span><span class="enlighter-n1">6</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Here, in the given commands, verbose level 5 and level 6 is used. Level 5 performs account check and level 6 displays general message also.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgp8M0Bq0jVy6NWhNmsRnZe8vtGRyGjFhrnH_72rkPXuZSiF4ya1Q8IX__kQkyq1yIYWdEF9aZ2-u8dUYAagqDZ0bowSRhZKhqoVRUyE0mJS5dNZE3TGzcbNOBJOCox5EVpkmumQ86nBMlN7CzQtoePTb7bdHrLUzUENCCx7Um8eTGXxHYOBGMOxSdFlA/s16000/14.png" alt="" /></p>
+<h3>Error Debug level</h3>
+<p>This option is used to give detailed description of error. There are 10 error debug level. All messages at or below the specified level will be displayed. The default level is 5.</p>
+<p>The following is the breakdown of the error levels:</p>
+<p>0: FATAL</p>
+<p>1: ALERT</p>
+<p>2: CRITICAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>3: ERROR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>4: WARNING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>5: NOTICE</p>
+<p>6: INFO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>7: DEBUG &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>8: DEBUG-AUDIT&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>9: DEBUG- SERVER</p>
+<p>10: DEBUG &ndash; MODULE</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -w </span><span class="enlighter-n1">0</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -w </span><span class="enlighter-n4">06</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -w </span><span class="enlighter-n4">07</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTPQb2w7vwj-4w9iVrex24-EERAxUHDhX8y6tB4zZyKN9GOaWny74GB-_4QIfhahuk4ocbqQOO2-kVPJfZ-AMIhvdLH9u2ChWoQiYeCEp6MgAN_ZNIfHnp4dYK37auWFMqYk3Hn34sKdL1hTxz2_N_lYdlWC1yDSZGU2nPSSPUdJS0mA17LSvl6QKj7A/s16000/15.png" alt="" /></p>
+<h3>Using Combo Entries</h3>
+<p>Medusa gives an option of using combo entries while brute forcing. The option -C uses a file containing combo entries. Combo files are colon separated and in the following format: host:user:password. If any of the three fields are left empty, the respective information should be provided either as single global value or as a list in a file. You can use following combinations.</p>
+<p>host:user:password</p>
+<p>host:user:</p>
+<p>host::</p>
+<p>username:password</p>
+<p>username:</p>
+<p>password</p>
+<p>host::username</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -M ftp -C userpass.</span><span class="enlighter-m3">txt</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>So here first userpass.txt file is created where data is stored in form of host:username:password. And then medusa brute force attack is performed using -C option. You can take reference from screenshot attached.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfGBlp7sZPZWGYx1TymPzeheLobq38-ANeKK6E0sFpCKOIibdprCK3hihkQbXyEBixkqXG9hI_SHQzlZ8GSG0XEd_TkGQx8b2e0z5ctdOaKEDR2QmEtlLY6HOIcEq5hnUPuQMSSjOU4F_wHMjB8WWx11aTh3mr2VwoPnSRyNw8yPt-xYg6_gE-_j1x9A/s16000/16.png" alt="" /></p>
+<h3>Concurrent testing on multiple logins</h3>
+<p>If you want to perform concurrent testing on multiple logins so for that you use -t option. After that mention the number of logins you want to test concurrently and hence medusa will brute force on respective logins.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -t </span><span class="enlighter-n1">4</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>So, while performing the attack it tested concurrently 4 logins at specified port and printed results for all four concurrently.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixT7WOCJbo2eYBwqrq3b2XLusdplUnxqyli5K1QiEvm3QzEtWcEl1sQ0Yi1bWzc8sqZrJX8eRMefoJNydxUFXkXSW2dnz9KsxCmJckHr_gph6LloAkTJPDkadyKf9Vm33E2R1nNsrXo_AG_hMichWqXIdQCRNfJp3bS6F3VV7Q7b2nt_EdtUH-OFMkaw/s16000/17.png" alt="" /></p>
+<h3>Display Module Usage Information</h3>
+<p>You can use a new option -q which will display module&rsquo;s usage information. This should be used in conjunction with the &ldquo;-M&rdquo; option.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">medusa -h </span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">1</span><span class="enlighter-text">.</span><span class="enlighter-m3">141</span><span class="enlighter-text"> -U users.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -P pass.</span><span class="enlighter-m3">txt</span><span class="enlighter-text"> -M ftp -q</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEL2iiRp_sGmZIQfcLVD0ZF_s6QxZNPyn9KBT6-cqeeh5xO0lghWVGfEs-4r2gwnKeMMO123MtWtoW15vW6BE7XX44TtYs5rgVnoMk4hsnxv2gWN8h9N4krue7tffr2Ra5Qb8fXvw82pv77tstT2GFS7qpAzBsvc7Qf1ntDJX4uiA6VJFtd-k6zZph_Q/s16000/18.png" alt="" /></p>
+</div>
+</div>
+</body>
+</html>

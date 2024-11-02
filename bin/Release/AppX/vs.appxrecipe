@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>INBOOK_X1_PRO</Machine>
+    <WindowsUser>Julius</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Release|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <PackageIdentityName>2f52bc03-8aa8-4cfa-ad6b-42fe0c503ec8</PackageIdentityName>
+    <PackageIdentityPublisher>CN=A4DCFB6C-1F4F-4155-B778-30BFBED27656</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\Julius\source\repos\Data\Data\bld\Release\</IntermediateOutputPath>
+    <RemoteDeploymentType>
+    </RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath>
+    </WindowsSdkPath>
+    <LayoutDir>C:\Users\Julius\source\repos\Data\Data\bin\Release\AppX</LayoutDir>
+    <RegisteredManifestChecksum>8CF320EFCA740A15AE31D0A95A0D52C423546D4C4E9C854387CDDA05C60FB800</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>10038julisunkan.NetworkServersPenetrationGuidesand_1.0.18.0_neutral__h4nasatd0p1py</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>10038julisunkan.NetworkServersPenetrationGuidesand_h4nasatd0p1py!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>10038julisunkan.NetworkServersPenetrationGuidesand</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=A4DCFB6C-1F4F-4155-B778-30BFBED27656</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.18.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Julius\source\repos\Data\Data\bin\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-02T13:24:15.281</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\1.html">
+      <PackagePath>1.html</PackagePath>
+      <Modified>2024-11-01T21:37:24.199</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\2.html">
+      <PackagePath>2.html</PackagePath>
+      <Modified>2024-11-01T21:37:24.246</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\3.html">
+      <PackagePath>3.html</PackagePath>
+      <Modified>2024-11-01T21:37:24.293</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\4.html">
+      <PackagePath>4.html</PackagePath>
+      <Modified>2024-11-01T21:37:24.340</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\5.html">
+      <PackagePath>5.html</PackagePath>
+      <Modified>2024-11-01T21:37:24.340</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\6.html">
+      <PackagePath>6.html</PackagePath>
+      <Modified>2024-11-01T21:37:24.355</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\7.html">
+      <PackagePath>7.html</PackagePath>
+      <Modified>2024-11-01T21:37:24.355</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\8.html">
+      <PackagePath>8.html</PackagePath>
+      <Modified>2024-11-01T21:37:24.355</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\9.html">
+      <PackagePath>9.html</PackagePath>
+      <Modified>2024-11-01T21:37:24.371</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\10.html">
+      <PackagePath>10.html</PackagePath>
+      <Modified>2024-11-01T21:37:24.230</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\index.html">
+      <PackagePath>index.html</PackagePath>
+      <Modified>2024-11-01T21:35:05.353</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\LargeTile.scale-100.png">
+      <PackagePath>images\LargeTile.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.092</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\LargeTile.scale-125.png">
+      <PackagePath>images\LargeTile.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.129</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\LargeTile.scale-150.png">
+      <PackagePath>images\LargeTile.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.189</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\LargeTile.scale-200.png">
+      <PackagePath>images\LargeTile.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.257</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\LargeTile.scale-400.png">
+      <PackagePath>images\LargeTile.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-02T12:42:01.675</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\SmallTile.scale-100.png">
+      <PackagePath>images\SmallTile.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.572</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\SmallTile.scale-125.png">
+      <PackagePath>images\SmallTile.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.595</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\SmallTile.scale-150.png">
+      <PackagePath>images\SmallTile.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.611</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\SmallTile.scale-200.png">
+      <PackagePath>images\SmallTile.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.627</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\SmallTile.scale-400.png">
+      <PackagePath>images\SmallTile.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.656</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\splashscreen.scale-100.png">
+      <PackagePath>images\splashscreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.868</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\splashscreen.scale-125.png">
+      <PackagePath>images\splashscreen.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.923</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\splashscreen.scale-150.png">
+      <PackagePath>images\splashscreen.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.995</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\splashscreen.scale-400.png">
+      <PackagePath>images\splashscreen.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:15.484</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square150x150Logo.scale-100.png">
+      <PackagePath>images\Square150x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.676</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square150x150Logo.scale-125.png">
+      <PackagePath>images\Square150x150Logo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.694</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square150x150Logo.scale-150.png">
+      <PackagePath>images\Square150x150Logo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.714</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square150x150Logo.scale-400.png">
+      <PackagePath>images\Square150x150Logo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.824</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.altform-unplated_targetsize-16.png">
+      <PackagePath>images\Square44x44Logo.altform-unplated_targetsize-16.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.742</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.altform-unplated_targetsize-256.png">
+      <PackagePath>images\Square44x44Logo.altform-unplated_targetsize-256.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.833</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.altform-unplated_targetsize-32.png">
+      <PackagePath>images\Square44x44Logo.altform-unplated_targetsize-32.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.771</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.altform-unplated_targetsize-48.png">
+      <PackagePath>images\Square44x44Logo.altform-unplated_targetsize-48.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.784</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.scale-100.png">
+      <PackagePath>images\Square44x44Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.scale-125.png">
+      <PackagePath>images\Square44x44Logo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.599</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.scale-150.png">
+      <PackagePath>images\Square44x44Logo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.611</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.scale-400.png">
+      <PackagePath>images\Square44x44Logo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.649</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.targetsize-16.png">
+      <PackagePath>images\Square44x44Logo.targetsize-16.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.660</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.targetsize-24.png">
+      <PackagePath>images\Square44x44Logo.targetsize-24.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.672</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.targetsize-256.png">
+      <PackagePath>images\Square44x44Logo.targetsize-256.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.730</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.targetsize-32.png">
+      <PackagePath>images\Square44x44Logo.targetsize-32.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.683</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.targetsize-48.png">
+      <PackagePath>images\Square44x44Logo.targetsize-48.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.697</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\storelogo.scale-100.png">
+      <PackagePath>images\storelogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:15.531</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\storelogo.scale-125.png">
+      <PackagePath>images\storelogo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:15.546</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\storelogo.scale-150.png">
+      <PackagePath>images\storelogo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:15.560</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\storelogo.scale-200.png">
+      <PackagePath>images\storelogo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:15.578</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\storelogo.scale-400.png">
+      <PackagePath>images\storelogo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:15.613</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Wide310x150Logo.scale-100.png">
+      <PackagePath>images\Wide310x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.847</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Wide310x150Logo.scale-125.png">
+      <PackagePath>images\Wide310x150Logo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.869</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Wide310x150Logo.scale-150.png">
+      <PackagePath>images\Wide310x150Logo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.895</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Wide310x150Logo.scale-400.png">
+      <PackagePath>images\Wide310x150Logo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.064</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\LockScreenLogo.scale-200.png">
+      <PackagePath>images\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2024-07-28T23:09:46.990</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\SplashScreen.scale-200.png">
+      <PackagePath>images\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:15.094</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square150x150Logo.scale-200.png">
+      <PackagePath>images\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.740</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.scale-200.png">
+      <PackagePath>images\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.626</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>images\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:14.758</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\StoreLogo.png">
+      <PackagePath>images\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-07-28T23:06:37.053</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\images\Wide310x150Logo.scale-200.png">
+      <PackagePath>images\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2024-11-01T21:39:13.940</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\js\main.js">
+      <PackagePath>js\main.js</PackagePath>
+      <Modified>2024-07-28T23:23:05.606</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\css\default.css">
+      <PackagePath>css\default.css</PackagePath>
+      <Modified>2024-10-23T12:59:27.650</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Julius\source\repos\Data\Data\bin\Release\ReverseMap\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2024-11-02T13:24:15.139</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
