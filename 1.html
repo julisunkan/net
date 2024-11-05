@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,6 +71,1881 @@ body {
 </div>
 <div class="main">
 <div class="markdown-heading" dir="auto">
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">Building Penetration Testing Lab</h1>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Requirements</h3>
+</div>
+<ul dir="auto">
+<li>Windows 10, macOS or any Linux distro
+<ul dir="auto">
+<li>At least 8 GB RAM (16GB recommended)</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Objectives</h3>
+</div>
+<ul dir="auto">
+<li>Understand how virtual machines work</li>
+<li>Learn how to create a basic virtual environment for pentesting purpose</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">What does Virtual Machine (VM) means?</h1>
+</div>
+<p dir="auto">For simplicity, think of a virtual machine (VM) as a "computer made of software" which you can use to run any software you'd run on a real, physical computer. Like a physical machine, a virtual machine has its own operating system (Windows, Linux, etc.), storage, networking, configuration settings, and software, and it is fully isolated from other virtual machines running on that host.</p>
+<p dir="auto"><img src="https://camo.githubusercontent.com/cefa964a8c0fe0ea3dbaa1488adb61e6b545b2c9a5a5b87b17538666895e3af1/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f3933372f312a516773684d645051375a7a4b3168526276316e6350512e6a706567" alt="vm" data-canonical-src="https://miro.medium.com/max/937/1*QgshMdPQ7ZzK1hRbv1ncPQ.jpeg" /></p>
+<p dir="auto"><strong>Security benefits</strong>&nbsp;&mdash; Because virtual machines run in multiple operating systems, using a guest operating system on a VM allows you to run apps of questionable security and protects your host operating system. VMs also allow for better security forensics, pentesting and are often used to safely study computer viruses, isolating the viruses to avoid risking their host computer.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Hypervisors</h3>
+</div>
+<p dir="auto">There are two main hypervisor types, referred to as&nbsp;<strong>&ldquo;Type 1&rdquo; (or &ldquo;bare metal&rdquo;)</strong>&nbsp;and&nbsp;<strong>&ldquo;Type 2&rdquo; (or &ldquo;hosted&rdquo;)</strong>.</p>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/0143eb15cf424c87ae823109d73df9ebe3faebec/hyper.png" alt="hypervisors" /></p>
+<ul dir="auto">
+<li><strong>Type 1</strong>&nbsp;hypervisor acts like a lightweight operating system and runs directly on the host&rsquo;s hardware.</li>
+<li><strong>Type 2</strong>&nbsp;hypervisor runs as a software layer on an operating system, like other computer programs.</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">1. VirtualBox Installation</h1>
+</div>
+<ul dir="auto">
+<li><strong>This tutorial use&nbsp;Oracle VM VirtualBox, the most popular free and open-source hosted hypervisor for x86 virtualization, developed by Oracle.</strong></li>
+<li>There are other options from different vendors to achieve the same result:
+<ul dir="auto">
+<li>VMware Player for Windows (30 day trial)</li>
+<li>VMware Fusion for macOS (30 day trial)</li>
+<li>Windows Hyper-V</li>
+<li>Linux KVM</li>
+</ul>
+</li>
+</ul>
+<ol dir="auto">
+<li><strong>Make sure your PC support hardware virtualization (Windows)</strong>
+<ul dir="auto">
+<li>Reboot your computer</li>
+<li>Right when the computer is coming up from the black screen, press Delete, Esc, F1, F2, or F4. Each computer manufacturer uses a different key but it may show a brief message at boot telling you which one to press. If you miss it the first time, reboot and try again. It helps to tap the key about twice a second when the computer is coming up. If you are not able to enter the BIOS via this method, consult your computer&rsquo;s manual.</li>
+<li>In the BIOS settings, find the configuration items related to the CPU. These can be in under the headings Processor, Chipset, or Northbridge.</li>
+<li>Enable virtualization; the setting may be called&nbsp;<strong>VT-x, AMD-V, SVM, or Vanderpool</strong>. Enable Intel VT-d or AMD IOMMU if the options are available.</li>
+<li>Save your changes and reboot.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p dir="auto">⚠️&nbsp;If you are unable to find the Virtualization settings in your BIOS it may mean that your computer does not support it.</p>
+</blockquote>
+<ol dir="auto" start="2">
+<li>
+<p dir="auto"><strong>Download the latest version of Virtual Box</strong></p>
+<ul dir="auto">
+<li>Go to Oracle Virtual Box website:
+<ul dir="auto">
+<li>https://www.virtualbox.org/wiki/Downloads</li>
+</ul>
+</li>
+<li>Select your current OS and download the installer</li>
+<li><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/944dad38ad3bfc556600c6ca3e08ec83cabd54e5/vbox1.png" alt="v" /></li>
+<li>Also, scroll down on the same page and download the&nbsp;<strong>VirtualBox Extension Pack</strong>. This extension will allow VirtualBox functionalities like USB support, virtual disk encryption etc.</li>
+<li><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/944dad38ad3bfc556600c6ca3e08ec83cabd54e5/vbox2.png" alt="v2" /></li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Install Virtual Box and Extension Pack</strong></p>
+<ul dir="auto">
+<li>There is no special configuration on the&nbsp;<strong>Virtual Box</strong>&nbsp;installation process, just point, click and install.</li>
+<li>Once the installation is done, install the&nbsp;<strong>Extension Pack</strong>&nbsp;by double clicking it; The file extension is&nbsp;<code>.vbox-extpack</code>. Don't worry about the warning prompts.</li>
+</ul>
+</li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">VirtualBox NAT configuration</h2>
+</div>
+<p dir="auto"><em>The next steps will cover how to create a NAT network on VirtualBox. In simple words Virtual Machines needs a virtual network adapter, to access the internet and segragete your Host IP(main OS) and Guest IP(VM).</em></p>
+<ol dir="auto" start="4">
+<li><strong>Launch VirtualBox and open the&nbsp;<code>Preferences</code>&nbsp;pane</strong></li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/1b0a358d438d859df17db305753ce41c1826e4b0/pref1.png" alt="pref1" /></p>
+<ol dir="auto" start="5">
+<li><strong>Go to the&nbsp;<code>Network tab</code>&nbsp;on the left pane, and then click the&nbsp;<code>green plus button</code>&nbsp;on the right</strong></li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/1b0a358d438d859df17db305753ce41c1826e4b0/pref2.png" alt="pref2" /></p>
+<ol dir="auto" start="6">
+<li><strong>By the default, VirtualBox automatically creates a NatNetwork. Click the&nbsp;<code>OK</code>&nbsp;button and save this configuration</strong></li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/1b0a358d438d859df17db305753ce41c1826e4b0/pref3.png" alt="pref3" /></p>
+<ol dir="auto" start="7">
+<li><strong>Next part we will download the latest Kali Linux version and boot it up into Virtual box software</strong></li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">About Kali Linux</h2>
+</div>
+<p dir="auto"><img src="https://camo.githubusercontent.com/e8f6f03ea8b002dc15327311aab3e8bc58701f32d0b72b151711836a6d3a8da3/68747470733a2f2f7777772e626c6565707374617469632e636f6d2f636f6e74656e742f686c2d696d616765732f323031392f31312f32392f6b616c692d6865616465722e6a7067" alt="kali" data-canonical-src="https://www.bleepstatic.com/content/hl-images/2019/11/29/kali-header.jpg" /></p>
+<blockquote>
+<p dir="auto">⚠️&nbsp;Kali Linux Tutorial will be covered on the next module [Linux for Hackers].md</p>
+</blockquote>
+<p dir="auto">Kali Linux (formerly known as BackTrack Linux) is an open-source, Debian-based Linux distribution aimed at advanced Penetration Testing and Security Auditing.&nbsp;</p>
+<p dir="auto">Kali Linux contains several hundred tools targeted towards various information security tasks, such as:</p>
+<ul dir="auto">
+<li>Penetration Testing</li>
+<li>Security Research</li>
+<li>Computer Forensics</li>
+<li>Reverse Engineering</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Download the latest Kali Linux image</h2>
+</div>
+<ol dir="auto">
+<li><strong>Go to Offensive Security website:</strong>
+<ul dir="auto">
+<li>https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/</li>
+</ul>
+</li>
+<li><strong>Download the Kali Linux VirtualBox image, make sure to select the&nbsp;<code>Virtual Box image (OVA)</code></strong></li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/163a5fcc5653f6c06fb7e63fbf570e3fd9b5c144/kali0.png" alt="kali0" /></p>
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">2. Installing Kali Linux on VirtualBox</h1>
+</div>
+<p dir="auto">Once you have installed VirtualBox and downloaded the Kali Linux image, you just need to import it to VirtualBox in order to make it work.</p>
+<ol dir="auto">
+<li><strong>Launch VirtualBox and click the&nbsp;<code>Import Button</code>&nbsp;on the top center menu</strong></li>
+</ol>
+<p dir="auto">&nbsp;</p>
+<ol dir="auto" start="2">
+<li><strong>Next, browse the Kali Linux image (OVA) you just downloaded and choose it to be imported (as you can see in the image below).</strong></li>
+</ol>
+<p dir="auto">&nbsp;</p>
+<ol dir="auto" start="3">
+<li><strong>Next, you will be shown the settings for the virtual machine you are about to import. So, you can customize them or not &ndash; that is your choice based on your hardware capacity.</strong>
+<ul dir="auto">
+<li>If you have a computer with 8GB RAM and at least 2 cores available, leave the default settings.</li>
+<li>If your computer have 16GB RAM or more, I recommend to use 4GB RAM on Kali Linux, to do that, scroll down the configuration list and change the&nbsp;<code>RAM value</code>&nbsp;to&nbsp;<code>4096</code>&nbsp;MB</li>
+</ul>
+</li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/9a53e3ba4ca62c777cf59acc53d211b4c187598e/pref4.png" alt="kali3" /></p>
+<ol dir="auto" start="4">
+<li><strong>You will now see the Kali box listed. So, just hit Start to launch it.</strong></li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/5f7c4d496d67f429aff72c1c177028f16dc35379/pref5.png" alt="kali4" /></p>
+<ol dir="auto" start="5">
+<li><strong>Type the default credentials:</strong>&nbsp;username:&nbsp;<code>kali</code>, password:&nbsp;<code>kali</code>.
+<ul dir="auto">
+<li>Tip: On Linux, you can change the default password of the current user by typing&nbsp;<code>passwd</code>&nbsp;on terminal.</li>
+</ul>
+</li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/5f7c4d496d67f429aff72c1c177028f16dc35379/kali-log.png" alt="kali5" /></p>
+<ol dir="auto" start="6">
+<li><strong>Done!</strong></li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/a8f9a9f928ce6aeb71683cf95cb738b5842d0c04/kali-desk.png" alt="kali6" /></p>
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">Introduction to Linux 🐧</h1>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Requirements</h3>
+</div>
+<ul dir="auto">
+<li>Ubuntu virtual machine (or any disto desktop general-purpose like Manjaro, Fedora etc) (1)</li>
+<li>Kali Linux virtual machine (2)</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Objectives</h3>
+</div>
+<ul dir="auto">
+<li>Understand the basics of Linux systems</li>
+<li>Perform basic system and network tasks from CLI (command line interface)</li>
+<li>Learn about Kali Linux and pre-installed security tools</li>
+</ul>
+<p dir="auto"><strong>Before jumpstart into Kali Linux tutorial, it is recommended to use a desktop general-purpose distro like&nbsp;Ubuntu&nbsp;or&nbsp;Manjaro&nbsp;for learning the basics and get used to, also you can check the&nbsp;DistroWatch&nbsp;to find a good distro to start with.</strong></p>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong>The first part</strong>&nbsp;of this tutorial uses&nbsp;<strong>Ubuntu</strong>&nbsp;VM to explain the basics of Linux environment, basic commands and techniques.</p>
+</li>
+<li>
+<p dir="auto"><strong>The second part</strong>&nbsp;is about&nbsp;<strong>Kali Linux</strong>&nbsp;itself, covering security tools using more advanced techniques.</p>
+</li>
+</ol>
+<blockquote>
+<p dir="auto"><strong>⚠️&nbsp;Warning:</strong>&nbsp;<em>Kali is a Linux distribution specifically geared towards professional penetration testers and security specialists, and given its unique nature,&nbsp;<strong>it is NOT recommended to use as&nbsp;a general-purpose Linux desktop for development, web design, gaming, etc.</strong></em></p>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">Why Linux so Popular?</h1>
+</div>
+<p dir="auto"><img src="https://camo.githubusercontent.com/e90bbeca41201319c59218fc97e81339badb97e325d204a688605f1ff92752c3/68747470733a2f2f737461746963302e6d616b657573656f66696d616765732e636f6d2f776f726470726573732f77702d636f6e74656e742f75706c6f6164732f323031352f30312f626573742d6c696e75782d64697374726f732e6a7067" alt="linux" data-canonical-src="https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2015/01/best-linux-distros.jpg" /></p>
+<ul dir="auto">
+<li>
+<p dir="auto">Linux Torvalds not only created Linux but also made it available to the world for free. He then invited others to work for the modification of Linux and keep their contributions free. This is the reason why Linux gained an enormous amount of audience among hard-core developers very quickly. Another reason for this amazing amount of popularity is that Linux is extremely popular and favorite operating system among hackers. The main reason is Linux source code is freely available because it is an open source operating system.</p>
+</li>
+<li>
+<p dir="auto">Linux is appealing for the people who wanted to experiment with operating system principles and who needed a&nbsp;<strong>great deal of control over their operating system.</strong></p>
+</li>
+<li>
+<p dir="auto"><strong>Linux is widely used to run the internet and in all 85% of all the servers are running Linux.</strong>&nbsp;Streams have 1600 games on Linux now, including many mainstream titles.</p>
+</li>
+<li>
+<p dir="auto">Linux is faster than windows and because Windows is a commercial operating system it costs a lot of money while Linux being an open source operating system is free.</p>
+</li>
+<li>
+<p dir="auto">The Linux terminal is superior to use over Window&rsquo;s command line for developers. You would find many libraries developed natively for Linux. Also according to many developers, Linux helps the, get things done easily. Linux doesn&rsquo;t encounter a large number of software updates, but you will also observe much faster software updates so that the problems you might be facing can be eliminated.</p>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">Setting up 🧰</h1>
+</div>
+<p dir="auto">First things first, you should download and deploy two virtual machines:&nbsp;<strong>Ubuntu Linux</strong>&nbsp;and&nbsp;<strong>Kali Linux</strong>.</p>
+<p dir="auto">The recommended configuration for Ubuntu VM is 2GB to 3GB RAM and at least 4GB of RAM to Kali.&nbsp;<strong>To makes things easier you can leave the default configuration for both machines.</strong></p>
+<ul dir="auto">
+<li>Ubuntu official website -&nbsp;https://ubuntu.com/download/desktop</li>
+<li>Kali Linux official website -&nbsp;https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/#1572305786534-030ce714-cc3b</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">Diving into Ubuntu</h1>
+</div>
+<p dir="auto">At this point you should be familiar with a basic operating system such as Windows and the various programs that are already available on the Windows operating system. Ubuntu is no different, this linux distro is a very straightforward, stable and easy to use OS for newcomers, after the installation you're ready to go and explore.</p>
+<p dir="auto"><img src="https://camo.githubusercontent.com/5fae5ebd2630a0537f59088fcf83c11cbff812a66d1db23afba2066cc655f755/68747470733a2f2f69302e77702e636f6d2f39746f356c696e75782e636f6d2f77702d636f6e74656e742f75706c6f6164732f323032302f30382f7562756e747532303034312e6a70673f6669743d3830302532433630302673736c3d31" alt="ubunut1" data-canonical-src="https://i0.wp.com/9to5linux.com/wp-content/uploads/2020/08/ubuntu20041.jpg?fit=800%2C600&amp;ssl=1" /></p>
+<p dir="auto"><strong>Note</strong>: This tutorial will teach you&nbsp;<strong>how to operate Linux by command line</strong>&nbsp;not the interface. Technically you can do some tasks by using the interface, but I encourange to do as much you can on CLI (command line interface) and this tutorial will guide through this. By this way you can have a granular control to handle the system.</p>
+<ul dir="auto">
+<li>Fire up your Ubuntu VM and explore by yourself the interface, pre-installed applications and configurations.&nbsp;</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">UI vs. CLI</h2>
+</div>
+<p dir="auto">This example will compare the differences between UI(user interface) and CLI(command line interface) by performing a simple task:</p>
+<ul dir="auto">
+<li>create a text file, write some words and save it.</li>
+</ul>
+<p dir="auto">This is just a simple example to grasp the idea behind command line.</p>
+<ol dir="auto">
+<li>First, let's create a text file using the interface. Click on the 6 dotted button on the bottom right&nbsp;<strong>(Show Applications)</strong>&nbsp;and open the&nbsp;<strong>Text Editor application</strong></li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/0490dd84d2611a7ed0631a21f851cc244f80ba4d/ub1.png" alt="ub1" /></p>
+<ol dir="auto" start="2">
+<li>Write&nbsp;<strong>hello world</strong>&nbsp;on the new file, and then save in your Desktop by giving the name&nbsp;<strong>hello.txt</strong></li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/0490dd84d2611a7ed0631a21f851cc244f80ba4d/ub2.png" alt="ub2" /></p>
+<ol dir="auto" start="3">
+<li>
+<p dir="auto">Now, click again the 6 dotted button to show all applications and open a new&nbsp;<strong>Terminal</strong>&nbsp;window</p>
+</li>
+<li>
+<p dir="auto">To navigate to your desktop by using the terminal, type&nbsp;<code>cd Desktop</code>. Next type&nbsp;<code>echo hello world &gt; hello2.txt</code>.</p>
+<ul dir="auto">
+<li><code>cd</code>&nbsp;command means change directory. The next command will&nbsp;<code>echo</code>&nbsp;the string&nbsp;<code>hello world</code>&nbsp;and the symbol&nbsp;<code>&gt;</code>&nbsp;tells the system to output results into a new file, the target is usually a filename (<code>hello2.txt</code>).</li>
+</ul>
+</li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/0490dd84d2611a7ed0631a21f851cc244f80ba4d/ub3.png" alt="ub3" /></p>
+<ol dir="auto" start="5">
+<li>As you can see on the image below, the both methods perform the same results.</li>
+</ol>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/0490dd84d2611a7ed0631a21f851cc244f80ba4d/ub4.png" alt="ub4" /></p>
+<p dir="auto"><strong>Bottom line</strong>, command line is the most powerful way to operate a Linux machine, you can leverage the granular control of Linux systems and do pretty much everything from command line in more robust, fast and efficient way. For example you can rename thousands of files with a simple one-liner command, instead of renaming one by one using UI. You can automate tasks, manage networks etc and do much more using the terminal.</p>
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">Linux structure</h1>
+</div>
+<p dir="auto">In Windows, the root begins at the drive letter, usually C:, which basically means it begins at the hard drive. In Linux however, the root of the filesystem doesn&rsquo;t correspond with a physical device or location, it&rsquo;s a logical location of simply &ldquo;/&rdquo;. See the graphics below for a visual representation.</p>
+<p dir="auto">To access the root of the filesystem, you can type&nbsp;<code>cd</code>&nbsp;to change directory following the destination&nbsp;<code>/</code>&nbsp;, representing the begining of the filesystem.</p>
+<ul dir="auto">
+<li><code>cd /</code></li>
+</ul>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+<pre class="notranslate"><code>ubuntu@primary:/home$ cd /
+Users  boot  etc   lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
+bin    dev   home  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+</code></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<p dir="auto">To understand the basics of each folder in the Linux file system is for, which will help us to better understand how Linux works in general. Note that not every folder listed here or pictured below necessarily appears in every Linux distro, but most of them do.</p>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/4d8d864d53230f3aa14495d486fd01274a54aec0/linux-structure.png" alt="structure" /></p>
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">Core commands</h1>
+</div>
+<p dir="auto">The core commands will explore the most important user and system commands.</p>
+<blockquote>
+<p dir="auto">⚠️&nbsp;Remember that every command have a manual page, you can access on&nbsp;this website&nbsp;or directly from terminal by typing:&nbsp;<code>man &lt;command&gt;</code></p>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>sudo</code></h3>
+</div>
+<p dir="auto">Sudo stands for SuperUser DO and is used to access restricted files and operations. By default, Linux restricts access to certain parts of the system preventing sensitive files from being compromised.</p>
+<p dir="auto">The sudo command temporarily elevates privileges allowing users to complete sensitive tasks without logging in as the root user.</p>
+<ol dir="auto">
+<li><strong>For example, lets try to update the Ubuntu packages without&nbsp;<code>sudo</code>&nbsp;command. To do that you can simple issue the&nbsp;<code>apt-get update</code>&nbsp;command and hit enter.</strong></li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+<pre class="notranslate"><code>purple@purple-vm:~$ apt-get update
+
+Reading package lists... Done
+E: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)
+E: Unable to lock directory /var/lib/apt/lists/
+W: Problem unlinking the file /var/cache/apt/pkgcache.bin - RemoveCaches (13: Permission denied)
+W: Problem unlinking the file /var/cache/apt/srcpkgcache.bin - RemoveCaches (13: Permission denied)
+</code></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<p dir="auto">As you can see above we got the&nbsp;<strong>"13: Permission denied" error</strong>, meaning that we need root privileges to update Ubuntu packages.</p>
+<ol dir="auto" start="2">
+<li><strong>Next, issue the command with elevated privileges (root) using&nbsp;<code>sudo</code>. The command will be successfully executed.</strong></li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+<pre class="notranslate"><code>purple@purple-vm:~$ sudo apt-get update
+[sudo] password for purple: 
+Hit:1 http://pt.archive.ubuntu.com/ubuntu focal InRelease
+Hit:2 http://pt.archive.ubuntu.com/ubuntu focal-updates InRelease                     
+Hit:3 http://pt.archive.ubuntu.com/ubuntu focal-backports InRelease                   
+Hit:4 https://brave-browser-apt-release.s3.brave.com stable InRelease                 
+Hit:5 http://security.ubuntu.com/ubuntu focal-security InRelease                      
+Reading package lists... Done
+</code></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<p dir="auto">Also we have other&nbsp;<code>apt-get</code>&nbsp;variants:</p>
+<ul dir="auto">
+<li><code>apt-get upgrade</code>&nbsp;-&gt; simply upgrades/installs the new version of the package available over the old one.</li>
+<li><code>apt-get dist-upgrade</code>&nbsp;-&gt; This command looks for newer dependencies and prioritizes upgrading them by the possibility of removing the old ones &ndash; which could be dangerous. Make sure to read the&nbsp;official documentation&nbsp;before issue this command.</li>
+</ul>
+<ol dir="auto" start="3">
+<li><strong>You also can switch to root user by using&nbsp;<code>su</code>. But is not recommended to operate as root as a security practice. Applications are meant to be run with non-administrative security, so you have to elevate their privileges to modify the underlying system.</strong></li>
+</ol>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+<pre class="notranslate"><code>purple@purple-vm:~$ sudo su
+[sudo] password for purple: 
+root@purple-vm:/home/purple# 
+</code></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<p dir="auto">As you can see, the user purple jumped to root user by using su.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>pwd</code></h3>
+</div>
+<p dir="auto"><code>pwd</code>&nbsp;stands for&nbsp;<strong>P</strong>rint&nbsp;<strong>W</strong>orking&nbsp;<strong>D</strong>irectory. It prints the path of the current directory that you are in, starting from the root.</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+<pre class="notranslate"><code>purple@purple-vm:~$ pwd
+/home/purple/work/code
+</code></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Linux Permissions</h2>
+</div>
+<p dir="auto">Linux has three permissions and they can be set for the owner, group or other.</p>
+<p dir="auto" align="center"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/01260d855800248f380bd6c2b58fe0425067cebf/linux-perms.png" alt="" width="90%" /></p>
+<blockquote>
+<p dir="auto"><strong>r = read</strong>&nbsp;- open a file, view a file.&nbsp;<strong>w = write</strong>&nbsp;- edit a file, add or delete files for directories.&nbsp;<strong>x = execute</strong>&nbsp;- run a file, execute a program or script, CD to a different directory.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">Owner</th>
+<th align="center">Group</th>
+<th align="center">Other</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">rwx</td>
+<td align="center">rwx</td>
+<td align="center">rwx</td>
+</tr>
+</tbody>
+</table>
+<ul dir="auto">
+<li>Viewing the permissions on Linux command-line:</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwxrwxr-x 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Using&nbsp;<code>chmod</code></h3>
+</div>
+<p dir="auto"><code>chmod</code>&nbsp;<em>is the command and system call which is used to change the access permissions of file system objects on Unix and Unix-like OS.</em></p>
+<ul dir="auto">
+<li>Clear out the permissions of the&nbsp;<strong>File</strong>&nbsp;to have no read, write and execute permissions on&nbsp;<strong>Other</strong>:<br /><em>(The flag equals to nothing[o=] deny the permissions)</em></li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwxrwxr-x 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">chmod o= File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwxrwx--- 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<ul dir="auto">
+<li>Giving&nbsp;<strong>read</strong>&nbsp;and&nbsp;<strong>write</strong>&nbsp;permissions to&nbsp;<strong>Group</strong>:</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwx---r-- 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">chmod g=rw File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwxrw-r-- 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<ul dir="auto">
+<li>Giving&nbsp;<strong>all permissions</strong>&nbsp;to everybody(Owner,Group and Other):</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwx---r-- 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">chmod a=rwx File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwxrwxrwx 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Using&nbsp;<code>chmod</code>&nbsp;- oldschool way:</h2>
+</div>
+<p dir="auto">The chmod command will take the octal value and combine them to associate the permissions on three different positions for the Owner, Group and Other/Everyone. This boils down to a simple binary rule: 0 = off | 1 = on.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Octal</th>
+<th align="center">Binary</th>
+<th align="center">Permissions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0</td>
+<td align="center">000</td>
+<td align="center">---</td>
+</tr>
+<tr>
+<td align="center">1</td>
+<td align="center">001</td>
+<td align="center">--x</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="center">010</td>
+<td align="center">-w-</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="center">011</td>
+<td align="center">-wx</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">100</td>
+<td align="center">r--</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="center">101</td>
+<td align="center">r-x</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="center">110</td>
+<td align="center">rw-</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="center">111</td>
+<td align="center">rwx</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto"><em>If you want to give all permissions to a group for example, the number will be 7 (4 + 2 + 1).</em></p>
+<table>
+<thead>
+<tr>
+<th align="center">Read</th>
+<th align="center">Write</th>
+<th align="center">Execute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">r--</td>
+<td align="center">-w-</td>
+<td align="center">--x</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="center">2</td>
+<td align="center">1</td>
+</tr>
+</tbody>
+</table>
+<div class="markdown-heading" dir="auto">
+<h4 class="heading-element" dir="auto" tabindex="-1">Examples:</h4>
+</div>
+<ul dir="auto">
+<li>Giving&nbsp;<strong>read, write and execute</strong>&nbsp;permission to everybody:</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwx---r-- 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">chmod 777 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwxrwxrwx 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<ul dir="auto">
+<li>Giving all permissions to the&nbsp;<strong>owner</strong>, read and write to&nbsp;<strong>group</strong>&nbsp;and no permissions to&nbsp;<strong>other/everyone</strong>:</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-r-x---r-- 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">chmod 760 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwxrw---- 1 user user 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Linux - File Ownership using&nbsp;<code>chown</code>&nbsp;(change file owner and group)</h3>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwxrwxrwx 1 user001 user001 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">sudo chown root File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">ls -l</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">-rwxrwxrwx 1 root user001 31337 Feb 11 13:13 File</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<p dir="auto"><em>The chown command requires sudo</em></p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>passwd</code></h3>
+</div>
+<p dir="auto">Changes the password of current user</p>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">sudo passwd</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Network commands</h2>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>ping</code></h3>
+</div>
+<ul dir="auto">
+<li>Can be handful for DNS checks (up / or down) | is a DNS tool to resolves web addresses to an IP address.</li>
+<li>Test reachability - determine round-trip time, and uses ICMP protocol.</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">~#: ping www.google.com </span>
+
+<span class="pl-c1">PING www.google.com (172.217.168.164): 56 data bytes</span>
+<span class="pl-c1">64 bytes from 172.217.168.164: icmp_seq=0 ttl=55 time=25.981 ms</span>
+<span class="pl-c1">64 bytes from 172.217.168.164: icmp_seq=1 ttl=55 time=25.236 ms</span>
+<span class="pl-c1">--- www.google.com ping statistics ---</span>
+<span class="pl-c1">2 packets transmitted, 2 packets received, 0.0% packet loss</span>
+<span class="pl-c1">round-trip min/avg/max/stddev = 25.236/25.608/25.981/0.373 ms</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>netstat</code></h3>
+</div>
+<ul dir="auto">
+<li>
+<p dir="auto">Network statistics</p>
+</li>
+<li>
+<p dir="auto">Get info on host system TCP / UDP connections and status of all open and listening ports and routing table.</p>
+</li>
+<li>
+<p dir="auto">Who you talking to?</p>
+</li>
+<li>
+<p dir="auto">Who trying talking to you?</p>
+</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">netstat -a # (show all active connections) (servers)</span>
+<span class="pl-c1">netstat -n # (hosts)</span>
+<span class="pl-c1">netstat -b # (Show binaries Windows)</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>traceroute</code></h3>
+</div>
+<ul dir="auto">
+<li>
+<p dir="auto">Traceroute - how packets get from host to another endpoint. Traceroute is helpful to see what routers are being hit, both internal and external.</p>
+</li>
+<li>
+<p dir="auto"><strong>Take advantage of ICMP Time to Live (TTL) Exceeded error message</strong></p>
+<ul dir="auto">
+<li>The time in TTL refers to hops, not seconds or minutes.</li>
+<li>TTL=1 is the first router.</li>
+<li>TTL=2 is the second router, and so on.</li>
+</ul>
+</li>
+</ul>
+<p dir="auto" align="center"><img src="https://camo.githubusercontent.com/d76cf5ba918a068ef85e059cb184e7d9cee2ea190461ffaf5f1fec030210292c/68747470733a2f2f322e62702e626c6f6773706f742e636f6d2f2d624a443738376b4f6f58672f5778666e704665347456492f4141414141414141584e342f5854437867306e464541514f6a7445566376447a4c324e2d704b2d456251413277434c63424741732f73313630302f302e706e67" alt="" width="90%" data-canonical-src="https://2.bp.blogspot.com/-bJD787kOoXg/WxfnpFe4tVI/AAAAAAAAXN4/XTCxg0nFEAQOjtEVcvDzL2N-pK-EbQA2wCLcBGAs/s1600/0.png" /></p>
+<ul dir="auto">
+<li><em>As shown above, on HOP 2 the TTL exceeded and back to the device A, counting 3 on TTL for the next HOP.</em></li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">~#: traceroute google.com</span>
+
+<span class="pl-c1">traceroute to google.com (172.217.17.14), 64 hops max, 52 byte packets</span>
+<span class="pl-c1"> 1  192.168.1.1 (192.168.1.1)  4.960 ms  3.928 ms  3.724 ms</span>
+<span class="pl-c1"> 2  10.10.124.254 (10.10.127.254)  11.175 ms  14.938 ms  15.257 ms</span>
+<span class="pl-c1"> 3  10.133.200.17 (10.137.201.17)  13.212 ms  12.581 ms  12.742 ms</span>
+<span class="pl-c1"> 4  10.255.44.86 (10.255.45.86)  16.369 ms  15.100 ms  17.488 ms</span>
+<span class="pl-c1"> 5  71.14.201.214 (71.14.201.214)  13.287 ms  29.262 ms  16.591 ms</span>
+<span class="pl-c1"> 6  79.125.235.68 (79.125.242.68)  22.488 ms</span>
+<span class="pl-c1">    79.125.235.84 (79.125.242.84)  13.833 ms *</span>
+<span class="pl-c1"> 7  79.125.252.202 (79.125.252.202)  24.147 ms</span>
+<span class="pl-c1">    108.170.252.241 (108.170.25@.241)  26.352 ms</span>
+<span class="pl-c1">    79.125.252.202 (79.125.252.202)  23.598 ms</span>
+<span class="pl-c1"> 8  108.170.252.247 (108.170.252.247)  31.187 ms</span>
+<span class="pl-c1">    79.125.252.199 (79.121.251.191)  22.885 ms</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>arp</code></h3>
+</div>
+<ul dir="auto">
+<li>Address resolution protocol - caches of ip-to-ethernet</li>
+<li>Determine a MAC address based on IP addresses</li>
+<li>Option&nbsp;<code>-a</code>: view local ARP table</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">~#: arp -a</span>
+
+<span class="pl-c1">? (192.168.1.3) at 00:11:22:33:44:55 [ether] on enp0s10</span>
+<span class="pl-c1">? (192.168.1.128) at e8:33:b0:70:2c:71 [ether] on enp0s10</span>
+<span class="pl-c1">? (192.168.1.4) at 2c:33:5c:a4:2e:8a [ether] on enp0s10</span>
+<span class="pl-c1">_gateway (192.168.1.1) at 00:31:33:8b:2a:da [ether] on enp0s10</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>ifconfig</code></h3>
+</div>
+<ul dir="auto">
+<li>Equivalent to ipconfig for UNIX/Linux OS.</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">~#: ifconfig</span>
+<span class="pl-c1">docker0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span>
+<span class="pl-c1">        ether 00:11:22:33:44:55  txqueuelen 0  (Ethernet)</span>
+<span class="pl-c1">        RX packets 0  bytes 0 (0.0 B)</span>
+<span class="pl-c1">        RX errors 0  dropped 0  overruns 0  frame 0</span>
+<span class="pl-c1">        TX packets 0  bytes 0 (0.0 B)</span>
+<span class="pl-c1">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span>
+
+<span class="pl-c1">enp0s10: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span>
+<span class="pl-c1">        inet 192.168.1.128  netmask 255.255.255.0  broadcast 192.168.1.255</span>
+<span class="pl-c1">        inet6 fe80::acf6:2ae2:ab5c:6316  prefixlen 64  scopeid 0x20&lt;link&gt;</span>
+<span class="pl-c1">        ether aa:bb:cc:dd:ee:ff  txqueuelen 1000  (Ethernet)</span>
+<span class="pl-c1">        RX packets 156651  bytes 29382856 (28.0 MiB)</span>
+<span class="pl-c1">        RX errors 0  dropped 0  overruns 0  frame 0</span>
+<span class="pl-c1">        TX packets 76400  bytes 23111524 (22.0 MiB)</span>
+<span class="pl-c1">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>iwconfig</code></h3>
+</div>
+<p dir="auto">similar to ifconfig, but is dedicated to the wireless network interface.</p>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">~#: iwconfig</span>
+<span class="pl-c1">lo        no wireless extensions.</span>
+
+<span class="pl-c1">enp0s10   no wireless extensions.</span>
+
+<span class="pl-c1">wlp3s0b1  IEEE 802.11  ESSID:off/any  </span>
+<span class="pl-c1">          Mode:Managed  Access Point: Not-Associated   Tx-Power=19 dBm   </span>
+<span class="pl-c1">          Retry short limit:7   RTS thr:off   Fragment thr:off</span>
+<span class="pl-c1">          Encryption key:off</span>
+<span class="pl-c1">          Power Management:off</span>
+          
+<span class="pl-c1">docker0   no wireless extensions.</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>ip addr</code></h3>
+</div>
+<p dir="auto">show / manipulate routing, network devices, interfaces and tunnels.</p>
+<p dir="auto">Show all the ip configuration, mac address, ipv6 etc.</p>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">~#: ip addr</span>
+<span class="pl-c1">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span>
+<span class="pl-c1">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span>
+<span class="pl-c1">    inet 127.0.0.1/8 scope host lo</span>
+<span class="pl-c1">       valid_lft forever preferred_lft forever</span>
+<span class="pl-c1">    inet6 ::1/128 scope host </span>
+<span class="pl-c1">       valid_lft forever preferred_lft forever</span>
+<span class="pl-c1">2: enp0s10: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000</span>
+<span class="pl-c1">    link/ether aa:bb:cc:dd:ee:ff brd ff:ff:ff:ff:ff:ff</span>
+<span class="pl-c1">    inet 192.168.1.111/24 brd 192.168.1.255 scope global dynamic noprefixroute enp0s10</span>
+<span class="pl-c1">       valid_lft 4761sec preferred_lft 4761sec</span>
+<span class="pl-c1">    inet6 fe80::acf6:2ae2:ab5c:6316 scope link noprefixroute </span>
+<span class="pl-c1">       valid_lft forever preferred_lft forever</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>nslookup</code></h3>
+</div>
+<ul dir="auto">
+<li>Query Internet name servers interactively; check if the DNS server is working</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">nslookup www.certifiedhacker.com</span>
+
+<span class="pl-c1">output:</span>
+<span class="pl-c1">Server:         192.168.1.1</span>
+<span class="pl-c1">Address:        192.168.1.1#53</span>
+
+<span class="pl-c1">Non-authoritative answer:</span>
+<span class="pl-c1">www.certifiedhacker.com canonical name = certifiedhacker.com.</span>
+<span class="pl-c1">Name:   certifiedhacker.com</span>
+<span class="pl-c1">Address: 162.241.216.11 inslookup www.certifiedhacker.com</span>
+<span class="pl-c1">Server:         192.168.1.1</span>
+<span class="pl-c1">Address:        192.168.1.1#53</span>
+
+<span class="pl-c1">Non-authoritative answer:</span>
+<span class="pl-c1">www.certifiedhacker.com canonical name = certifiedhacker.com.</span>
+<span class="pl-c1">Name:   certifiedhacker.com</span>
+<span class="pl-c1">Address: 162.241.216.11</span>
+</pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>dig</code></h3>
+</div>
+<ul dir="auto">
+<li>DNS lookup tool - Functions like nslookup, but allows for further functionality.</li>
+</ul>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">dig www.certifiedhacker.com</span>
+
+<span class="pl-c1">output:</span>
+<span class="pl-c1">; &lt;&lt;&gt;&gt; DiG 9.11.14-3-Debian &lt;&lt;&gt;&gt; certifiedhacker.com</span>
+<span class="pl-c1">;; global options: +cmd</span>
+<span class="pl-c1">;; Got answer:</span>
+<span class="pl-c1">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 15708</span>
+<span class="pl-c1">;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1</span>
+
+<span class="pl-c1">;; OPT PSEUDOSECTION:</span>
+<span class="pl-c1">; EDNS: version: 0, flags:; udp: 2048</span>
+<span class="pl-c1">; COOKIE: 71bd915b07b3fd08757c9ad65e5d6f3e549d5187359e97cb (good)</span>
+<span class="pl-c1">;; QUESTION SECTION:</span>
+<span class="pl-c1">;certifiedhacker.com.           IN      A</span>
+
+<span class="pl-c1">;; ANSWER SECTION:</span>
+<span class="pl-c1">certifiedhacker.com.    14400   IN      A       162.241.216.11</span>
+
+<span class="pl-c1">;; Query time: 419 msec</span>
+<span class="pl-c1">;; SERVER: 192.168.1.1#53(192.168.1.1)</span>
+<span class="pl-c1">;; WHEN: Mon Mar 02 15:40:29 EST 2020</span>
+<span class="pl-c1">;; MSG SIZE  rcvd: 92</span>
+</pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>netcat</code></h3>
+</div>
+<p dir="auto">TCP/IP swiss army knife; you can make any type of connection and see the results from a command line. With nc you can connect to anything on any port number or you can make your system listen on a port number. Can be an agressive tool for recon.</p>
+<p dir="auto" align="center"><img src="https://camo.githubusercontent.com/bde2ef5165df79ebf6fff1b6f0db78900711dc614a8edb3397bd0fd65cd4a610/68747470733a2f2f7777772e7265736561726368676174652e6e65742f7075626c69636174696f6e2f3332393734353435302f6669677572652f666967332f41533a37303531383130393231373939373840313534353133393638323730322f52656d6f74652d436f6d6d616e642d616e642d436f6e74726f6c2d6578616d706c652d7468726f7567682d4e65746361742e70706d" alt="" data-canonical-src="https://www.researchgate.net/publication/329745450/figure/fig3/AS:705181092179978@1545139682702/Remote-Command-and-Control-example-through-Netcat.ppm" /></p>
+<ul dir="auto">
+<li>"Read" or "Write" to the network
+<ul dir="auto">
+<li>Open a port and send or receive some traffic</li>
+<li>Listen on a port number</li>
+<li>Transfer data</li>
+<li>Scan ports and send data to be a port</li>
+</ul>
+</li>
+<li>Become a backdoor
+<ul dir="auto">
+<li>Run a shell from a remote device</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>stat</code></h3>
+</div>
+<p dir="auto">stat can return the status of an entire file system, the status of the first hard disk and so on.</p>
+<p dir="auto" align="center"><img src="https://camo.githubusercontent.com/8becdab3faa4f91ad5a1b29343a05270b9c330311005736ac73a9a3648a880fe/68747470733a2f2f7777772e686f77746f666f7267652e636f6d2f696d616765732f636f6d6d616e642d7475746f7269616c2f6269672f737461742d62617369632e706e67" alt="" width="88%" data-canonical-src="https://www.howtoforge.com/images/command-tutorial/big/stat-basic.png" /></p>
+<ul dir="auto">
+<li>Archive attribute -&nbsp;<strong>Windows</strong>&nbsp;- if something is created or changed</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>tcpdump</code></h3>
+</div>
+<ul dir="auto">
+<li>Tcpdump is a data-network packet analyzer computer program that runs under a command line interface. It allows the user to display TCP/IP and other packets being transmitted or received over a network to which the computer is attached. Distributed under the BSD license, tcpdump is free software</li>
+</ul>
+<p dir="auto" align="center"><img src="https://camo.githubusercontent.com/fb12168f46d6a7385aa432254c45eef167737af3ef786d61379ed745dcf6b546/68747470733a2f2f7061636b6574666c6f77732e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031372f30352f74637064756d705f692e706e67" alt="" width="90%" data-canonical-src="https://packetflows.com/wp-content/uploads/2017/05/tcpdump_i.png" /></p>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Network Scanners</h2>
+</div>
+<p dir="auto"><strong>Useful for collect and inventory the hosts on a network, and is useful for reconnaissance of your system.</strong></p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><code>nmap</code></h3>
+</div>
+<p dir="auto">The Best way to query a system to check if they have open ports, services, system versions, service versions etc.</p>
+<div class="highlight highlight-text-shell-session notranslate position-relative overflow-auto" dir="auto">
+<pre><span class="pl-c1">nmap -v -A -T5 scanme.nmap.org </span>
+
+<span class="pl-c1">...</span>
+<span class="pl-c1">PORT      STATE SERVICE    VERSION</span>
+<span class="pl-c1">22/tcp    open  ssh        OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13 (Ubuntu Linux; protocol 2.0)</span>
+<span class="pl-c1">| ssh-hostkey: </span>
+<span class="pl-c1">|   1024 ac:00:a0:1a:82:ff:cc:55:99:dc:67:2b:34:97:6b:75 (DSA)</span>
+<span class="pl-c1">|   2048 20:3d:2d:44:62:2a:b0:5a:9d:b5:b3:05:14:c2:a6:b2 (RSA)</span>
+<span class="pl-c1">|   256 96:02:bb:5e:57:54:1c:4e:45:2f:56:4c:4a:24:b2:57 (ECDSA)</span>
+<span class="pl-c1">|_  256 33:fa:91:0f:e0:e1:7b:1f:6d:05:a2:b0:f1:54:41:56 (ED25519)</span>
+<span class="pl-c1">80/tcp    open  http       Apache httpd 2.4.7 ((Ubuntu))</span>
+<span class="pl-c1">|_http-favicon: Unknown favicon MD5: 156515DA3C0F7DC6B2493BD5CE43F795</span>
+<span class="pl-c1">| http-methods: </span>
+<span class="pl-c1">|_  Supported Methods: GET HEAD POST OPTIONS</span>
+<span class="pl-c1">|_http-server-header: Apache/2.4.7 (Ubuntu)</span>
+<span class="pl-c1">|_http-title: Go ahead and ScanMe!</span>
+<span class="pl-c1">9929/tcp  open  nping-echo Nping echo</span>
+<span class="pl-c1">31337/tcp open  tcpwrapped</span>
+<span class="pl-c1">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel</span>
+<span class="pl-c1">...</span></pre>
+<div class="zeroclipboard-container">&nbsp;</div>
+<div class="zeroclipboard-container">
+<div class="markdown-heading" dir="auto">
+<h1 class="heading-element" dir="auto" tabindex="-1">Introduction to Information Security &amp; Penetration Testing.</h1>
+</div>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Fundamental Security Concepts</h2>
+</div>
+<p dir="auto">The whole principle is to avoid&nbsp;<strong>Theft, Tampering and Disruption</strong>&nbsp;of the systems through&nbsp;<strong>CIA Triad</strong>&nbsp;(Confidentiality, Integrity and Availability).</p>
+<p dir="auto" align="center"><img src="https://camo.githubusercontent.com/a09f43d9ba93d867b6b72fc4d5ba567cbbd73feda470b46cd991852ec8ed5347/68747470733a2f2f692e7974696d672e636f6d2f76692f414a544a4e347744424d382f687164656661756c742e6a7067" alt="" width="50%" data-canonical-src="https://i.ytimg.com/vi/AJTJN4wDBM8/hqdefault.jpg" /></p>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>Confidentiality</strong>&nbsp;Keeping systems and data from being accessed, seen, read to anyone who is not authorized to do so.</p>
+</li>
+<li>
+<p dir="auto"><strong>Integrity</strong>&nbsp;Protect the data from modification or deletion by unauthorized parties, and ensuring that when authorized people make changes that shouldn't have been made the damage can be undone.</p>
+</li>
+<li>
+<p dir="auto"><strong>Availability</strong>&nbsp;Systems, access channels, and authentication mechanisms must all be working properly for the information they provide and protect to be available when needed.</p>
+</li>
+</ul>
+<p dir="auto"><strong>Note:</strong>&nbsp;<em>In addition, other properties, such as authenticity, accountability, non-repudiation and reliability can also be involved. (ISO/IEC 27000:2009)</em></p>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>Auditing &amp; Accountability</strong>&nbsp;Basically keep tracking of everthing, like, who's been logging in when are they loggin in whose access this data.</p>
+</li>
+<li>
+<p dir="auto"><strong>Non-Repudiation</strong>&nbsp;Non-repudiation is the assurance that someone cannot deny the validity of something. Non-repudiation is a legal concept that is widely used in information security and refers to a service, which provides proof of the origin of data and the integrity of the data.</p>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>Security, Functionality and Usability balance</strong></h3>
+</div>
+<p dir="auto">There is an inter dependency between these three attributes. When&nbsp;<strong>security goes up, usability and functionality come down</strong>. Any organization should balance between these three qualities to arrive at a balanced information system.</p>
+<p dir="auto" align="center"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/f14455ed4def635e1bc93b85657f43dbbf4a3127/triad2.png" alt="" width="50%" /></p>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Types of Hackers</h2>
+</div>
+<p dir="auto" align="center"><img src="https://camo.githubusercontent.com/500986f9981bf1a004e5bf5ee9919c18e56e293138ddd40dbd4bc7a852a536d7/68747470733a2f2f7777772e73696d706c696c6561726e2e636f6d2f696365392f667265655f7265736f75726365735f61727469636c655f7468756d622f74797065732d6861636b65722e4a5047" alt="" width="50%" data-canonical-src="https://www.simplilearn.com/ice9/free_resources_article_thumb/types-hacker.JPG" /></p>
+<blockquote>
+<ul dir="auto">
+<li><strong>Black Hat</strong>&nbsp;- Hackers that seek to perform malicious activities.</li>
+<li><strong>Gray Hat</strong>&nbsp;- Hackers that perform good or bad activities but do not have the permission of the organization they are hacking against.</li>
+<li><strong>White Hat</strong>&nbsp;- Ethical hackers; They use their skills to improve security by exposing vulnerabilities before malicious hackers.</li>
+</ul>
+</blockquote>
+<p dir="auto"><strong>Script Kiddie / Skiddies</strong>&nbsp;- Unskilled individual who uses malicious scripts or programs, such as a web shell, developed by others to attack computer systems and networks and deface websites.</p>
+<p dir="auto"><strong>State-Sponsored Hacker</strong>&nbsp;- Hacker that is hired by a government or entity related.</p>
+<p dir="auto"><strong>Hacktivist</strong>&nbsp;- Someone who hacks for a cause; political agenda.</p>
+<p dir="auto"><strong>Suicide Hackers</strong>&nbsp;- Are hackers that are not afraid of going jail or facing any sort of punishment; hack to get the job done.</p>
+<p dir="auto"><strong>Cyberterrorist</strong>&nbsp;- Motivated by religious or political beliefs to create fear or disruption.</p>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Hacking Vocabulary</h2>
+</div>
+<ul dir="auto">
+<li><strong>Hack value</strong>&nbsp;- Perceived value or worth of a target as seen by the attacker.</li>
+<li><strong>Vulnerability</strong>&nbsp;- A system flaw, weakness on the system (on design, implementation etc).</li>
+<li><strong>Threat</strong>&nbsp;- Exploits a vulnerability.</li>
+<li><strong>Exploit</strong>&nbsp;- Exploits are a way of gaining access to a system through a security flaw and taking advantage of the flaw for their benefit.</li>
+<li><strong>Payload</strong>&nbsp;- Component of an attack; is the part of the private user text which could also contain malware such as worms or viruses which performs the malicious action; deleting data, sending spam or encrypting data.</li>
+<li><strong>Zero-day attack</strong>&nbsp;- Attack that occurs before a vendor knows or is able to patch a flaw.</li>
+<li><strong>Daisy Chaining / Pivotting</strong>&nbsp;- It involves gaining access to a network and /or computer and then using the same information to gain access to multiple networks and computers that contains desirable information.</li>
+<li><strong>Doxxing</strong>&nbsp;- Publishing PII about an individual usually with a malicious intent.</li>
+<li><strong>Enterprise Information Security Architecture</strong>&nbsp;(EISA) - determines the structure and behavior of organization's information systems through processes, requirements, principles and models.</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Threat Categories</h2>
+</div>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>Network Threats</strong></p>
+<ul dir="auto">
+<li>Information gathering</li>
+<li>Sniffing and eavesdropping</li>
+<li>DNS/ARP Poisoning</li>
+<li>MITM (Man-in-the-Middle Attack)</li>
+<li>DoS/DDoS</li>
+<li>Password-based attacks</li>
+<li>Firewall and IDS attack</li>
+<li>Session Hijacking</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Host Threats</strong></p>
+<ul dir="auto">
+<li>Password cracking</li>
+<li>Malware attacks</li>
+<li>Footprinting</li>
+<li>Profiling</li>
+<li>Arbitrary code execution</li>
+<li>Backdoor access</li>
+<li>Privilege Escalation</li>
+<li>Code Execution</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Application Threats</strong></p>
+<ul dir="auto">
+<li>Injection Attacks</li>
+<li>Improper data/input validation</li>
+<li>Improper error handling and exeception management</li>
+<li>Hidden-field manipulation</li>
+<li>Broken session management</li>
+<li>Cryptography issues</li>
+<li>SQL injection</li>
+<li>Phishing</li>
+<li>Buffer Overflow</li>
+<li>Information disclosure</li>
+<li>Security Misconfigurations</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Attack Vectors</h2>
+</div>
+<p dir="auto"><em>Path by which a hacker can gain access to a host in order to deliver a payload or malicious outcome</em></p>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>APT - Advanced Persistent Threats</strong></p>
+<ul dir="auto">
+<li>An advanced persistent threat is a stealthy threat actor, typically a nation state or state-sponsored group, which gains unauthorized access to a computer network and remains undetected for an extended period; Typically uses zero day attacks.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Cloud computing / Cloud based technologies</strong></p>
+<ul dir="auto">
+<li>Flaw in one client's application cloud allow attacker to access other client's data</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Viruses, worms, and malware</strong></p>
+<ul dir="auto">
+<li>Viruses and worms are the most prevalent networking threat that are capable of infecting a network within seconds.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Ransomware</strong></p>
+<ul dir="auto">
+<li>Restricts access to the computer system's files and folders and demands an online ransom payment to the attacker in order to remove the restrictions.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Mobile Device threats</strong></p>
+</li>
+<li>
+<p dir="auto"><strong>Botnets</strong></p>
+<ul dir="auto">
+<li>Huge network of compromised systems used by an intruder to perform various network attacks</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Insider attacks</strong></p>
+<ul dir="auto">
+<li>Disgruntled employee can damage assets from inside.</li>
+<li>Huge network of compromised hosts. (used for DDoS).</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Phishing attacks</strong></p>
+</li>
+<li>
+<p dir="auto"><strong>Web Application Threats</strong></p>
+<ul dir="auto">
+<li>Attacks like SQL injection, XSS (Cross-site scripting)...</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>IoT Threats</strong></p>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Attack Types</h2>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">1. Operating System</h3>
+</div>
+<p dir="auto"><em>Attacks targeting OS flaws or security issues inside such as guest accounts or default passwords.</em></p>
+<blockquote>
+<ul dir="auto">
+<li><strong>Vectors</strong>: Buffer overflows, Protocol Implementations, software defects, patch levels, authentication schemes</li>
+</ul>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">2. Application Level</h3>
+</div>
+<p dir="auto"><em>Attacks on programming code and software logic.</em></p>
+<blockquote>
+<ul dir="auto">
+<li><strong>Vectors</strong>: Buffer overflows, Bugs, XSS, DoS, SQL Injection, MitM</li>
+</ul>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">3. Misconfiguration</h3>
+</div>
+<p dir="auto"><em>Attack takes advantage of systems that are misconfigured due to improper configuration or default configuration.</em></p>
+<blockquote>
+<ul dir="auto">
+<li><strong>Examples</strong>: Improper permissions of SQL users; Access-list permit all</li>
+</ul>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">4. Shrink-Wrap Code</h3>
+</div>
+<p dir="auto"><em>Act of exploiting holes in unpatched or poorly-configured software.</em></p>
+<blockquote>
+<ul dir="auto">
+<li><strong>Examples</strong>: Software defect in version 1.0; DEfect in example CGI scripts; Default passwords</li>
+</ul>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Vulnerabilities</h2>
+</div>
+<ul dir="auto">
+<li><strong>CVSS - Common Vulnerability Scoring System</strong>&nbsp;[+]
+<ul dir="auto">
+<li>Places numerical score based on severity</li>
+<li><img src="https://camo.githubusercontent.com/62285e18c8b56aa9e4aa1be5ea74004b1f7e8468bb9482592d43cc003f28abe4/68747470733a2f2f332e62702e626c6f6773706f742e636f6d2f2d35563163625f775476736b2f576c3738694634536438492f41414141414141414637552f4b6d4b34704d5869353459776f7244676834754938615a744867793062627a6e51434c63424741732f73313630302f435653532e706e67" alt="cvss" data-canonical-src="https://3.bp.blogspot.com/-5V1cb_wTvsk/Wl78iF4Sd8I/AAAAAAAAF7U/KmK4pMXi54YworDgh4uI8aZtHgy0bbznQCLcBGAs/s1600/CVSS.png" /></li>
+</ul>
+</li>
+<li><strong>CVE &ndash; Common Vulnerabilities and Exposures</strong>&nbsp;[+]
+<ul dir="auto">
+<li>Is a list of publicly disclosed vulnerabilities and exposures that is maintained by MITRE.</li>
+<li><img src="https://camo.githubusercontent.com/253a631d3ccfdc1b189e8f79453a72f28ac1c51805017377b639804384518d37/68747470733a2f2f69302e77702e636f6d2f67626861636b6572732e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031362f31302f6376652e706e673f726573697a653d3438362532433430382673736c3d31" alt="cve" data-canonical-src="https://i0.wp.com/gbhackers.com/wp-content/uploads/2016/10/cve.png?resize=486%2C408&amp;ssl=1" /></li>
+</ul>
+</li>
+<li><strong>NVD - National Vulnerability Database</strong>&nbsp;[+]
+<ul dir="auto">
+<li>is a database, maintained by NIST, that is fully synchronized with the MITRE CVE list; US Gov. vulnerabilities repository.</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Vulnerability Categories</h3>
+</div>
+<ul dir="auto">
+<li><strong>Misconfiguration</strong>&nbsp;- improperly configuring a service or application</li>
+<li><strong>Default installation</strong>&nbsp;- failure to change settings in an application that come by default</li>
+<li><strong>Buffer overflow</strong>&nbsp;- code execution flaw</li>
+<li><strong>Missing patches</strong>&nbsp;- systems that have not been patched</li>
+<li><strong>Design flaws</strong>&nbsp;- flaws inherent to system design such as encryption and data validation</li>
+<li><strong>Operating System Flaws</strong>&nbsp;- flaws specific to each OS</li>
+<li><strong>Default passwords</strong>&nbsp;- leaving default passwords that come with system/application</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Pen Test Phases (CEH method)</h2>
+</div>
+<ol dir="auto">
+<li><strong>Pre-Attack Phase</strong>&nbsp;- Reconnaissance and data-gathering.</li>
+<li><strong>Attack Phase</strong>&nbsp;- Attempts to penetrate the network and execute attacks.</li>
+<li><strong>Post-Attack Phase</strong>&nbsp;- Cleanup to return a system to the pre-attack condition and deliver reports.</li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">The Five Stages of Ethical Hacking</h2>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">1.&nbsp;<strong>Reconnaissance</strong></h3>
+</div>
+<p dir="auto"><em>Gathering evidence about targets</em>; There are two types of Recon:</p>
+<ul dir="auto">
+<li><strong>Passive Reconnaissance</strong>: Gain information about targeted computers and networks&nbsp;<strong>without direct interaction with the systems</strong>.
+<ul dir="auto">
+<li>e.g: Google Search, Public records, New releases, Social Media, Wardrive scanning networks around.</li>
+</ul>
+</li>
+<li><strong>Active Reconnaissance</strong>: Envolves direct interaction with the target.
+<ul dir="auto">
+<li>e.g: Make a phone call to the target, Job interview; tools like Nmap, Nessus, OpenVAS, Nikto and Metasploit can be considered as Active Recon.</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">2.&nbsp;<strong>Scanning &amp; Enumeration</strong></h3>
+</div>
+<p dir="auto"><em>Obtaining more in-depth information about targets.</em></p>
+<ul dir="auto">
+<li>e.g: Network Scanning, Port Scanning, Which versions of services are running.</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">3.&nbsp;<strong>Gaining Access</strong></h3>
+</div>
+<p dir="auto"><em>Attacks are leveled in order to gain access to a system.</em></p>
+<ul dir="auto">
+<li>e.g: Can be done locally (offline), over a LAN or over the internet.
+<ul dir="auto">
+<li>e.g(2): Spoofing to exploit the system by pretending to be a legitimate user or different systems, they can send a data packet containing a bug to the target system in order to exploit a vulnerability.</li>
+<li>Can be done using many techniques like command injection, buffer overflow, DoS, brute forcing credentials, social engineering, misconfigurations etc.</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">4.&nbsp;<strong>Maintaining Access</strong></h3>
+</div>
+<p dir="auto"><em>Items put in place to ensure future access.</em></p>
+<ul dir="auto">
+<li>e.g: Rookit, Trojan, Backdoor can be used.</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">5.&nbsp;<strong>Covering Tracks</strong></h3>
+</div>
+<p dir="auto"><em>Steps taken to conceal success and intrusion; Not be noticed.</em></p>
+<ul dir="auto">
+<li>e.g: Clear the logs; Obfuscate trojans or malicious backdoors programs.</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Three Types of Active Defense</h2>
+</div>
+<ul dir="auto">
+<li><strong>Annoyance</strong>
+<ul dir="auto">
+<li>Involves tracking a hacker and leading him into a fake server, wasting his time &mdash; and making him easy to detect.</li>
+</ul>
+</li>
+<li><strong>Attribution</strong>
+<ul dir="auto">
+<li>Identify an attacker; Uses tools to trace the source of an attack back to a specific location, or even an individual hacker.</li>
+</ul>
+</li>
+<li><strong>Attack</strong>
+<ul dir="auto">
+<li>That is most controversial. To &ldquo;hack back,&rdquo; a company accesses an alleged hacker&rsquo;s computer to delete its data or even to take revenge. Both of these steps are considered illegal.</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Information Assurance (IA)</h2>
+</div>
+<p dir="auto"><em>Refers to the assurance of the Integrity, Availability, confidentiality, and authenticity of information and information systems during usage, processing, storage and transmission of information.</em></p>
+<ul dir="auto">
+<li><strong>Processes that help achieving IA:</strong>
+<ul dir="auto">
+<li>Developing local policy, process, and guidance.</li>
+<li>Designing network and user authetication strategy.</li>
+<li>Identifying network vulnerabilities and threats (Vulnerability assessments outline the security posture of the network).</li>
+<li>Idenfitying problems and resource requirements.</li>
+<li>Creating plan for identified resource requirements.</li>
+<li>Applying appropriate IA controls.</li>
+<li>Performing C&amp;A (Certification and Accreditation) process of information systems helps to trace vulnerabilities, and implement sa fety measures.</li>
+<li>Providing information assurance training to all personnel in federal and private org.</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Information Security Management Program</h2>
+</div>
+<p dir="auto"><em>Combination of policies, processes, procedures, standards, and guidelines to establish the required&nbsp;<strong>level of information security.</strong></em></p>
+<ul dir="auto">
+<li>Designed to ensure the business operates in a state of reduced risk.</li>
+<li>It encompasses all organizational and operational processes and participants relevant to information security.</li>
+</ul>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/950220d4b802bb726fe84470c7a13055b056a621/infosec.jpg" alt="infosec" /></p>
+<blockquote>
+<p dir="auto">⚠️&nbsp;<strong>IA</strong>&nbsp;focus on risk assessment, mitigation side of things;&nbsp;⚠️&nbsp;<strong>InfoSec</strong>&nbsp;focus on actually implementing security measures to safeguard systems.</p>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">EISA - Enterprise Information Security Architecture</h2>
+</div>
+<p dir="auto"><em>Set of requirements, process, principles, and models that determines the structure and behavior of an organization's information systems.</em></p>
+<ul dir="auto">
+<li><strong>Goals of EISA</strong>:
+<ul dir="auto">
+<li>Help in monitoring and detecting network behaviors</li>
+<li>Detect and recover from security breaches</li>
+<li>Prioritizing resources of an organization</li>
+<li>Help to perform risk assessment of an organization's IT assets.</li>
+<li>Cost prospective when incorporated in security provisions such as incident response, disaster recovery, event correlation, etc.</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Physical Security Controls</h2>
+</div>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>Preventive control</strong>: Deters the actor from performing the threat.</p>
+<ul dir="auto">
+<li>e.g: Fence, Server Locks, Mantraps, etc.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Detective control</strong>: Recognizes an actor's threat.</p>
+<ul dir="auto">
+<li>e.g: Background check, CCTV.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Deterrent control</strong>: Deters the actor from&nbsp;<strong>attempting</strong>&nbsp;the threat.</p>
+<ul dir="auto">
+<li>e.g: Warning Sign.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Recovery</strong>: Mitigates the impact of a manifested threat.</p>
+<ul dir="auto">
+<li>e.g: Backups.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Compensating control</strong>: Provides alternative fixes to any of the above functions.</p>
+</li>
+</ul>
+<p dir="auto"><em>Most of security controls are preventive phase controls</em>.</p>
+<p dir="auto">⚠️&nbsp;<strong>Defense in Depth</strong>: Multiple layers of security controls; Provides redundancy in the event of a control failure. (e.g.: image below)</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Types of Security Controls</h3>
+</div>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Physical</strong></td>
+<td>Guards, lights, cameras, fire extinguishers, flood protection</td>
+</tr>
+<tr>
+<td><strong>Administrative</strong></td>
+<td>Training awareness, policies, procedures and guidelines to infosec</td>
+</tr>
+<tr>
+<td><strong>Technical</strong></td>
+<td>IDS/IPS, Firewall, Encryption, Smart cards, Access control lists</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Preventative</strong></td>
+<td>authentication, alarm bells</td>
+</tr>
+<tr>
+<td><strong>Detective</strong></td>
+<td>audits, backups</td>
+</tr>
+<tr>
+<td><strong>Corrective</strong></td>
+<td>restore operations</td>
+</tr>
+</tbody>
+</table>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Managing the Risk</h2>
+</div>
+<p dir="auto"><strong>Risk</strong>&nbsp;can be defined as a probability of the occurrence of a threat or an event that may damage, or cause loss or have other negative impact either from internal or external liabilities.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Risk matrix</h3>
+</div>
+<p dir="auto">A&nbsp;<strong>risk matrix</strong>&nbsp;is used during&nbsp;<strong>risk assessment</strong>&nbsp;to define the level of risk by considering the category of&nbsp;<strong>probability or likelihood</strong>&nbsp;against the category of consequence&nbsp;<strong>severity</strong>.</p>
+<ul dir="auto">
+<li>This is a simple mechanism to increase visibility of risks and assist management decision making.</li>
+</ul>
+<p dir="auto"><img src="https://camo.githubusercontent.com/eb0c1a93c6c13b64eda66d55d1a8c735a8b392957cbea141a75d70bd4f432b1d/68747470733a2f2f70616c6164696e7269736b2e636f6d2e61752f77702d636f6e74656e742f75706c6f6164732f323031382f31312f7269736b2d312d31303234783433342e6a7067" alt="matrix" data-canonical-src="https://paladinrisk.com.au/wp-content/uploads/2018/11/risk-1-1024x434.jpg" /></p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Risk Management</h3>
+</div>
+<p dir="auto"><em>Is the identification, evaluation, and prioritization of risks followed by coordinated and economical application of resources to minimize, monitor, and control the probability or impact of unfortunate events or to maximize the realization of opportunities.</em></p>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Security Policies</h2>
+</div>
+<ol dir="auto">
+<li><strong>Policies</strong>&nbsp;- High-level statements about protecting information; Business rules to safeguard CIA triad; Security Policies can be applied on Users, Systems, Partners, Networks, and Providers.
+<ul dir="auto">
+<li><strong>Common Security Policies examples:</strong>
+<ul dir="auto">
+<li>Password Policy
+<ul dir="auto">
+<li>Meet the password complexity requirements.</li>
+<li>e.g: Minimum 8 char length, upper and lower case and alphanumerical.</li>
+</ul>
+</li>
+<li>Wireless Security Policy</li>
+<li>AUP - Acceptable Use-Policy
+<ul dir="auto">
+<li>How to properly use company's assets</li>
+<li>e.g: "Do's and Dont's" with company's computer.</li>
+</ul>
+</li>
+<li>Data Retention Policy
+<ul dir="auto">
+<li>e.g: Keep the data for X time.</li>
+</ul>
+</li>
+<li>Access Control Policies
+<ul dir="auto">
+<li>e.g: Accessing servers; Firewalls</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Procedures</strong>&nbsp;- Set of details steps to accomplish a goal; Instructions for implementation</li>
+<li><strong>Guidelines</strong>&nbsp;- Advice on actions given a situation; Recommended, not mandatory</li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Security Policy - Examples</h2>
+</div>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>Access Control Policy</strong></p>
+<ul dir="auto">
+<li>This defines the resources being protected and the rules that control access to them</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Remote Access Policy</strong></p>
+<ul dir="auto">
+<li>This defines who can have remote access and defines access medium and remote access security controls.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Firewall Management Policy</strong></p>
+<ul dir="auto">
+<li>This defines access, management and monitoring of firewalls in an organization.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Network Connection Policy</strong></p>
+<ul dir="auto">
+<li>This defines who can install new resources on the network, approve the installation of new devices, document network changes etc.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Password Policy</strong></p>
+<ul dir="auto">
+<li>This defines guidelines for using strong password protection on available resources.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>User Account Policy</strong></p>
+<ul dir="auto">
+<li>This defines the account creation process, authority, rights and responsibility of user accounts.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Information Protection Policy</strong></p>
+<ul dir="auto">
+<li>This defines the sensitivity levels of information, who may have access, how it is stored and transmitted, and how it should be deleted from storage media etc.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Special Access Policy</strong></p>
+<ul dir="auto">
+<li>This defines the terms and conditions of granting special access to system resources.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Email Security Policy</strong></p>
+<ul dir="auto">
+<li>This policy is designed to govern the proper usage of corporate email.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Acceptable Use Policy</strong></p>
+<ul dir="auto">
+<li>This defines the acceptable use of system resources.</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Security Policiy - Types</h2>
+</div>
+<ol dir="auto">
+<li>
+<p dir="auto"><strong>Promiscuous Policy</strong>&nbsp;- This policy usually has no restrictions on usage of system resources.</p>
+</li>
+<li>
+<p dir="auto"><strong>Permissive Policy</strong>&nbsp;- This policy begins wide open and only know dangerous services/attacks or behaviors are blocked. This type of policy has to be updated regularly to stay effective.</p>
+</li>
+<li>
+<p dir="auto"><strong>Prudent Policy</strong>&nbsp;- This policy provides maximum security while allowing known but necessary dangers. This type of policy will block all services and only safe/necessary services are enabled individually. Everything is logged.</p>
+</li>
+<li>
+<p dir="auto"><strong>Paranoid Policy</strong>&nbsp;- This policy forbids everything. No Internet connection or severely restricted Internet usage is allowed.</p>
+</li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Security Policy - Creation Steps</h2>
+</div>
+<ol dir="auto">
+<li>Perform a Risk Assessment</li>
+<li>Use security Standards and Frameworks as guide</li>
+<li>Get Management and Staff input</li>
+<li>Enforce the policy. Use penalties for non-compliance</li>
+<li>Publish final draft to entire org.</li>
+<li>Have all staff read/sign that they understood policy</li>
+<li>Employ tools to help enforce policy</li>
+<li>Staff training</li>
+<li>Review and update regularly</li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Incident Management Process</h2>
+</div>
+<p dir="auto"><em>An incident is an event that could lead to loss of, or disruption to, an organization's operations, services or functions.</em></p>
+<p dir="auto"><em><strong>Incident management</strong>&nbsp;is a term describing the activities of an organization to identify, analyze, and correct hazards to prevent a future re-occurrence.</em></p>
+<ol dir="auto">
+<li><strong>Preparation:</strong>&nbsp;Select people, assign rules, define tools to handle the incident.</li>
+<li><strong>Detection &amp; Analysis:</strong>&nbsp;Determine an incident has ocurred (IDS, SIEM, AV, Someone reporting, etc).</li>
+<li><strong>Classification and Prioritization:</strong></li>
+<li><strong>Notification:</strong>&nbsp;Identify minor and major incident; who and how to notify an incident.</li>
+<li><strong>Containment:</strong>&nbsp;Limit the damage; Isolate hosts; Contact system owners.</li>
+<li><strong>Forensic Investigation:</strong>&nbsp;Investigate the root cause of the incident using forensic tools; System logs, real-time memory, network device logs, application logs, etc;</li>
+<li><strong>Eradicate &amp; Recovery:</strong>&nbsp;Remove the cause of incident; Patch if needed. Recovery: get back into production; Monitor affected systems.</li>
+<li><strong>Post-incident Activities:</strong>&nbsp;Document what happened and why; Transfer knowledge.</li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Incident Response Team Duties</h3>
+</div>
+<ol dir="auto">
+<li>Managing security issues by taking a proactive approach towards the customer's security vulnerabilities</li>
+<li>Developing or reviewing processes and procedures that must be followed</li>
+<li>Managing the response to an incident and ensuring that all procedures are followed correctly in order to minimize and control the damage</li>
+<li>Identifying and analyzing what has happened during an incident, including impact and threat</li>
+<li>Providing a single point of contact for reporting seucirty incidents and issues</li>
+<li>Reviewing changes in legal and regulatory requirements to ensure that all processes and procedures are valid</li>
+<li>Reviewing existing controls and recommending steps and technologies to prevent future incidents</li>
+<li>Establishing relationship with local law enforcement agency, gov. agencies, key partners and suppliers</li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">SIEM - Security Information and Event Management</h3>
+</div>
+<p dir="auto" align="center"><img src="https://camo.githubusercontent.com/fd745f0c611cb7a51870a2e96d8b15e4dadd7d01db514110f7b37da3d0ea10ca/68747470733a2f2f7365637572656f70732e636f6d2f77702d636f6e74656e742f75706c6f6164732f323032302f30312f636f6d706f6e656e74732d6f662d7369656d2e6a7067" alt="" width="90%" data-canonical-src="https://secureops.com/wp-content/uploads/2020/01/components-of-siem.jpg" /></p>
+<p dir="auto"><em>Collects data points from network, including log files, traffic captures, SNMP messages, and so on, from every host on the network. SIEM can collect all this data into one centralized location and correlate it for analysis to look for security and performance issues, as well negative trends all in real time.</em></p>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>Aggregation</strong>: Collecting data from disparate sources and organizing the data into a single format. Any device within a SIEM system that collects data is called collector or an aggregator.</p>
+</li>
+<li>
+<p dir="auto"><strong>Correlation</strong>: Is the logic that looks at data from disparate sources and can make determinations about events taking place on your network. (Could be in-band or out-of-band, depending on the placement of the NIDS/NIPS).</p>
+<ul dir="auto">
+<li><strong>Alerts</strong>&nbsp;- For notification if something goes bad.</li>
+<li><strong>Triggering</strong>&nbsp;- Exceeding thresholds.</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>Normalization</strong>: Will actually create multiple tables / organize in such a way that the data can become more efficient and allows our analysis and reports tools to work better.</p>
+</li>
+<li>
+<p dir="auto"><strong>WORM - Write Once Read Many</strong>: The concept being is that log files are precious, and a lot of times you might want to look at them in an archival way, so that we can use optical media like WORM drives to store them.</p>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h4 class="heading-element" dir="auto" tabindex="-1">Most Popular SIEM Tools:</h4>
+</div>
+<ul dir="auto">
+<li><strong>Splunk</strong>&nbsp;<img src="https://camo.githubusercontent.com/94fc2f5557caf803de83bc5c069d1e3aed22b592c68549c4c2d8351a4dd84067/68747470733a2f2f7777772e73706c756e6b2e636f6d2f636f6e74656e742f64616d2f73706c756e6b322f696d616765732f73637265656e73686f74732f706c6174666f726d2d6a6f75726e65792f636f6e666c61756e63682f53532d55492d4c696768742d4d6f64652d6672616d652e706e67" alt="splunk" data-canonical-src="https://www.splunk.com/content/dam/splunk2/images/screenshots/platform-journey/conflaunch/SS-UI-Light-Mode-frame.png" /></li>
+</ul>
+<br />
+<ul dir="auto">
+<li><strong>ArcSight</strong>&nbsp;<img src="https://camo.githubusercontent.com/748bfdf88fc5588707b415919037a96d61fb87c99ea37176cb8fabcf6323a02a/68747470733a2f2f692e7974696d672e636f6d2f76692f4e374a30457764624b46302f6d617872657364656661756c742e6a7067" alt="arcsight" data-canonical-src="https://i.ytimg.com/vi/N7J0EwdbKF0/maxresdefault.jpg" /></li>
+</ul>
+<br />
+<ul dir="auto">
+<li><strong>ELK - Elastic Search, Log Stash and Kibana&nbsp;(Open Source)</strong>&nbsp;<img src="https://camo.githubusercontent.com/f5c7d2e73e7cf7874c4164b62bf571c87005ca37e74ea707f2e177fe5fe24359/68747470733a2f2f692e696d6775722e636f6d2f6c79647443776e2e706e67" alt="elk" data-canonical-src="https://i.imgur.com/lydtCwn.png" /></li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Identity and Access Management</h2>
+</div>
+<blockquote>
+<p dir="auto"><strong>Identification, Authentication, Authorization</strong>, and&nbsp;<strong>Accounting</strong>&nbsp;work together to manage assets securely.</p>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">1.&nbsp;<strong>Identification</strong></h3>
+</div>
+<p dir="auto"><em>The information on credentials identifies the user.</em></p>
+<ul dir="auto">
+<li><strong>Example</strong>:
+<ul dir="auto">
+<li>Your name, username, ID number, employee number, SSN etc.</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">2.&nbsp;<strong>Authentication</strong></h3>
+</div>
+<p dir="auto"><em>&ldquo;Prove you are the legitimate User". &ndash; Should always be done with Multifactor Authentication!</em></p>
+<ul dir="auto">
+<li><strong>Authentication Factors:</strong>
+<ul dir="auto">
+<li>Something you&nbsp;<strong>know</strong>&nbsp;(e.g. - password)</li>
+<li>Something you&nbsp;<strong>have</strong>&nbsp;(e.g. - smart card)</li>
+<li>Something you&nbsp;<strong>are</strong>&nbsp;(e.g. - fingerprint)</li>
+<li>Something you&nbsp;<strong>do</strong>&nbsp;(e.g. - android pattern; manual signature)</li>
+<li><strong>Somewhere</strong>&nbsp;you are (e.g. - geolocation)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p dir="auto">🛑&nbsp;<strong>Multi-factor authentication</strong>&nbsp;<em>generally uses two of this examples (e.g. - Something you&nbsp;<strong>Know(1)</strong>&nbsp;and Something you&nbsp;<strong>Have(2)</strong>, never on same category</em></p>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">3. Authorization concepts</h3>
+</div>
+<p dir="auto"><em>What are you allowed to access &ndash; We use Access Control models, what and how we implement depends on the organization and what our security goals are.</em></p>
+<ul dir="auto">
+<li><strong>Permissions</strong>:
+<ul dir="auto">
+<li>Applied to resources</li>
+</ul>
+</li>
+<li><strong>Rights</strong>&nbsp;/&nbsp;<strong>Privileges</strong>:
+<ul dir="auto">
+<li>Assign at system level</li>
+</ul>
+</li>
+<li><strong>Authorization strategies</strong>:
+<ul dir="auto">
+<li>Least privileged</li>
+<li>Separation of Duties</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">4. Accouting</h3>
+</div>
+<p dir="auto"><em>Trace an Action to a Subjects Identity:</em></p>
+<ul dir="auto">
+<li>Prove who/what a given action was performed by (non-repudiation); Logging</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Access Controls Models</h3>
+</div>
+<p dir="auto" align="center"><img src="https://camo.githubusercontent.com/93ccf392e5a997bb3ddcbb4f6c0edb9b7e61c7b28dc524f39b8c072d3cc3d907/68747470733a2f2f73656375726974792d6172636869746563742e636f6d2f77702d636f6e74656e742f75706c6f6164732f4647412e706e67" alt="" width="80%" data-canonical-src="https://security-architect.com/wp-content/uploads/FGA.png" /></p>
+<ul dir="auto">
+<li><strong>Mandatory Access Control (MAC)</strong>:
+<ul dir="auto">
+<li>Every object gets a&nbsp;<strong>label</strong>
+<ul dir="auto">
+<li>Confidential, secret, top secret, etc</li>
+</ul>
+</li>
+<li>The administrator decides who gets access to what security level; Users cannot change these settings</li>
+<li>Used on old systems (e.g. Top Secret Gov. information)</li>
+</ul>
+</li>
+<li><strong>Discretionary Access Control (DAC)</strong>:
+<ul dir="auto">
+<li>Used in most OS</li>
+<li>Owner of the data defines access</li>
+<li>Very flexible access control; Very weak security</li>
+</ul>
+</li>
+<li><strong>Role-based Access Control (RBAC)</strong>:
+<ul dir="auto">
+<li>Access to resources is defines by a set of rules defined by a role in your organization/job function (Manager, Director etc)</li>
+<li>Administrators provide access based on the role of the user
+<ul dir="auto">
+<li>Rights are gained implicity instead of explicity</li>
+</ul>
+</li>
+<li>In Windows, use&nbsp;<strong>Groups</strong>&nbsp;to provide role-based access control
+<ul dir="auto">
+<li>e.g. Admin Groups --&gt; Rights and Perms,</li>
+<li>Sales Group --&gt; Rights and Perms</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p dir="auto">⚠️&nbsp;<strong>Access is defined by ACL, Access Control List</strong>.&nbsp;⚠️&nbsp;<strong>Implicity deny</strong>&nbsp;prevents access unless specifically permitted.</p>
+</blockquote>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Data Loss Prevention (DLP)</h2>
+</div>
+<p dir="auto">Data Loss Prevention (DLP) is the practice of&nbsp;<strong>detecting and preventing data breaches, exfiltration, or unwanted destruction of sensitive data</strong>. Organizations use DLP to protect and secure their data and comply with regulations.</p>
+<ul dir="auto">
+<li>The DLP term refers to defending organizations against both data loss and data leakage prevention.</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h4 class="heading-element" dir="auto" tabindex="-1">Organizations typically use DLP to:</h4>
+</div>
+<ul dir="auto">
+<li>Protect Personally Identifiable Information (PII) and comply with relevant regulations</li>
+<li>Protect Intellectual Property critical for the organization</li>
+<li>Achieve data visibility in large organizations</li>
+<li>Secure mobile workforce and enforce security in Bring Your Own Device (BYOD) environments</li>
+<li>Secure data on remote cloud systems</li>
+</ul>
+<p dir="auto" align="center"><img src="https://camo.githubusercontent.com/02c8010d8e13bc013c397b4b89c4f8373fef4392e67a9428d7deeb2f29d2fa88/68747470733a2f2f6d69726f2e6d656469756d2e636f6d2f6d61782f3732302f312a4647394c5235316579535652514a556a6856762d39412e706e67" alt="" width="90%" data-canonical-src="https://miro.medium.com/max/720/1*FG9LR51eySVRQJUjhVv-9A.png" /></p>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Data Backup</h2>
+</div>
+<p dir="auto">Data backup plays a crucial role in maintaining business continuity by helping org. recover from IT disasters, security breaches, application failures, human error, etc.</p>
+<p dir="auto">All regulatory compliance such as COBIT, SSAE, SOCII, PCI-DSS, HIPPA, SOX, FINRA, FISMA, GDPR, etc. require business to maintain data backups of critical data for specified duration.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">Backup Strategies</h3>
+</div>
+<ol dir="auto">
+<li>Identifying the critical business data</li>
+<li>Selecting the backup media</li>
+<li>Selecting a backup technology</li>
+<li>Selecting the appropriate RAID levels</li>
+<li>Selecting an appropriate backup method</li>
+</ol>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">3 Backup methods</h3>
+</div>
+<div class="markdown-heading" dir="auto">
+<h4 class="heading-element" dir="auto" tabindex="-1">1. Cold backup 🔵</h4>
+</div>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/29c5e018095b135baec32aaece84a900a43b23ca/cc-cold.png" alt="" width="40%" /></p>
+<ul dir="auto">
+<li><strong>Empty site, no hardware, no data, no people</strong></li>
+<li><strong>It takes weeks to bring online</strong></li>
+<li>Basic office spaces (e.g building, chairs, AC...)</li>
+<li>No operational equipment</li>
+<li>Cheapest recovery site</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h4 class="heading-element" dir="auto" tabindex="-1">2. Warm backup 🟡</h4>
+</div>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/29c5e018095b135baec32aaece84a900a43b23ca/cc-warm.png" alt="" width="40%" /></p>
+<ul dir="auto">
+<li><strong>Somewhere between cold and hot - Just enough to get going (Big room with rack space, you bring the hardware)</strong></li>
+<li>Hardware is ready and waiting - you bring the software and data</li>
+<li><strong>It takes days to bring online</strong></li>
+<li>Operational equipment but little or no data</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h4 class="heading-element" dir="auto" tabindex="-1">3. Hot backup 🔴</h4>
+</div>
+<p dir="auto"><img src="https://gist.githubusercontent.com/Samsar4/62886aac358c3d484a0ec17e8eb11266/raw/29c5e018095b135baec32aaece84a900a43b23ca/cc-hot.png" alt="" width="40%" /></p>
+<ul dir="auto">
+<li><strong>Exact replica of production systems</strong></li>
+<li>Applications and software are constantly updated</li>
+<li>Flip a switch and everyting moves</li>
+<li><strong>It take hours to bring online</strong></li>
+<li>Real-time synchronization</li>
+<li>Almost all data ready to go - often just a quick update</li>
+<li>Very expensive</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Penetration Test - Basics</h2>
+</div>
+<blockquote>
+<p dir="auto"><strong>This topic will be covered with details in&nbsp;Chapter 14 - Pentesting.</strong></p>
+</blockquote>
+<p dir="auto"><em>A penetration test, colloquially known as a pen test, pentest or ethical hacking, is an authorized simulated cyberattack on a computer system, performed to evaluate the security of the system.</em></p>
+<blockquote>
+<p dir="auto">⚠️&nbsp;<strong>Not to be confused with a vulnerability assessment.</strong></p>
+</blockquote>
+<ul dir="auto">
+<li>Clearly defined, full scale test of security controls</li>
+<li>Phases
+<ul dir="auto">
+<li><strong>Preparation</strong>&nbsp;- Contracts and team determined</li>
+<li><strong>Assessment</strong>&nbsp;- All hacking phases (reconnaissance, scanning, attacks, etc.)</li>
+<li><strong>Post-Assessment</strong>&nbsp;- Reports &amp; conclusions</li>
+</ul>
+</li>
+<li>Types
+<ul dir="auto">
+<li><strong>Black Box</strong>&nbsp;- Done without any knowledge of the system or network.</li>
+<li><strong>White Box</strong>&nbsp;- When the attacker have complete knowledge of the system provided by the owner/target.</li>
+<li><strong>Gray Box</strong>&nbsp;- When the attacker has some knowledge of the system and/or network</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h2 class="heading-element" dir="auto" tabindex="-1">Laws and Standards:</h2>
+</div>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>OSSTM Compliance</strong></h3>
+</div>
+<p dir="auto"><strong>"Open Source Security Testing Methodology Manual"</strong>&nbsp;maintained by ISECOM , defines three types of compliance.</p>
+<ul dir="auto">
+<li>
+<p dir="auto"><strong>Legislative</strong>&nbsp;- Deals with government regulations (Such as SOX and HIPAA).</p>
+</li>
+<li>
+<p dir="auto"><strong>Contractual</strong>&nbsp;- Deals with industry / group requirement (Such as PCI DSS).</p>
+</li>
+<li>
+<p dir="auto"><strong>Standards based</strong>&nbsp;- Deals with practices that must be followed by members of a given group/organization (Such as ITIL ,ISO and OSSTMM itself).</p>
+</li>
+<li>
+<p dir="auto"><strong>OSSTM Controls</strong></p>
+<ul dir="auto">
+<li><strong>OSSTM Class A - Interactive Controls</strong>
+<ul dir="auto">
+<li><em>Authentication</em>&nbsp;- Provides for identification and authorization based on credentials.</li>
+<li><em>Indemnification</em>&nbsp;- Provided contractual protection against loss or damages.</li>
+<li><em>Subjugation</em>&nbsp;- Ensures that interactions occur according to processes defined by the asset owner.</li>
+<li><em>Continuity</em>&nbsp;- Maintains interactivity with assets if corruption of failure occurs.</li>
+<li><em>Resilience</em>&nbsp;- Protects assets from corruption and failure.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p dir="auto"><strong>OSSTM Class B - Process Controls</strong></p>
+<ul dir="auto">
+<li><em>Non-repudiation</em>&nbsp;- Prevents participants from denying its actions</li>
+<li><em>Confidentiality</em>&nbsp;- Ensures that only participants know of an asset</li>
+<li><em>Privacy</em>&nbsp;- Ensures that only participants have access to the asset</li>
+<li><em>Integrity</em>&nbsp;- Ensures that only participants know when assets and processes change</li>
+<li><em>Alarm</em>&nbsp;- Notifies participants when interactions occur</li>
+</ul>
+</li>
+</ul>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>PCI-DSS</strong></h3>
+</div>
+<p dir="auto"><strong>"Payment Card Industry Data Security Standard"</strong>&nbsp;Standard for organizations handling Credit Cards, ATM cards and other POS cards.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>ISO 27001</strong></h3>
+</div>
+<p dir="auto">This International Standard has been prepared to provide requirements for establishing, implementing, maintaining and continually improving an information security management system.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>ISO 27002 AND 17799</strong></h3>
+</div>
+<p dir="auto">Based on BS799 but focuses on security objectives and provides security controls based on industry best practice.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>HIPAA</strong></h3>
+</div>
+<p dir="auto"><strong>"Health Insurance Portability and Accountability Act"</strong>&nbsp;a law that set's privacy standards to protect patient medical records and health information shared between doctors, hospitals and insurance providers.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>SOX</strong></h3>
+</div>
+<p dir="auto"><strong>"Sarbanes-Oxley Act" Law</strong>&nbsp;that requires publicly traded companies to submit to independent audits and to properly disclose financial information.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1">DMCA</h3>
+</div>
+<p dir="auto"><strong>"The Digital Millennium Copyright Act"</strong>&nbsp;is a 1998 United States copyright law that implements two 1996 treaties of the World Intellectual Property Organization. It criminalizes production and dissemination of technology, devices, or services intended to circumvent measures that control access to copyrighted works.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>FISMA</strong></h3>
+</div>
+<p dir="auto"><strong>"Federal Information Security Modernization Ac Of 2002"</strong>&nbsp;A law updated in 2004 to codify the authority of the Department of Homeland Security with regard to implementation of information security policies.&nbsp;<em>(For GOV. agencies)</em></p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>NIST-800-53</strong></h3>
+</div>
+<p dir="auto">Catalogs security and privacy controls for federal information systems, created to help implementation of FISMA.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>FITARA</strong></h3>
+</div>
+<p dir="auto"><strong>"Federal Information Technology Acquisition Reform Act"</strong>&nbsp;A 2013 bill that was intended to change the framework that determines how the US GOV purchases technology.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>COBIT</strong></h3>
+</div>
+<p dir="auto"><strong>"Control Object for Information and Related Technology"</strong>&nbsp;IT Governance framework and toolset, created by ISACA and ITGI</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>GLBA</strong></h3>
+</div>
+<p dir="auto"><strong>"U.S Gramm-Leach-Bliley Act"</strong>&nbsp;Law that protects the confidentiality and integrity of personal information that is collected by financial institutions.</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>CSIRT</strong></h3>
+</div>
+<p dir="auto"><strong>"Computer Security Incident Response Team"</strong>&nbsp;CSIRT provided a single point of contact when reporting computer security incidents</p>
+<div class="markdown-heading" dir="auto">
+<h3 class="heading-element" dir="auto" tabindex="-1"><strong>ITIL</strong></h3>
+</div>
+<p dir="auto"><strong>"Information Technology Infrastructure Library"</strong>&nbsp;- An operational framework developed in the '80s that standardizes IT management procedures</p>
+</div>
+</div>
+<div class="markdown-heading" dir="auto">&nbsp;</div>
+
 <h1 class="heading-element" dir="auto" tabindex="-1"><p align="left"></p>🖳Port Forwarding & Tunnelling🛠️👨🏽‍💻</h1>
 <p>In this guide, we are going to learn about the concepts and techniques of Port forwarding and Tunnelling. this guide stands as an absolute cheatsheet on the two concepts. Port forwarding transmits a communication request from one address and&nbsp;the port&nbsp;number while sending the packets in a network. Tunnelling has proven to be highly beneficial as it lets an organisation create their Virtual Private Network with the help of the public network and provide huge cost benefits for users on both the end.</p>
 <h3><strong>Contents</strong></h3>
